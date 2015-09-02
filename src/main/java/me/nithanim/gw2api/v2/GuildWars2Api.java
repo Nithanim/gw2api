@@ -15,6 +15,8 @@ import me.nithanim.gw2api.v2.api.commerce.CommerceResource;
 import me.nithanim.gw2api.v2.api.currencies.CurrenciesResource;
 import me.nithanim.gw2api.v2.api.currencies.CurrenciesResourceImpl;
 import me.nithanim.gw2api.v2.api.tokeninfo.TokenResource;
+import me.nithanim.gw2api.v2.api.worlds.WorldsResource;
+import me.nithanim.gw2api.v2.api.worlds.WorldsResourceImpl;
 import me.nithanim.gw2api.v2.util.gson.EnumTypeAdapterFactory;
 import me.nithanim.gw2api.v2.util.time.DateTimeAdapter;
 
@@ -33,6 +35,7 @@ public class GuildWars2Api {
     private final ColorsResource colorResource;
     private final CurrenciesResource currenciesResource;
     private final TokenResource tokenResource;
+    private final WorldsResource worldsResource;
 
     public GuildWars2Api() {
         this(new GuildWars2ApiDefaultConfig());
@@ -50,6 +53,7 @@ public class GuildWars2Api {
         colorResource = new ColorsResourceImpl(baseWebResource);
         currenciesResource = new CurrenciesResourceImpl(baseWebResource);
         tokenResource = new TokenResource(baseWebResource);
+        worldsResource = new WorldsResourceImpl(baseWebResource);
     }
 
     /**
@@ -116,16 +120,16 @@ public class GuildWars2Api {
 
     /**
      * This resource returns a list of the currencies contained in the account wallet. 
-     * 
-     * @return 
-     * 
+     *
+     * @return
+     *
      * @see <a href="https://wiki.guildwars2.com/wiki/API:2/currencies">Guild Wars 2
      * Wiki</a>
      */
     public CurrenciesResource currencies() {
         return currenciesResource;
     }
-    
+
     /**
      * This resource returns information about the supplied API key.
      *
@@ -136,6 +140,15 @@ public class GuildWars2Api {
      */
     public TokenResource tokeninfo() {
         return tokenResource;
+    }
+
+    /**
+     * This resource returns information about the available worlds, or servers.
+     *
+     * @return
+     */
+    public WorldsResource worlds() {
+        return worldsResource;
     }
 
     /**
