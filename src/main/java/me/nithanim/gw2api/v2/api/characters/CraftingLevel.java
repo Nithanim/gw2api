@@ -3,11 +3,11 @@ package me.nithanim.gw2api.v2.api.characters;
 import org.apache.commons.lang.builder.ToStringBuilder;
 
 public class CraftingLevel {
-    private String discipline;
+    private CraftingDiscipline discipline;
     private int rating;
     private boolean active;
 
-    public String getDiscipline() {
+    public CraftingDiscipline getDiscipline() {
         return discipline;
     }
 

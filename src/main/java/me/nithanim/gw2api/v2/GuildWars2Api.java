@@ -14,6 +14,8 @@ import me.nithanim.gw2api.v2.api.colors.ColorsResourceImpl;
 import me.nithanim.gw2api.v2.api.commerce.CommerceResource;
 import me.nithanim.gw2api.v2.api.currencies.CurrenciesResource;
 import me.nithanim.gw2api.v2.api.currencies.CurrenciesResourceImpl;
+import me.nithanim.gw2api.v2.api.recipes.RecipesResource;
+import me.nithanim.gw2api.v2.api.recipes.RecipesResourceImpl;
 import me.nithanim.gw2api.v2.api.tokeninfo.TokenResource;
 import me.nithanim.gw2api.v2.api.worlds.WorldsResource;
 import me.nithanim.gw2api.v2.api.worlds.WorldsResourceImpl;
@@ -34,6 +36,7 @@ public class GuildWars2Api {
     private final CharactersResource charactersResource;
     private final ColorsResource colorResource;
     private final CurrenciesResource currenciesResource;
+    private final RecipesResource recipesResource;
     private final TokenResource tokenResource;
     private final WorldsResource worldsResource;
 
@@ -52,6 +55,7 @@ public class GuildWars2Api {
         charactersResource = new CharactersResource(baseWebResource);
         colorResource = new ColorsResourceImpl(baseWebResource);
         currenciesResource = new CurrenciesResourceImpl(baseWebResource);
+        recipesResource = new RecipesResourceImpl(baseWebResource);
         tokenResource = new TokenResource(baseWebResource);
         worldsResource = new WorldsResourceImpl(baseWebResource);
     }
@@ -128,6 +132,16 @@ public class GuildWars2Api {
      */
     public CurrenciesResource currencies() {
         return currenciesResource;
+    }
+
+    /**
+     * This resource returns information about recipes that were discovered by
+     * players in the game.
+     *
+     * @return
+     */
+    public RecipesResource recipes() {
+        return recipesResource;
     }
 
     /**
