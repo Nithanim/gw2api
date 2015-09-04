@@ -133,12 +133,13 @@ public class GuildWars2Api {
     }
 
     /**
-     * This resource returns a list of the currencies contained in the account wallet. 
+     * This resource returns a list of the currencies contained in the account
+     * wallet.
      *
      * @return
      *
-     * @see <a href="https://wiki.guildwars2.com/wiki/API:2/currencies">Guild Wars 2
-     * Wiki</a>
+     * @see <a href="https://wiki.guildwars2.com/wiki/API:2/currencies">Guild
+     * Wars 2 Wiki</a>
      */
     public CurrenciesResource currencies() {
         return currenciesResource;
