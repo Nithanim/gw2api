@@ -21,3 +21,7 @@ As another example we want to use the /v2/commerce/listings endpoint. Since ther
 int[] allListingsAvailable = gw2api.commerce().listings().getOverview();
 Listing listing = gw2api.commerce().listings().get(allListingsAvailable[0]);
 ```
+
+## Building
+At first you need to clone this repositoy. You can do this by either typing ```git clone https://github.com/Nithanim/gw2api.git``` if git is installed or download the source as zip file.
+With [Maven](https://maven.apache.org/) (needs to be installed) simply type ```mvn package``` to get the jars or ```mvn install``` to build and insert the file into your local maven repository.
