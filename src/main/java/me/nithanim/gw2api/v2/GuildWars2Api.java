@@ -3,13 +3,17 @@ package me.nithanim.gw2api.v2;
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.WebResource;
 import com.sun.jersey.api.client.config.ClientConfig;
 import com.sun.jersey.api.client.config.DefaultClientConfig;
+import java.util.EnumMap;
 import me.nithanim.gw2api.v2.api.account.AccountResource;
 import me.nithanim.gw2api.v2.api.colors.ColorsResource;
 import me.nithanim.gw2api.v2.api.characters.CharactersResource;
+import me.nithanim.gw2api.v2.api.characters.Specialization;
+import me.nithanim.gw2api.v2.api.characters.SpecializationType;
 import me.nithanim.gw2api.v2.api.colors.ColorsResourceImpl;
 import me.nithanim.gw2api.v2.api.commerce.CommerceResource;
 import me.nithanim.gw2api.v2.api.currencies.CurrenciesResource;
@@ -19,6 +23,7 @@ import me.nithanim.gw2api.v2.api.recipes.RecipesResourceImpl;
 import me.nithanim.gw2api.v2.api.tokeninfo.TokenResource;
 import me.nithanim.gw2api.v2.api.worlds.WorldsResource;
 import me.nithanim.gw2api.v2.api.worlds.WorldsResourceImpl;
+import me.nithanim.gw2api.v2.util.gson.EnumMapInstanceCreator;
 import me.nithanim.gw2api.v2.util.gson.EnumTypeAdapterFactory;
 import me.nithanim.gw2api.v2.util.time.DateTimeAdapter;
 
@@ -27,6 +32,11 @@ public class GuildWars2Api {
         .registerTypeAdapter(DateTimeAdapter.TYPE, new DateTimeAdapter())
         .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
         .registerTypeAdapterFactory(new EnumTypeAdapterFactory())
+        .registerTypeAdapter(
+            new TypeToken<EnumMap<SpecializationType, Specialization[]>>() {
+            }.getType(),
+            new EnumMapInstanceCreator<>(SpecializationType.class)
+        )
         .create();
 
     private final Client client;

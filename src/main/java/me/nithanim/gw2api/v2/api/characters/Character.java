@@ -1,5 +1,7 @@
 package me.nithanim.gw2api.v2.api.characters;
 
+import java.util.EnumMap;
+import java.util.Map;
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.joda.time.DateTime;
 
@@ -14,6 +16,7 @@ public class Character {
     private DateTime created;
     private int deaths;
     private CraftingLevel[] crafting;
+    private EnumMap<SpecializationType, Specialization[]> specializations;
     private WornItem[] equipment;
     private Bag[] bags;
 
@@ -55,6 +58,10 @@ public class Character {
 
     public CraftingLevel[] getCrafting() {
         return crafting;
+    }
+
+    public Map<SpecializationType, Specialization[]> getSpecializations() {
+        return specializations;
     }
 
     public WornItem[] getEquipment() {
