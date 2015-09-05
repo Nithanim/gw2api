@@ -23,10 +23,16 @@ import me.nithanim.gw2api.v2.api.recipes.RecipesResourceImpl;
 import me.nithanim.gw2api.v2.api.skins.SkinsResource;
 import me.nithanim.gw2api.v2.api.skins.SkinsResourceImpl;
 import me.nithanim.gw2api.v2.api.tokeninfo.TokenResource;
+import me.nithanim.gw2api.v2.api.traits.Fact;
+import me.nithanim.gw2api.v2.api.traits.TraitedFact;
+import me.nithanim.gw2api.v2.api.traits.TraitsResource;
+import me.nithanim.gw2api.v2.api.traits.TraitsResourceImpl;
 import me.nithanim.gw2api.v2.api.worlds.WorldsResource;
 import me.nithanim.gw2api.v2.api.worlds.WorldsResourceImpl;
 import me.nithanim.gw2api.v2.util.gson.EnumMapInstanceCreator;
 import me.nithanim.gw2api.v2.util.gson.EnumTypeAdapterFactory;
+import me.nithanim.gw2api.v2.util.gson.facts.FactJsonDeserializer;
+import me.nithanim.gw2api.v2.util.gson.facts.TraitedFactJsonDeserializer;
 import me.nithanim.gw2api.v2.util.time.DateTimeAdapter;
 
 public class GuildWars2Api {
@@ -39,6 +45,8 @@ public class GuildWars2Api {
             }.getType(),
             new EnumMapInstanceCreator<>(SpecializationType.class)
         )
+        .registerTypeAdapter(Fact.class, new FactJsonDeserializer())
+        .registerTypeAdapter(TraitedFact.class, new TraitedFactJsonDeserializer())
         .create();
 
     private final Client client;
@@ -51,6 +59,7 @@ public class GuildWars2Api {
     private final RecipesResource recipesResource;
     private final SkinsResource skinsResource;
     private final TokenResource tokenResource;
+    private final TraitsResource traitsResource;
     private final WorldsResource worldsResource;
 
     public GuildWars2Api() {
@@ -71,6 +80,7 @@ public class GuildWars2Api {
         recipesResource = new RecipesResourceImpl(baseWebResource);
         skinsResource = new SkinsResourceImpl(baseWebResource);
         tokenResource = new TokenResource(baseWebResource);
+        traitsResource = new TraitsResourceImpl(baseWebResource);
         worldsResource = new WorldsResourceImpl(baseWebResource);
     }
 
@@ -158,7 +168,7 @@ public class GuildWars2Api {
     public RecipesResource recipes() {
         return recipesResource;
     }
-    
+
     /**
      * This resource returns information about skins that were discovered by
      * players in the game.
@@ -179,6 +189,16 @@ public class GuildWars2Api {
      */
     public TokenResource tokeninfo() {
         return tokenResource;
+    }
+
+    /**
+     * This resource returns information about specific traits which are
+     * contained within specializations.
+     *
+     * @return
+     */
+    public TraitsResource traits() {
+        return traitsResource;
     }
 
     /**
