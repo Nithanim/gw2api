@@ -20,6 +20,8 @@ import me.nithanim.gw2api.v2.api.currencies.CurrenciesResource;
 import me.nithanim.gw2api.v2.api.currencies.CurrenciesResourceImpl;
 import me.nithanim.gw2api.v2.api.files.FilesResource;
 import me.nithanim.gw2api.v2.api.files.FilesResourceImpl;
+import me.nithanim.gw2api.v2.api.maps.MapsResource;
+import me.nithanim.gw2api.v2.api.maps.MapsResourceImpl;
 import me.nithanim.gw2api.v2.api.recipes.RecipesResource;
 import me.nithanim.gw2api.v2.api.recipes.RecipesResourceImpl;
 import me.nithanim.gw2api.v2.api.skins.SkinsResource;
@@ -59,6 +61,7 @@ public class GuildWars2Api {
     private final ColorsResource colorResource;
     private final CurrenciesResource currenciesResource;
     private final FilesResource filesResource;
+    private final MapsResource mapsResource;
     private final RecipesResource recipesResource;
     private final SkinsResource skinsResource;
     private final TokenResource tokenResource;
@@ -81,6 +84,7 @@ public class GuildWars2Api {
         colorResource = new ColorsResourceImpl(baseWebResource);
         currenciesResource = new CurrenciesResourceImpl(baseWebResource);
         filesResource = new FilesResourceImpl(baseWebResource);
+        mapsResource = new MapsResourceImpl(baseWebResource);
         recipesResource = new RecipesResourceImpl(baseWebResource);
         skinsResource = new SkinsResourceImpl(baseWebResource);
         tokenResource = new TokenResource(baseWebResource);
@@ -174,6 +178,20 @@ public class GuildWars2Api {
      */
     public FilesResource files() {
         return filesResource;
+    }
+
+    /**
+     * This resource returns details about maps in the game, including details
+     * about floor and translation data on how to translate between world
+     * coordinates and map coordinates.
+     *
+     * @return
+     *
+     * @see
+     * <a href="https://wiki.guildwars2.com/wiki/API:2/maps">GW2Wiki</a>
+     */
+    public MapsResource maps() {
+        return mapsResource;
     }
 
     /**
