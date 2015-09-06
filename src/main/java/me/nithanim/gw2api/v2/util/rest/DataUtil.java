@@ -8,4 +8,12 @@ public class DataUtil {
         }
         return sb.toString();
     }
+    
+    public static String stringstsToCommaSeparatedString(String[] strings) {
+        StringBuilder sb = new StringBuilder(strings.length * 5 + strings.length);
+        for(int i = 0; i < strings.length; i++) {
+            sb.append(strings[i]).append(',');
+        }
+        return sb.toString();
+    }
 }

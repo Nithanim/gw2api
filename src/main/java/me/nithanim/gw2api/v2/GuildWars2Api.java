@@ -18,6 +18,8 @@ import me.nithanim.gw2api.v2.api.colors.ColorsResourceImpl;
 import me.nithanim.gw2api.v2.api.commerce.CommerceResource;
 import me.nithanim.gw2api.v2.api.currencies.CurrenciesResource;
 import me.nithanim.gw2api.v2.api.currencies.CurrenciesResourceImpl;
+import me.nithanim.gw2api.v2.api.files.FilesResource;
+import me.nithanim.gw2api.v2.api.files.FilesResourceImpl;
 import me.nithanim.gw2api.v2.api.recipes.RecipesResource;
 import me.nithanim.gw2api.v2.api.recipes.RecipesResourceImpl;
 import me.nithanim.gw2api.v2.api.skins.SkinsResource;
@@ -56,6 +58,7 @@ public class GuildWars2Api {
     private final CharactersResource charactersResource;
     private final ColorsResource colorResource;
     private final CurrenciesResource currenciesResource;
+    private final FilesResource filesResource;
     private final RecipesResource recipesResource;
     private final SkinsResource skinsResource;
     private final TokenResource tokenResource;
@@ -77,6 +80,7 @@ public class GuildWars2Api {
         charactersResource = new CharactersResource(baseWebResource);
         colorResource = new ColorsResourceImpl(baseWebResource);
         currenciesResource = new CurrenciesResourceImpl(baseWebResource);
+        filesResource = new FilesResourceImpl(baseWebResource);
         recipesResource = new RecipesResourceImpl(baseWebResource);
         skinsResource = new SkinsResourceImpl(baseWebResource);
         tokenResource = new TokenResource(baseWebResource);
@@ -157,6 +161,19 @@ public class GuildWars2Api {
      */
     public CurrenciesResource currencies() {
         return currenciesResource;
+    }
+
+    /**
+     * This resource returns commonly requested in-game assets that may be used
+     * to enhance API-derived applications.
+     *
+     * @return
+     *
+     * @see
+     * <a href="https://wiki.guildwars2.com/wiki/API:2/files">GW2Wiki</a>
+     */
+    public FilesResource files() {
+        return filesResource;
     }
 
     /**
