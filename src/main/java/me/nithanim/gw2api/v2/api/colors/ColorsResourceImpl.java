@@ -14,6 +14,6 @@ import me.nithanim.gw2api.v2.util.rest.IdsResourceBase;
  */
 public class ColorsResourceImpl extends IdsResourceBase<Color, int[]> implements ColorsResource {
     public ColorsResourceImpl(WebResource webResource) {
-        super(webResource, "colors", Color.class, int[].class);
+        super(webResource.path("colors"), Color.class, int[].class);
     }
 }

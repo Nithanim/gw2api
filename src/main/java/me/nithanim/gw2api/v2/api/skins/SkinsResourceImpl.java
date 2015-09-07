@@ -11,6 +11,6 @@ import me.nithanim.gw2api.v2.util.rest.IdsResourceBase;
  */
 public class SkinsResourceImpl extends IdsResourceBase<Skin, int[]> implements SkinsResource {
     public SkinsResourceImpl(WebResource webResource) {
-        super(webResource, "skins", Skin.class, int[].class);
+        super(webResource.path("skins"), Skin.class, int[].class);
     }
 }

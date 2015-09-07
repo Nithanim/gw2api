@@ -5,6 +5,6 @@ import me.nithanim.gw2api.v2.util.rest.IdsResourceBase;
 
 public class SpecializationsResourceImpl extends IdsResourceBase<Specialization, int[]> implements SpecializationsResource {
     public SpecializationsResourceImpl(WebResource webResource) {
-        super(webResource, "specializations", Specialization.class, int[].class);
+        super(webResource.path("specializations"), Specialization.class, int[].class);
     }
 }

@@ -8,7 +8,7 @@ public class RecipesResourceImpl extends IdsResourceBase<Recipe, int[]> implemen
     private final WebResource searchWebResource;
     
     public RecipesResourceImpl(WebResource webResource) {
-        super(webResource, "recipes", Recipe.class, int[].class);
+        super(webResource.path("recipes"), Recipe.class, int[].class);
         searchWebResource = this.webResource.path("search");
     }
 

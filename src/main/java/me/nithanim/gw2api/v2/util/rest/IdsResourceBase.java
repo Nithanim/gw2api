@@ -20,8 +20,8 @@ public class IdsResourceBase<DATA_CLASS, OVERVIEW_CLASS> {
     private final Class<DATA_CLASS[]> dataClassArray;
     private final Class<OVERVIEW_CLASS> overviewClass;
 
-    public IdsResourceBase(WebResource webResource, String path, Class<DATA_CLASS> dataClass, Class<OVERVIEW_CLASS> overviewClass) {
-        this.webResource = webResource.path(path);
+    public IdsResourceBase(WebResource webResource, Class<DATA_CLASS> dataClass, Class<OVERVIEW_CLASS> overviewClass) {
+        this.webResource = webResource;
         this.dataClass = dataClass;
         this.dataClassArray = ReflectUtil.getArrayClass(dataClass);
         this.overviewClass = overviewClass;

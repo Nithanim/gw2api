@@ -5,6 +5,6 @@ import me.nithanim.gw2api.v2.util.rest.IdsResourceBase;
 
 public class WorldsResourceImpl extends IdsResourceBase<World, int[]> implements WorldsResource {
     public WorldsResourceImpl(WebResource webResource) {
-        super(webResource, "worlds", World.class, int[].class);
+        super(webResource.path("worlds"), World.class, int[].class);
     }
 }

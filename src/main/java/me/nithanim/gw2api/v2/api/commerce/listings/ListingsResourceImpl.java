@@ -12,6 +12,6 @@ import me.nithanim.gw2api.v2.util.rest.IdsResourceBase;
 public class ListingsResourceImpl extends IdsResourceBase<Listing, int[]> implements ListingsResource {
 
     public ListingsResourceImpl(WebResource commerceWebResource) {
-        super(commerceWebResource, "listings", Listing.class, int[].class);
+        super(commerceWebResource.path("listings"), Listing.class, int[].class);
     }
 }
