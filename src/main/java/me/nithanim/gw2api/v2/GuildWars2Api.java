@@ -16,6 +16,10 @@ import me.nithanim.gw2api.v2.api.characters.Specialization;
 import me.nithanim.gw2api.v2.api.characters.SpecializationType;
 import me.nithanim.gw2api.v2.api.colors.ColorsResourceImpl;
 import me.nithanim.gw2api.v2.api.commerce.CommerceResource;
+import me.nithanim.gw2api.v2.api.continents.ContinentsResource;
+import me.nithanim.gw2api.v2.api.continents.ContinentsResourceImpl;
+import me.nithanim.gw2api.v2.api.continents.floors.FloorsResource;
+import me.nithanim.gw2api.v2.api.continents.floors.FloorsResourceImpl;
 import me.nithanim.gw2api.v2.api.currencies.CurrenciesResource;
 import me.nithanim.gw2api.v2.api.currencies.CurrenciesResourceImpl;
 import me.nithanim.gw2api.v2.api.files.FilesResource;
@@ -59,6 +63,7 @@ public class GuildWars2Api {
     private final CommerceResource commerceResource;
     private final CharactersResource charactersResource;
     private final ColorsResource colorResource;
+    private final ContinentsResource continentsResource;
     private final CurrenciesResource currenciesResource;
     private final FilesResource filesResource;
     private final MapsResource mapsResource;
@@ -82,6 +87,7 @@ public class GuildWars2Api {
         commerceResource = new CommerceResource(baseWebResource);
         charactersResource = new CharactersResource(baseWebResource);
         colorResource = new ColorsResourceImpl(baseWebResource);
+        continentsResource = new ContinentsResourceImpl(baseWebResource);
         currenciesResource = new CurrenciesResourceImpl(baseWebResource);
         filesResource = new FilesResourceImpl(baseWebResource);
         mapsResource = new MapsResourceImpl(baseWebResource);
@@ -154,6 +160,22 @@ public class GuildWars2Api {
         return colorResource;
     }
 
+    /**
+     * This resource returns static information about the continents, floors,
+     * regions, maps, sectors, points of interest and tasks.
+     *
+     * @return
+     *
+     * @see <a href="https://wiki.guildwars2.com/wiki/API:2/continents">Guild
+     * Wars 2 Wiki</a>
+     */
+    public ContinentsResource continents() {
+        return continentsResource;
+    }
+
+    /*public FloorsResource continents(int continentId) {
+     return new FloorsResourceImpl(continentsResource, continentId);
+     }*/
     /**
      * This resource returns a list of the currencies contained in the account
      * wallet.
