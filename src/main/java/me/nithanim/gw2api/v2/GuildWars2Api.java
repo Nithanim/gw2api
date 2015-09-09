@@ -26,6 +26,7 @@ import me.nithanim.gw2api.v2.api.files.FilesResource;
 import me.nithanim.gw2api.v2.api.files.FilesResourceImpl;
 import me.nithanim.gw2api.v2.api.maps.MapsResource;
 import me.nithanim.gw2api.v2.api.maps.MapsResourceImpl;
+import me.nithanim.gw2api.v2.api.pvp.PvpResource;
 import me.nithanim.gw2api.v2.api.recipes.RecipesResource;
 import me.nithanim.gw2api.v2.api.recipes.RecipesResourceImpl;
 import me.nithanim.gw2api.v2.api.skins.SkinsResource;
@@ -67,6 +68,7 @@ public class GuildWars2Api {
     private final CurrenciesResource currenciesResource;
     private final FilesResource filesResource;
     private final MapsResource mapsResource;
+    private final PvpResource pvpResource;
     private final RecipesResource recipesResource;
     private final SkinsResource skinsResource;
     private final TokenResource tokenResource;
@@ -91,6 +93,7 @@ public class GuildWars2Api {
         currenciesResource = new CurrenciesResourceImpl(baseWebResource);
         filesResource = new FilesResourceImpl(baseWebResource);
         mapsResource = new MapsResourceImpl(baseWebResource);
+        pvpResource = new PvpResource(baseWebResource);
         recipesResource = new RecipesResourceImpl(baseWebResource);
         skinsResource = new SkinsResourceImpl(baseWebResource);
         tokenResource = new TokenResource(baseWebResource);
@@ -214,6 +217,10 @@ public class GuildWars2Api {
      */
     public MapsResource maps() {
         return mapsResource;
+    }
+    
+    public PvpResource pvp() {
+        return pvpResource;
     }
 
     /**

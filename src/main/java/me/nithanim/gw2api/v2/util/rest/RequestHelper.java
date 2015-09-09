@@ -42,7 +42,20 @@ public class RequestHelper {
             throw handleUniformInterfaceException(ex);
         }
     }
-    
+
+    public static <T> T getRequest(WebResource wr, String apiKey, Class<T> clazz, String arg0Name, String arg0Value) {
+        try {
+            String json = wr
+                .queryParam(arg0Name, arg0Value)
+                .header("Authorization", "Bearer " + apiKey)
+                .accept(MediaType.APPLICATION_JSON_TYPE)
+                .get(String.class);
+            return jsonToObject(json, clazz);
+        } catch (UniformInterfaceException ex) {
+            throw handleUniformInterfaceException(ex);
+        }
+    }
+
     public static <T> T getRequest(WebResource wr, Class<T> clazz, String arg0Name, String arg0Value, String arg1Name, String arg1Value) {
         try {
             String json = wr
