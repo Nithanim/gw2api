@@ -24,6 +24,10 @@ import me.nithanim.gw2api.v2.api.currencies.CurrenciesResource;
 import me.nithanim.gw2api.v2.api.currencies.CurrenciesResourceImpl;
 import me.nithanim.gw2api.v2.api.files.FilesResource;
 import me.nithanim.gw2api.v2.api.files.FilesResourceImpl;
+import me.nithanim.gw2api.v2.api.items.Details;
+import me.nithanim.gw2api.v2.api.items.ItemInfo;
+import me.nithanim.gw2api.v2.api.items.ItemsResource;
+import me.nithanim.gw2api.v2.api.items.ItemsResourceImpl;
 import me.nithanim.gw2api.v2.api.maps.MapsResource;
 import me.nithanim.gw2api.v2.api.maps.MapsResourceImpl;
 import me.nithanim.gw2api.v2.api.pvp.PvpResource;
@@ -42,6 +46,7 @@ import me.nithanim.gw2api.v2.util.gson.EnumMapInstanceCreator;
 import me.nithanim.gw2api.v2.util.gson.EnumTypeAdapterFactory;
 import me.nithanim.gw2api.v2.util.gson.facts.FactJsonDeserializer;
 import me.nithanim.gw2api.v2.util.gson.facts.TraitedFactJsonDeserializer;
+import me.nithanim.gw2api.v2.util.gson.items.ItemInfoJsonDeserializer;
 import me.nithanim.gw2api.v2.util.time.DateTimeAdapter;
 
 public class GuildWars2Api {
@@ -56,6 +61,7 @@ public class GuildWars2Api {
         )
         .registerTypeAdapter(Fact.class, new FactJsonDeserializer())
         .registerTypeAdapter(TraitedFact.class, new TraitedFactJsonDeserializer())
+        .registerTypeAdapter(ItemInfo.class, new ItemInfoJsonDeserializer())
         .create();
 
     private final Client client;
@@ -67,6 +73,7 @@ public class GuildWars2Api {
     private final ContinentsResource continentsResource;
     private final CurrenciesResource currenciesResource;
     private final FilesResource filesResource;
+    private final ItemsResource itemsResource;
     private final MapsResource mapsResource;
     private final PvpResource pvpResource;
     private final RecipesResource recipesResource;
@@ -92,6 +99,7 @@ public class GuildWars2Api {
         continentsResource = new ContinentsResourceImpl(baseWebResource);
         currenciesResource = new CurrenciesResourceImpl(baseWebResource);
         filesResource = new FilesResourceImpl(baseWebResource);
+        itemsResource = new ItemsResourceImpl(baseWebResource);
         mapsResource = new MapsResourceImpl(baseWebResource);
         pvpResource = new PvpResource(baseWebResource);
         recipesResource = new RecipesResourceImpl(baseWebResource);
@@ -206,6 +214,19 @@ public class GuildWars2Api {
     }
 
     /**
+     * This resource returns information about items that were discovered by
+     * players in the game.
+     *
+     * @return
+     *
+     * @see
+     * <a href="https://wiki.guildwars2.com/wiki/API:2/items">GW2Wiki</a>
+     */
+    public ItemsResource items() {
+        return itemsResource;
+    }
+
+    /**
      * This resource returns details about maps in the game, including details
      * about floor and translation data on how to translate between world
      * coordinates and map coordinates.
@@ -218,7 +239,7 @@ public class GuildWars2Api {
     public MapsResource maps() {
         return mapsResource;
     }
-    
+
     public PvpResource pvp() {
         return pvpResource;
     }

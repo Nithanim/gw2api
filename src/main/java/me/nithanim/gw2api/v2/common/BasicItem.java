@@ -1,8 +1,8 @@
-package me.nithanim.gw2api.v2.api.items;
+package me.nithanim.gw2api.v2.common;
 
 public class BasicItem {
     private int id;
-    private int count;
+    private int count = 1;
 
     public int getId() {
         return id;

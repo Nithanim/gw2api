@@ -1,6 +1,6 @@
 package me.nithanim.gw2api.v2.api.characters;
 
-import me.nithanim.gw2api.v2.api.items.Item;
+import me.nithanim.gw2api.v2.common.Item;
 import org.apache.commons.lang.builder.ToStringBuilder;
 
 public class Bag {

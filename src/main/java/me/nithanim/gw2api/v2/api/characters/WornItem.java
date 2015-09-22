@@ -1,7 +1,7 @@
 package me.nithanim.gw2api.v2.api.characters;
 
 import java.util.Objects;
-import me.nithanim.gw2api.v2.api.items.Item;
+import me.nithanim.gw2api.v2.common.Item;
 
 public class WornItem extends Item {
     private Slot slot;
