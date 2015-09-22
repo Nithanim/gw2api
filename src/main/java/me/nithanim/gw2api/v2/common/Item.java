@@ -1,4 +1,4 @@
-package me.nithanim.gw2api.v2.api.items;
+package me.nithanim.gw2api.v2.common;
 
 import java.util.Arrays;
 

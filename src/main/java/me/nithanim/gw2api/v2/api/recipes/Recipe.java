@@ -3,7 +3,7 @@ package me.nithanim.gw2api.v2.api.recipes;
 import java.util.Arrays;
 import java.util.Objects;
 import me.nithanim.gw2api.v2.api.characters.CraftingDiscipline;
-import me.nithanim.gw2api.v2.api.items.BasicItem;
+import me.nithanim.gw2api.v2.common.BasicItem;
 import org.apache.commons.lang.builder.ToStringBuilder;
 
 public class Recipe {

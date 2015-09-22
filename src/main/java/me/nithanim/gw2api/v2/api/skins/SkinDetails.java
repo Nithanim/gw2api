@@ -1,18 +1,19 @@
 package me.nithanim.gw2api.v2.api.skins;
 
 import java.util.Objects;
+import me.nithanim.gw2api.v2.common.WeightClass;
 import org.apache.commons.lang.builder.ToStringBuilder;
 
 public class SkinDetails {
     private String type;
-    private String weightClass;
+    private WeightClass weightClass;
     private String damageType;
 
     public String getType() {
         return type;
     }
 
-    public String getWeightClass() {
+    public WeightClass getWeightClass() {
         return weightClass;
     }
 

@@ -3,7 +3,7 @@ package me.nithanim.gw2api.v2.api.account;
 import com.sun.jersey.api.client.WebResource;
 import me.nithanim.gw2api.v2.ApiEndpoint;
 import me.nithanim.gw2api.v2.ApiMidpoint;
-import me.nithanim.gw2api.v2.api.items.Item;
+import me.nithanim.gw2api.v2.common.Item;
 import me.nithanim.gw2api.v2.util.rest.RequestHelper;
 
 /**

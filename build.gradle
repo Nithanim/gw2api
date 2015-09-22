@@ -1,0 +1,10 @@
+apply plugin: 'signing'
+
+task deploy(type: Copy, dependsOn: 'compile') {
+	//from()
+}
+
+task compile(type:Exec) {
+	workingDir'./'
+	commandLine 'cmd', '/c','mvn', 'clean', 'install'
+}
