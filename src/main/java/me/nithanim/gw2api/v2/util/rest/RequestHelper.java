@@ -31,6 +31,18 @@ public class RequestHelper {
         }
     }
 
+    public static <T> PaginationResult<T> getRequestExtended(WebResource wr, String apiKey, Class<T> clazz) {
+        try {
+            ClientResponse response = wr
+                .header("Authorization", "Bearer " + apiKey)
+                .accept(MediaType.APPLICATION_JSON_TYPE)
+                .get(ClientResponse.class);
+            return new ResultImpl<>(response, clazz);
+        } catch (UniformInterfaceException ex) {
+            throw handleUniformInterfaceException(ex);
+        }
+    }
+
     public static <T> T getRequest(WebResource wr, Class<T> clazz, String arg0Name, String arg0Value) {
         try {
             String json = wr
@@ -56,6 +68,19 @@ public class RequestHelper {
         }
     }
 
+    public static <T> PaginationResult<T> getRequestExtended(WebResource wr, String apiKey, Class<T> clazz, String arg0Name, String arg0Value) {
+        try {
+            ClientResponse response = wr
+                .queryParam(arg0Name, arg0Value)
+                .header("Authorization", "Bearer " + apiKey)
+                .accept(MediaType.APPLICATION_JSON_TYPE)
+                .get(ClientResponse.class);
+            return new ResultImpl<>(response, clazz);
+        } catch (UniformInterfaceException ex) {
+            throw handleUniformInterfaceException(ex);
+        }
+    }
+
     public static <T> T getRequest(WebResource wr, Class<T> clazz, String arg0Name, String arg0Value, String arg1Name, String arg1Value) {
         try {
             String json = wr
@@ -69,13 +94,27 @@ public class RequestHelper {
         }
     }
 
+    public static <T> PaginationResult<T> getRequestExtended(WebResource wr, String apiKey, Class<T> clazz, String arg0Name, String arg0Value, String arg1Name, String arg1Value) {
+        try {
+            ClientResponse response = wr
+                .queryParam(arg0Name, arg0Value)
+                .queryParam(arg1Name, arg1Value)
+                .header("Authorization", "Bearer " + apiKey)
+                .accept(MediaType.APPLICATION_JSON_TYPE)
+                .get(ClientResponse.class);
+            return new ResultImpl<>(response, clazz);
+        } catch (UniformInterfaceException ex) {
+            throw handleUniformInterfaceException(ex);
+        }
+    }
+
     private static GuildWars2ApiException handleUniformInterfaceException(UniformInterfaceException ex) {
         ClientResponse cr = ex.getResponse();
         ApiErrorText message = jsonToObject(cr.getEntity(String.class), ApiErrorText.class);
         return new GuildWars2ApiException("The server returned with message: " + message.getText(), ex);
     }
 
-    private static <T> T jsonToObject(String json, Class<T> clazz) {
+    static <T> T jsonToObject(String json, Class<T> clazz) {
         return GuildWars2Api.GSON.fromJson(json, clazz);
     }
 
