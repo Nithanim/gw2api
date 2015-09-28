@@ -22,6 +22,24 @@ int[] allListingsAvailable = gw2api.commerce().listings().getOverview();
 Listing listing = gw2api.commerce().listings().get(allListingsAvailable[0]);
 ```
 
+Our last example deals with the transactions a player made on the tradingpost. This is very dynamic so we use the pagination that is provided in the response from the server.
+We ask for the latest 10 entries and then we get the number of the last page from it. At last we retrieve all results on this page and print the number of the entries to stdout.
+```java
+TransactionsResource tr = gw2api.commerce().transactions();
+
+int pageSize = 10;
+PaginationResult<Transaction[]> res = tr.historyBuysExtendedWithPageSize(apikey, pageSize);
+int lastPage = res.getPageTotal() - 1;
+
+System.out.println(
+	tr.historyBuysExtendedWithPageAndPageSize(
+		apikey,
+		lastPage,
+		pageSize
+	).getResultCount()
+);
+```
+
 ## Building
 At first you need to clone this repositoy. You can do this by either typing ```git clone https://github.com/Nithanim/gw2api.git``` if git is installed or download the source as zip file.
 With [Maven](https://maven.apache.org/) (needs to be installed) simply type ```mvn package``` to get the jars or ```mvn install``` to build and insert the file into your local maven repository.
