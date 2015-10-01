@@ -1,4 +1,4 @@
-﻿# gw2api
+# gw2api
 
 ## Description
 This is a (yet to be completed) library to access the [api of Guild Wars 2](https://wiki.guildwars2.com/wiki/API:Main). The aim is to be able to use the api as easily as descibed in the official wiki with paths accessing the various endpoints.
@@ -40,6 +40,38 @@ System.out.println(
 );
 ```
 
-## Building
+## How to get
+
+### Repository
+The releases are available in the [jCenter](https://bintray.com/bintray/jcenter) repository.
+You can use this to add jcenter to the repository list of maven:
+```xml
+<repositories>
+	<repository>
+		<id>jcenter</id>
+		<url>http://jcenter.bintray.com</url>
+		<snapshots>
+			<enabled>true</enabled>
+			<updatePolicy>never</updatePolicy>
+			<checksumPolicy>fail</checksumPolicy>
+		</snapshots>
+		<releases>
+			<enabled>true</enabled>
+			<checksumPolicy>fail</checksumPolicy>
+		</releases>
+	</repository>
+</repositories>
+```
+And then add this library as a dependency:
+```xml
+<dependencies>
+	<dependency>
+		<groupId>me.nithanim.gw2api</groupId>
+		<artifactId>gw2api</artifactId>
+		<version>0.0.1</version>
+	</dependency>
+</dependencies>
+```
+### Building
 At first you need to clone this repositoy. You can do this by either typing ```git clone https://github.com/Nithanim/gw2api.git``` if git is installed or download the source as zip file.
 With [Maven](https://maven.apache.org/) (needs to be installed) simply type ```mvn package``` to get the jars or ```mvn install``` to build and insert the file into your local maven repository.
