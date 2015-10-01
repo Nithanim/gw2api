@@ -10,6 +10,7 @@ import com.sun.jersey.api.client.config.ClientConfig;
 import com.sun.jersey.api.client.config.DefaultClientConfig;
 import java.util.EnumMap;
 import me.nithanim.gw2api.v2.api.account.AccountResource;
+import me.nithanim.gw2api.v2.api.build.BuildResource;
 import me.nithanim.gw2api.v2.api.colors.ColorsResource;
 import me.nithanim.gw2api.v2.api.characters.CharactersResource;
 import me.nithanim.gw2api.v2.api.characters.Specialization;
@@ -63,7 +64,7 @@ public class GuildWars2Api {
 
     private final Client client;
     private final AccountResource accountResource;
-    private final ColorsResource buildResource;
+    private final BuildResource buildResource;
     private final CommerceResource commerceResource;
     private final CharactersResource charactersResource;
     private final ColorsResource colorResource;
@@ -89,7 +90,7 @@ public class GuildWars2Api {
         WebResource baseWebResource = client.resource(config.getBaseUrl());
 
         accountResource = new AccountResource(baseWebResource);
-        buildResource = new ColorsResourceImpl(baseWebResource);
+        buildResource = new BuildResource(baseWebResource);
         commerceResource = new CommerceResource(baseWebResource);
         charactersResource = new CharactersResource(baseWebResource);
         colorResource = new ColorsResourceImpl(baseWebResource);
@@ -128,7 +129,7 @@ public class GuildWars2Api {
      * @see <a href="https://wiki.guildwars2.com/wiki/API:2/build">Guild Wars 2
      * Wiki</a>
      */
-    public ColorsResource build() {
+    public BuildResource build() {
         return buildResource;
     }
 
