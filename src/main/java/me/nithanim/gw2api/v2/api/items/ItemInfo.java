@@ -15,6 +15,7 @@ public class ItemInfo extends BasicItem {
     private int vendorValue;
     private int defaultSkin = -1;
     private String[] flags;
+    private GameType[] gameTypes;
     private String[] restrictions;
     private Details details;
 
@@ -54,6 +55,10 @@ public class ItemInfo extends BasicItem {
         return flags;
     }
 
+    public GameType[] getGameTypes() {
+        return gameTypes;
+    }
+
     public String[] getRestrictions() {
         return restrictions;
     }
@@ -78,6 +83,7 @@ public class ItemInfo extends BasicItem {
         hash = 67 * hash + this.vendorValue;
         hash = 67 * hash + this.defaultSkin;
         hash = 67 * hash + Arrays.deepHashCode(this.flags);
+        hash = 67 * hash + Arrays.deepHashCode(this.gameTypes);
         hash = 67 * hash + Arrays.deepHashCode(this.restrictions);
         hash = 67 * hash + Objects.hashCode(this.details);
         return hash;
@@ -100,6 +106,7 @@ public class ItemInfo extends BasicItem {
             && this.vendorValue == other.vendorValue
             && this.defaultSkin == other.defaultSkin
             && Arrays.deepEquals(this.flags, other.flags)
+            && Arrays.deepEquals(this.gameTypes, other.gameTypes)
             && Arrays.deepEquals(this.restrictions, other.restrictions)
             && Objects.equals(this.details, other.details);
     }
