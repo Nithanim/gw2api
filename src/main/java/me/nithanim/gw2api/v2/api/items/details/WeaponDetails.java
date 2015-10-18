@@ -13,7 +13,7 @@ public class WeaponDetails implements Details {
     private int defense;
     private InfusionSlot[] infusionSlots;
     private InfixUpgrade infixUpgrade;
-    private int suffixItemId;
+    private int suffixItemId = -1;
     private String secondarySuffixItemId;
 
     public WeaponType getType() {
