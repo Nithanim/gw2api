@@ -14,7 +14,10 @@
         </license>
     </licenses>
     <scm>
+        <connection>scm:git:https://github.com/Nithanim/gw2api.git</connection>
+        <developerConnection>scm:git:git@github.com:Nithanim/gw2api.git</developerConnection>
         <url>https://github.com/Nithanim/gw2api</url>
+        <tag>HEAD</tag>
     </scm>
     <build>
         <plugins>
@@ -44,6 +47,15 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>2.5.2</version>
+                <configuration>
+                    <useReleaseProfile>false</useReleaseProfile>
+                    <releaseProfiles>release</releaseProfiles>
+                    <autoVersionSubmodules>true</autoVersionSubmodules>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
     <profiles>
@@ -52,7 +64,6 @@
             <activation>
                 <jdk>[1.8,)</jdk>
             </activation>
-
             <build>
                 <plugins>
                     <plugin>
@@ -100,6 +111,16 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+    <distributionManagement>
+        <repository>
+            <id>bintray-nithanim</id>
+            <url>https://api.bintray.com/maven/nithanim/maven/gw2api</url>
+        </repository>
+        <snapshotRepository>
+            <id>nithanim-mvn2</id>
+            <url>${deploy-url}</url>
+        </snapshotRepository>
+    </distributionManagement>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.7</maven.compiler.source>
