@@ -87,6 +87,14 @@ public class InfixUpgrade {
         private int skillId;
         private String description;
 
+        public int getSkillId() {
+            return skillId;
+        }
+
+        public String getDescription() {
+            return description;
+        }
+
         @Override
         public int hashCode() {
             int hash = 5;
