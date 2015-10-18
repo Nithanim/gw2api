@@ -1,6 +1,5 @@
 package me.nithanim.gw2api.v2.api.commerce.transactions;
 
-import me.nithanim.gw2api.v2.api.commerce.exchange.Transaction;
 import com.sun.jersey.api.client.WebResource;
 import me.nithanim.gw2api.v2.ApiEndpoint;
 import me.nithanim.gw2api.v2.util.rest.PaginationResult;

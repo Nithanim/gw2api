@@ -5,7 +5,7 @@ import org.joda.time.DateTime;
 
 public class Transaction {
     private final long id;
-    private final long itemId;
+    private final int itemId;
     private final int price;
     private final int quantity;
     private final DateTime created;
@@ -20,7 +20,7 @@ public class Transaction {
         this.purchased = null;
     }
 
-    public Transaction(long id, long itemId, int price, int quantity, DateTime created, DateTime purchased) {
+    public Transaction(long id, int itemId, int price, int quantity, DateTime created, DateTime purchased) {
         this.id = id;
         this.itemId = itemId;
         this.price = price;
