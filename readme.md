@@ -51,7 +51,7 @@ You can use this to add jcenter to the repository list of maven:
 		<id>jcenter</id>
 		<url>http://jcenter.bintray.com</url>
 		<snapshots>
-			<enabled>true</enabled>
+			<enabled>false</enabled>
 			<updatePolicy>never</updatePolicy>
 			<checksumPolicy>fail</checksumPolicy>
 		</snapshots>
