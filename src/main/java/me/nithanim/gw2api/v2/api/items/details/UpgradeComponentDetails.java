@@ -8,7 +8,7 @@ import org.apache.commons.lang.builder.ToStringBuilder;
 
 public class UpgradeComponentDetails implements Details {
     private UpgradeComponentType type;
-    private String flags;
+    private UpgradeableItemTypes[] flags;
     private InfusionType[] infusionUpgradeFlags;
     private String suffix;
     private InfixUpgrade infixUpgrade;
@@ -18,7 +18,7 @@ public class UpgradeComponentDetails implements Details {
         return type;
     }
 
-    public String getFlags() {
+    public UpgradeableItemTypes[] getFlags() {
         return flags;
     }
 
@@ -42,7 +42,7 @@ public class UpgradeComponentDetails implements Details {
     public int hashCode() {
         int hash = 7;
         hash = 31 * hash + Objects.hashCode(this.type);
-        hash = 31 * hash + Objects.hashCode(this.flags);
+        hash = 31 * hash + Arrays.deepHashCode(this.flags);
         hash = 31 * hash + Arrays.deepHashCode(this.infusionUpgradeFlags);
         hash = 31 * hash + Objects.hashCode(this.suffix);
         hash = 31 * hash + Objects.hashCode(this.infixUpgrade);
@@ -57,7 +57,7 @@ public class UpgradeComponentDetails implements Details {
         }
         final UpgradeComponentDetails other = (UpgradeComponentDetails) obj;
         return this.type == other.type
-            && Objects.equals(this.flags, other.flags)
+            && Arrays.deepEquals(this.flags, other.flags)
             && Arrays.deepEquals(this.infusionUpgradeFlags, other.infusionUpgradeFlags)
             && Objects.equals(this.suffix, other.suffix)
             && Objects.equals(this.infixUpgrade, other.infixUpgrade)
@@ -71,5 +71,11 @@ public class UpgradeComponentDetails implements Details {
 
     public static enum UpgradeComponentType {
         DEFAULT, GEM, RUNE, SIGIL;
+    }
+
+    public static enum UpgradeableItemTypes {
+        AXE, DAGGER, FOCUS, GREATSWORD, HAMMER, HARPOON, LONG_BOW, MACE, PISTOL,
+        RIFLE, SCEPTER, SHIELD, SHORT_BOW, SPEARGUN, STAFF, SWORD, TORCH,
+        TRIDENT, WARHORN, HEAVY_ARMOR, MEDIUM_ARMOR, LIGHT_ARMOR, TRINKET;
     }
 }
