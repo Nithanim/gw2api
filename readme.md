@@ -40,7 +40,7 @@ System.out.println(
 );
 ```
 
-## How to get
+## How to get this library
 
 ### Repository
 The releases are available in the [jCenter](https://bintray.com/bintray/jcenter) repository.
@@ -62,7 +62,16 @@ You can use this to add jcenter to the repository list of maven:
 	</repository>
 </repositories>
 ```
-And then add this library as a dependency:
+or to gradle:
+```groovy
+repositories {
+	maven {
+		url "http://jcenter.bintray.com"
+	}
+}
+```
+
+After that set this library as a dependency. To do this add this to your pom.xml if you use maven:
 ```xml
 <dependencies>
 	<dependency>
@@ -72,6 +81,13 @@ And then add this library as a dependency:
 	</dependency>
 </dependencies>
 ```
+or this to your build.gradle if you are using gradle:
+```groovy
+dependencies {
+	compile 'me.nithanim.gw2api:gw2api:0.0.2'
+}
+```
+
 ### Building
 At first you need to clone this repositoy. You can do this by either typing ```git clone https://github.com/Nithanim/gw2api.git``` if git is installed or download the source as zip file.
 With [Maven](https://maven.apache.org/) (needs to be installed) simply type ```mvn package``` to get the jars or ```mvn install``` to build and insert the file into your local maven repository.
