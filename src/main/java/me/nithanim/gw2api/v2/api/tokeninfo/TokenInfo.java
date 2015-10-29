@@ -4,7 +4,7 @@ package me.nithanim.gw2api.v2.api.tokeninfo;
  * This resource returns information about the supplied API key. 
  */
 public class TokenInfo {
-    private int id;
+    private String id;
     private String name;
     private String[] permissions;
 
@@ -13,7 +13,7 @@ public class TokenInfo {
      *
      * @return
      */
-    public int getId() {
+    public String getId() {
         return id;
     }
 
