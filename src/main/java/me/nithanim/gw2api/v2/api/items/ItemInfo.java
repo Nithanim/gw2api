@@ -9,6 +9,7 @@ public class ItemInfo extends BasicItem {
     private String name;
     private String icon;
     private String description;
+    private String chatLink;
     private ItemType type;
     private ItemRarity rarity;
     private int level;
@@ -29,6 +30,10 @@ public class ItemInfo extends BasicItem {
 
     public String getDescription() {
         return description;
+    }
+
+    public String getChatLink() {
+        return chatLink;
     }
 
     public ItemType getType() {
@@ -77,6 +82,7 @@ public class ItemInfo extends BasicItem {
         hash = 67 * hash + Objects.hashCode(this.name);
         hash = 67 * hash + Objects.hashCode(this.icon);
         hash = 67 * hash + Objects.hashCode(this.description);
+        hash = 67 * hash + Objects.hashCode(this.chatLink);
         hash = 67 * hash + Objects.hashCode(this.type);
         hash = 67 * hash + Objects.hashCode(this.rarity);
         hash = 67 * hash + this.level;
@@ -100,6 +106,7 @@ public class ItemInfo extends BasicItem {
         return Objects.equals(this.name, other.name)
             && Objects.equals(this.icon, other.icon)
             && Objects.equals(this.description, other.description)
+            && Objects.equals(this.chatLink, other.chatLink)
             && this.type == other.type
             && this.rarity == other.rarity
             && this.level == other.level
