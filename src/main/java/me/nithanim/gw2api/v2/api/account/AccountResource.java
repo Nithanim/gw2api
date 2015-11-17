@@ -5,6 +5,7 @@ import me.nithanim.gw2api.v2.ApiEndpoint;
 import me.nithanim.gw2api.v2.ApiMidpoint;
 import me.nithanim.gw2api.v2.common.Item;
 import me.nithanim.gw2api.v2.util.rest.RequestHelper;
+import me.nithanim.gw2api.v2.api.achievements.Achievement;
 
 /**
  * This resource returns information about player accounts. This endpoint is
@@ -20,6 +21,7 @@ public class AccountResource implements ApiMidpoint, ApiEndpoint {
     private final WebResource materialsWebResource;
     private final WebResource skinsWebResource;
     private final WebResource walletWebResource;
+    private final WebResource achievementsWebResource;
 
     public AccountResource(WebResource webResource) {
         this.webResource = webResource.path("account");
@@ -28,6 +30,7 @@ public class AccountResource implements ApiMidpoint, ApiEndpoint {
         this.dyesWebResource = this.webResource.path("dyes");
         this.skinsWebResource = this.webResource.path("skins");
         this.walletWebResource = this.webResource.path("wallet");
+        this.achievementsWebResource = this.webResource.path("achievements");
     }
 
     /**
@@ -97,6 +100,17 @@ public class AccountResource implements ApiMidpoint, ApiEndpoint {
      */
     public CurrencyBelonging[] wallet(String apiKey) {
         return RequestHelper.getRequest(walletWebResource, apiKey, CurrencyBelonging[].class);
+    }
+
+    /**
+     * This resource returns the achievements of the account. This endpoint is
+     * only accessible with a valid API key.
+     *
+     * @param apiKey
+     * @return
+     */
+    public Achievement[] achievements(String apiKey) {
+        return RequestHelper.getRequest(achievementsWebResource, apiKey, Achievement[].class);
     }
 
 }
