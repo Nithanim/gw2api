@@ -17,29 +17,29 @@ public class Achievement {
     public boolean getDone() { return done; }
     public int[] getBits() { return bits; }
 
-    // @Override
-    // public boolean equals(Object obj) {
-    //     if (obj == null || getClass() != obj.getClass()) {
-    //         return false;
-    //     }
-    //     final Achievement that = (Achievement) obj;
-    //     return this.id == that.id
-    //         && this.current == that.current
-    //         && this.max == that.max
-    //         && this.done == that.done
-    //         && Arrays.deepEquals(this.bits, that.bits);
-    // }
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        final Achievement that = (Achievement) obj;
+        return this.id == that.id
+            && this.current == that.current
+            && this.max == that.max
+            && this.done == that.done
+            && Arrays.equals(this.bits, that.bits);
+    }
 
-    // @Override
-    // public long hashCode() {
-    //     int hash = 7;
-    //     hash = 97 * hash + this.id;
-    //     hash = 97 * hash + this.current;
-    //     hash = 97 * hash + this.max;
-    //     hash = 97 * hash + this.done.hashCode();
-    //     hash = 97 * hash + Arrays.deepHashCode(bits);
-    //     return hash;
-    // }
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 97 * hash + this.id;
+        hash = 97 * hash + this.current;
+        hash = 97 * hash + this.max;
+        hash = 97 * hash + (this.done ? 1 : 0);
+        hash = 97 * hash + Arrays.hashCode(bits);
+        return hash;
+    }
 
     @Override
     public String toString() {
