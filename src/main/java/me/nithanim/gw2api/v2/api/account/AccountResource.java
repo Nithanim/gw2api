@@ -20,6 +20,7 @@ public class AccountResource implements ApiMidpoint, ApiEndpoint {
     private final WebResource materialsWebResource;
     private final WebResource skinsWebResource;
     private final WebResource walletWebResource;
+    private final WebResource minisWebResource;
 
     public AccountResource(WebResource webResource) {
         this.webResource = webResource.path("account");
@@ -28,6 +29,7 @@ public class AccountResource implements ApiMidpoint, ApiEndpoint {
         this.dyesWebResource = this.webResource.path("dyes");
         this.skinsWebResource = this.webResource.path("skins");
         this.walletWebResource = this.webResource.path("wallet");
+        this.minisWebResource = this.webResource.path("minis");
     }
 
     /**
@@ -99,4 +101,15 @@ public class AccountResource implements ApiMidpoint, ApiEndpoint {
         return RequestHelper.getRequest(walletWebResource, apiKey, CurrencyBelonging[].class);
     }
 
+
+    /**
+     * This resource returns the minis of the account. This endpoint is
+     * only accessible with a valid API key.
+     *
+     * @param apiKey
+     * @return
+     */
+    public int[] minis(String apiKey) {
+        return RequestHelper.getRequest(minisWebResource, apiKey, int[].class);
+    }
 }
