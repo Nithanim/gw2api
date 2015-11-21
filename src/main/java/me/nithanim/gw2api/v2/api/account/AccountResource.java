@@ -5,7 +5,6 @@ import me.nithanim.gw2api.v2.ApiEndpoint;
 import me.nithanim.gw2api.v2.ApiMidpoint;
 import me.nithanim.gw2api.v2.common.Item;
 import me.nithanim.gw2api.v2.util.rest.RequestHelper;
-import me.nithanim.gw2api.v2.api.achievements.Achievement;
 
 /**
  * This resource returns information about player accounts. This endpoint is
@@ -15,22 +14,33 @@ import me.nithanim.gw2api.v2.api.achievements.Achievement;
  * <a href="https://wiki.guildwars2.com/wiki/API:2/account">https://wiki.guildwars2.com/wiki/API:2/account</a>
  */
 public class AccountResource implements ApiMidpoint, ApiEndpoint {
+    private final WebResource achievementsWebResource;
     private final WebResource webResource;
     private final WebResource bankWebResource;
     private final WebResource dyesWebResource;
     private final WebResource materialsWebResource;
     private final WebResource skinsWebResource;
     private final WebResource walletWebResource;
-    private final WebResource achievementsWebResource;
 
     public AccountResource(WebResource webResource) {
         this.webResource = webResource.path("account");
+        this.achievementsWebResource = this.webResource.path("achievements");
         this.bankWebResource = this.webResource.path("bank");
         this.materialsWebResource = this.webResource.path("materials");
         this.dyesWebResource = this.webResource.path("dyes");
         this.skinsWebResource = this.webResource.path("skins");
         this.walletWebResource = this.webResource.path("wallet");
-        this.achievementsWebResource = this.webResource.path("achievements");
+    }
+
+    /**
+     * This resource returns the achievements of the account. This endpoint is
+     * only accessible with a valid API key.
+     *
+     * @param apiKey
+     * @return
+     */
+    public AchievementStatus[] achievements(String apiKey) {
+        return RequestHelper.getRequest(achievementsWebResource, apiKey, AchievementStatus[].class);
     }
 
     /**
@@ -101,16 +111,4 @@ public class AccountResource implements ApiMidpoint, ApiEndpoint {
     public CurrencyBelonging[] wallet(String apiKey) {
         return RequestHelper.getRequest(walletWebResource, apiKey, CurrencyBelonging[].class);
     }
-
-    /**
-     * This resource returns the achievements of the account. This endpoint is
-     * only accessible with a valid API key.
-     *
-     * @param apiKey
-     * @return
-     */
-    public Achievement[] achievements(String apiKey) {
-        return RequestHelper.getRequest(achievementsWebResource, apiKey, Achievement[].class);
-    }
-
 }
