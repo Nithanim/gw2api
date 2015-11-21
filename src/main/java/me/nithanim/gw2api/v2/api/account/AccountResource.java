@@ -14,6 +14,7 @@ import me.nithanim.gw2api.v2.util.rest.RequestHelper;
  * <a href="https://wiki.guildwars2.com/wiki/API:2/account">https://wiki.guildwars2.com/wiki/API:2/account</a>
  */
 public class AccountResource implements ApiMidpoint, ApiEndpoint {
+    private final WebResource achievementsWebResource;
     private final WebResource webResource;
     private final WebResource bankWebResource;
     private final WebResource dyesWebResource;
@@ -23,11 +24,23 @@ public class AccountResource implements ApiMidpoint, ApiEndpoint {
 
     public AccountResource(WebResource webResource) {
         this.webResource = webResource.path("account");
+        this.achievementsWebResource = this.webResource.path("achievements");
         this.bankWebResource = this.webResource.path("bank");
         this.materialsWebResource = this.webResource.path("materials");
         this.dyesWebResource = this.webResource.path("dyes");
         this.skinsWebResource = this.webResource.path("skins");
         this.walletWebResource = this.webResource.path("wallet");
+    }
+
+    /**
+     * This resource returns the achievements of the account. This endpoint is
+     * only accessible with a valid API key.
+     *
+     * @param apiKey
+     * @return
+     */
+    public AchievementStatus[] achievements(String apiKey) {
+        return RequestHelper.getRequest(achievementsWebResource, apiKey, AchievementStatus[].class);
     }
 
     /**
@@ -98,5 +111,4 @@ public class AccountResource implements ApiMidpoint, ApiEndpoint {
     public CurrencyBelonging[] wallet(String apiKey) {
         return RequestHelper.getRequest(walletWebResource, apiKey, CurrencyBelonging[].class);
     }
-
 }
