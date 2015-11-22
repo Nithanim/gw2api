@@ -91,3 +91,10 @@ dependencies {
 ### Building
 At first you need to clone this repositoy. You can do this by either typing ```git clone https://github.com/Nithanim/gw2api.git``` if git is installed or download the source as zip file.
 With [Maven](https://maven.apache.org/) (needs to be installed) simply type ```mvn package``` to get the jars or ```mvn install``` to build and insert the file into your local maven repository.
+
+## Contributing
+This library is built to reflect the structure of the official api. Therefore every package below the ....v2.api.* matches the path of a "folder" of the [official api](https://api.guildwars2.com/v2) ([wiki](https://wiki.guildwars2.com/wiki/API:2)). There are some exceptions because the resulting java mapping might be cumbersome to use or because it is not buildable in java in the same manner.
+As a rule of thumb, you should match the style of your code to the same style that is already used in the repository. I am mostly using the [Google Java Style](https://google.github.io/styleguide/javaguide.html) and the default NetBeans formatter for automatically formatting the code.
+Before submitting a pull request please make sure that your code is formatted according to the style guide. 
+As far as your commits are concerned, double-check that they have a reasonable description. Additionally, make sure that the history is not cluttered with "oops" and "fix for real now". Please squash or rebase them together before submitting your pull request!
+This rules save me a lot of time reviewing and pulling your code in. - Thank you!
