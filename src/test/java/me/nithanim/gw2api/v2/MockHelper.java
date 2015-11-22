@@ -12,7 +12,6 @@ public class MockHelper {
         WebResource superWr = mock(WebResource.class);
         WebResource subWr = mock(WebResource.class);
         doReturn(subWr).when(superWr).path(subpath);
-        
 
         //return builder when methods are called on WR and on the builder too (which has the same result)
         //makes the order of calling accept and header insensitive

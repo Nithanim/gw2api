@@ -17,7 +17,6 @@ import me.nithanim.gw2api.v2.api.traits.facttypes.RechargeFact;
 import me.nithanim.gw2api.v2.api.traits.facttypes.TimeFact;
 import me.nithanim.gw2api.v2.api.traits.facttypes.UnblockableFact;
 
-
 public enum FactType {
     ATTRIBUTE_ADJUST(AttributeAdjustFact.class), BUFF(BuffFact.class),
     BUFF_CONVERSION(BuffConversionFact.class),
@@ -28,7 +27,7 @@ public enum FactType {
     RADIUS(RadiusFact.class), RANGE(RangeFact.class),
     RECHARGE(RechargeFact.class), TIME(TimeFact.class),
     UNBLOCKABLE(UnblockableFact.class);
-    
+
     private final Class<? extends FactBase> clazz;
 
     private FactType(Class<? extends FactBase> clazz) {
@@ -38,5 +37,5 @@ public enum FactType {
     public Class<? extends FactBase> getTypeClass() {
         return clazz;
     }
-    
+
 }

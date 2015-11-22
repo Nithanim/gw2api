@@ -41,12 +41,12 @@ public class CommerceResource implements ApiMidpoint {
     public ListingsResource listings() {
         return listings;
     }
-    
+
     /**
      * This resource returns current aggregated buy and sell listing information
      * from the trading post.
-     * 
-     * @return 
+     *
+     * @return
      */
     public PricesResource prices() {
         return prices;

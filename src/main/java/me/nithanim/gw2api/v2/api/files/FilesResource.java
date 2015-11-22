@@ -11,7 +11,7 @@ import me.nithanim.gw2api.v2.ApiEndpoint;
  */
 public interface FilesResource extends ApiEndpoint {
     String[] getOverview();
-    
+
     File get(String id);
 
     File[] get(String[] ids);

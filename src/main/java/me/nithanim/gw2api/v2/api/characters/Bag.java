@@ -19,7 +19,7 @@ public class Bag {
     public Item[] getInventory() {
         return inventory;
     }
-    
+
     @Override
     public String toString() {
         return ToStringBuilder.reflectionToString(this);

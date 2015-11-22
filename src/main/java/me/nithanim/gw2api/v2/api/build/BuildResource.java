@@ -19,8 +19,9 @@ public class BuildResource implements ApiEndpoint {
     }
 
     /**
-     * The response is an object with the single property id containing the current build id as a number. 
-     * 
+     * The response is an object with the single property id containing the
+     * current build id as a number.
+     *
      * @return the current build number
      */
     public Build get() {

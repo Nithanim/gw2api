@@ -52,7 +52,7 @@ public class Transaction {
     public DateTime getPurchased() {
         return purchased;
     }
-    
+
     @Override
     public String toString() {
         return ToStringBuilder.reflectionToString(this);

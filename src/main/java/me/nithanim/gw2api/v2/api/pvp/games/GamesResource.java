@@ -10,7 +10,7 @@ public class GamesResource {
     public GamesResource(WebResource webResource) {
         this.webResource = webResource.path("games");
     }
-    
+
     public String[] getOverview(String apiKey) {
         return RequestHelper.getRequest(webResource, apiKey, String[].class);
     }

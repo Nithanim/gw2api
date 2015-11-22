@@ -6,7 +6,7 @@ import me.nithanim.gw2api.v2.util.rest.RequestHelper;
 
 public class RecipesResourceImpl extends IdsResourceBase<Recipe, int[]> implements RecipesResource {
     private final WebResource searchWebResource;
-    
+
     public RecipesResourceImpl(WebResource webResource) {
         super(webResource.path("recipes"), Recipe.class, int[].class);
         searchWebResource = this.webResource.path("search");

@@ -14,7 +14,7 @@ public class WornItem extends Item {
     public Slot getSlot() {
         return slot;
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (!(obj instanceof WornItem)) {

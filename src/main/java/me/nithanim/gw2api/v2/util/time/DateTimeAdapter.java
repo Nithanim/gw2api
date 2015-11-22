@@ -11,9 +11,10 @@ import org.joda.time.format.DateTimeFormatter;
 import org.joda.time.format.ISODateTimeFormat;
 
 public class DateTimeAdapter implements JsonDeserializer<DateTime> {
-    public static final Type TYPE = new TypeToken<DateTime>(){}.getType();
+    public static final Type TYPE = new TypeToken<DateTime>() {
+    }.getType();
     private static final DateTimeFormatter FORMATTER = ISODateTimeFormat.dateTimeNoMillis();
-    
+
     @Override
     public DateTime deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
         //if (json.getAsString() == null || json.getAsString().isEmpty()) {

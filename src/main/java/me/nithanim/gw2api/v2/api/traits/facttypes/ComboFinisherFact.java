@@ -23,7 +23,7 @@ public class ComboFinisherFact extends FactBase {
         hash = 37 * hash + this.percent;
         return hash;
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (!(obj instanceof ComboFinisherFact)) {
