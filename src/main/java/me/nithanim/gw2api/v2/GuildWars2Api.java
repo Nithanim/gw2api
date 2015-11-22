@@ -10,6 +10,9 @@ import com.sun.jersey.api.client.config.ClientConfig;
 import com.sun.jersey.api.client.config.DefaultClientConfig;
 import java.util.EnumMap;
 import me.nithanim.gw2api.v2.api.account.AccountResource;
+import me.nithanim.gw2api.v2.api.achievements.AchievementResource;
+import me.nithanim.gw2api.v2.api.achievements.AchievementResourceImpl;
+import me.nithanim.gw2api.v2.api.achievements.DailyAchievement;
 import me.nithanim.gw2api.v2.api.build.BuildResource;
 import me.nithanim.gw2api.v2.api.colors.ColorsResource;
 import me.nithanim.gw2api.v2.api.characters.CharactersResource;
@@ -42,6 +45,7 @@ import me.nithanim.gw2api.v2.api.worlds.WorldsResource;
 import me.nithanim.gw2api.v2.api.worlds.WorldsResourceImpl;
 import me.nithanim.gw2api.v2.util.gson.EnumMapInstanceCreator;
 import me.nithanim.gw2api.v2.util.gson.EnumTypeAdapterFactory;
+import me.nithanim.gw2api.v2.util.gson.achievements.DailyAchievementsJsonDeserializer;
 import me.nithanim.gw2api.v2.util.gson.facts.FactJsonDeserializer;
 import me.nithanim.gw2api.v2.util.gson.facts.TraitedFactJsonDeserializer;
 import me.nithanim.gw2api.v2.util.gson.items.ItemInfoJsonDeserializer;
@@ -53,17 +57,19 @@ public class GuildWars2Api {
         .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
         .registerTypeAdapterFactory(new EnumTypeAdapterFactory())
         .registerTypeAdapter(
-            new TypeToken<EnumMap<SpecializationType, Specialization[]>>() {
+            new TypeToken<EnumMap>() {
             }.getType(),
-            new EnumMapInstanceCreator<>(SpecializationType.class)
+            new EnumMapInstanceCreator<>()
         )
         .registerTypeAdapter(Fact.class, new FactJsonDeserializer())
         .registerTypeAdapter(TraitedFact.class, new TraitedFactJsonDeserializer())
         .registerTypeAdapter(ItemInfo.class, new ItemInfoJsonDeserializer())
+        .registerTypeAdapter(DailyAchievement.class, new DailyAchievementsJsonDeserializer())
         .create();
 
     private final Client client;
     private final AccountResource accountResource;
+    private final AchievementResource achievements;
     private final BuildResource buildResource;
     private final CommerceResource commerceResource;
     private final CharactersResource charactersResource;
@@ -90,6 +96,7 @@ public class GuildWars2Api {
         WebResource baseWebResource = client.resource(config.getBaseUrl());
 
         accountResource = new AccountResource(baseWebResource);
+        achievements = new AchievementResourceImpl(baseWebResource);
         buildResource = new BuildResource(baseWebResource);
         commerceResource = new CommerceResource(baseWebResource);
         charactersResource = new CharactersResource(baseWebResource);
@@ -118,6 +125,19 @@ public class GuildWars2Api {
      */
     public AccountResource account() {
         return accountResource;
+    }
+
+    /**
+     * This resource returns information about achievements. This endpoint is
+     * only accessible with a valid API key.
+     *
+     * @return
+     *
+     * @see <a href="https://wiki.guildwars2.com/wiki/API:2/achievements">Guild
+     * Wars 2 Wiki</a>
+     */
+    public AchievementResource achievements() {
+        return achievements;
     }
 
     /**

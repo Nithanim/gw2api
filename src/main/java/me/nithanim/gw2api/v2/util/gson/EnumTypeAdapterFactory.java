@@ -11,6 +11,7 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import me.nithanim.gw2api.v2.api.achievements.DailyAchievement;
 import me.nithanim.gw2api.v2.api.characters.SpecializationType;
 
 public class EnumTypeAdapterFactory implements TypeAdapterFactory {
@@ -23,9 +24,10 @@ public class EnumTypeAdapterFactory implements TypeAdapterFactory {
 
         final Map<String, T> map = new HashMap<>();
         for (T constant : rawType.getEnumConstants()) {
-            if (rawType == SpecializationType.class) {
-                //For the only enum that is returned in lowercase by the api
-                //we need a better way to do this
+            if (rawType == SpecializationType.class
+                || rawType == DailyAchievement.Type.class) {
+                //Only this two enums are returned in lowercase by the api
+                //every other in camelcase.
                 map.put(constant.toString().toLowerCase(), constant);
             } else {
                 map.put(toCamelCase(constant), constant);

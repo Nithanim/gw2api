@@ -3,17 +3,18 @@ package me.nithanim.gw2api.v2.util.rest;
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.UniformInterfaceException;
 import com.sun.jersey.api.client.WebResource;
+import java.lang.reflect.Type;
 import javax.ws.rs.core.MediaType;
 import me.nithanim.gw2api.v2.GuildWars2Api;
 import me.nithanim.gw2api.v2.GuildWars2ApiException;
 
 public class RequestHelper {
-    public static <T> T getRequest(WebResource wr, Class<T> clazz) {
+    public static <T> T getRequest(WebResource wr, Type type) {
         try {
             String json = wr
                 .accept(MediaType.APPLICATION_JSON_TYPE)
                 .get(String.class);
-            return GuildWars2Api.GSON.fromJson(json, clazz);
+            return GuildWars2Api.GSON.fromJson(json, type);
         } catch (UniformInterfaceException ex) {
             throw handleUniformInterfaceException(ex);
         }
