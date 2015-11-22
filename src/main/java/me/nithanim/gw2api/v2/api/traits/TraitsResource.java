@@ -1,6 +1,7 @@
 package me.nithanim.gw2api.v2.api.traits;
 
 import me.nithanim.gw2api.v2.ApiEndpoint;
+import me.nithanim.gw2api.v2.common.Language;
 
 /**
  * This resource returns information about specific traits which are contained
@@ -13,7 +14,7 @@ public interface TraitsResource extends ApiEndpoint {
 
     Trait[] get(int[] ids);
 
-    Trait get(int id, String language);
+    Trait get(int id, Language lang);
 
-    Trait[] get(int[] ids, String language);
+    Trait[] get(int[] ids, Language lang);
 }

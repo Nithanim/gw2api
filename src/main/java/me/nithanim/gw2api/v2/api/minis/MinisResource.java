@@ -1,6 +1,7 @@
 package me.nithanim.gw2api.v2.api.minis;
 
 import me.nithanim.gw2api.v2.ApiEndpoint;
+import me.nithanim.gw2api.v2.common.Language;
 
 /**
  * This resource returns information about minis that were discovered by players
@@ -14,9 +15,9 @@ public interface MinisResource extends ApiEndpoint {
 
     Mini get(int id);
 
-    Mini get(int id, String language);
+    Mini get(int id, Language lang);
 
     Mini[] get(int[] ids);
 
-    Mini[] get(int[] ids, String language);
+    Mini[] get(int[] ids, Language lang);
 }

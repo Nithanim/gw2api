@@ -5,7 +5,7 @@ import java.util.Objects;
 import org.apache.commons.lang.builder.ToStringBuilder;
 
 /**
- * This resource returns information about the supplied API key. 
+ * This resource returns information about the supplied API key.
  */
 public class TokenInfo {
     private String id;

@@ -1,6 +1,7 @@
 package me.nithanim.gw2api.v2.util.rest;
 
 import com.sun.jersey.api.client.WebResource;
+import me.nithanim.gw2api.v2.common.Language;
 import me.nithanim.gw2api.v2.util.reflect.ReflectUtil;
 
 /**
@@ -30,29 +31,28 @@ public class IdsResourceBase<DATA_CLASS, OVERVIEW_CLASS> {
     public OVERVIEW_CLASS getOverview() {
         return RequestHelper.getRequest(webResource, overviewClass);
     }
-    
 
     public DATA_CLASS get(int id) {
         return RequestHelper.getRequest(webResource.path(String.valueOf(id)), dataClass);
     }
 
-    public DATA_CLASS get(int id, String language) {
-        return RequestHelper.getRequest(webResource.path(String.valueOf(id)), dataClass, "lang", language);
+    public DATA_CLASS get(int id, Language language) {
+        return RequestHelper.getRequest(webResource.path(String.valueOf(id)), dataClass, "lang", language.toString());
     }
 
     public DATA_CLASS[] get(int[] ids) {
         return RequestHelper.getRequest(webResource, dataClassArray, "ids", DataUtil.intsToCommaSeparatedString(ids));
     }
 
-    public DATA_CLASS[] get(int[] ids, String language) {
-        return RequestHelper.getRequest(webResource, dataClassArray, "ids", DataUtil.intsToCommaSeparatedString(ids), "lang", language);
+    public DATA_CLASS[] get(int[] ids, Language language) {
+        return RequestHelper.getRequest(webResource, dataClassArray, "ids", DataUtil.intsToCommaSeparatedString(ids), "lang", language.toString());
     }
-    
+
     public DATA_CLASS[] getAll() {
         return RequestHelper.getRequest(webResource, dataClassArray, "ids", "all");
     }
-    
-    public DATA_CLASS[] getAll(String language) {
-        return RequestHelper.getRequest(webResource, dataClassArray, "ids", "all", "lang", language);
+
+    public DATA_CLASS[] getAll(Language language) {
+        return RequestHelper.getRequest(webResource, dataClassArray, "ids", "all", "lang", language.toString());
     }
 }

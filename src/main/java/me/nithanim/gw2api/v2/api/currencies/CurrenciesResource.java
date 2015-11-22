@@ -1,5 +1,7 @@
 package me.nithanim.gw2api.v2.api.currencies;
 
+import me.nithanim.gw2api.v2.common.Language;
+
 /**
  * This resource returns a list of the currencies contained in the account
  * wallet.
@@ -33,10 +35,10 @@ public interface CurrenciesResource {
      * This endpoint returns data for the curreny id specified.
      *
      * @param id the id of the currency
-     * @param language the language in which the response should be returned
+     * @param lang the language in which the response should be returned
      * @return
      */
-    Currency get(int id, String language);
+    Currency get(int id, Language lang);
 
     /**
      * Returns the data for all specified ids.
@@ -50,9 +52,9 @@ public interface CurrenciesResource {
      * Returns the data for all specified ids.
      *
      * @param ids the ids of the currencies
-     * @param language the language in which the response should be returned
+     * @param lang the language in which the response should be returned
      * @return
      */
-    Currency[] get(int[] ids, String language);
+    Currency[] get(int[] ids, Language lang);
 
 }
