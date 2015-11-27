@@ -1,13 +1,9 @@
 package me.nithanim.gw2api.v2.api.pvp.stats;
 
-import com.google.gson.annotations.SerializedName;
-import java.util.Objects;
-import me.nithanim.gw2api.v2.api.characters.Character.Profession;
 import org.apache.commons.lang.builder.ToStringBuilder;
-import org.joda.time.DateTime;
 
 /*
- * A players collective stats
+ * A class representing players collective stats.
  */
 public class WinLoss {
     private int wins;
@@ -16,12 +12,25 @@ public class WinLoss {
     private int byes;
     private int forfeits;
 
-    public int getWins() {return wins;}
-    public int getLosses() {return losses;}
-    public int getDesertions() {return desertions;}
-    public int getByes() {return byes;}
-    public int getForfeits() {return forfeits;}
+    public int getWins() {
+        return wins;
+    }
 
+    public int getLosses() {
+        return losses;
+    }
+
+    public int getDesertions() {
+        return desertions;
+    }
+
+    public int getByes() {
+        return byes;
+    }
+
+    public int getForfeits() {
+        return forfeits;
+    }
 
     @Override
     public int hashCode() {
@@ -39,12 +48,12 @@ public class WinLoss {
         if (obj == null || getClass() != obj.getClass()) {
             return false;
         }
-        final WinLoss that = (WinLoss) obj;
-        return this.wins == that.wins
-            && this.losses == that.losses
-            && this.desertions == that.desertions
-            && this.byes == that.byes
-            && this.forfeits == that.forfeits;
+        final WinLoss other = (WinLoss) obj;
+        return this.wins == other.wins
+            && this.losses == other.losses
+            && this.desertions == other.desertions
+            && this.byes == other.byes
+            && this.forfeits == other.forfeits;
     }
 
     @Override

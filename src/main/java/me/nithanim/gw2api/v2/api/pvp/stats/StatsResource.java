@@ -1,7 +1,6 @@
 package me.nithanim.gw2api.v2.api.pvp.stats;
 
 import com.sun.jersey.api.client.WebResource;
-import me.nithanim.gw2api.v2.util.rest.DataUtil;
 import me.nithanim.gw2api.v2.util.rest.RequestHelper;
 
 public class StatsResource {

@@ -24,7 +24,6 @@ public class PvpResource implements ApiMidpoint {
         return gamesResource;
     }
 
-
     /**
      * https://wiki.guildwars2.com/wiki/API:2/pvp/stats
      *
