@@ -8,16 +8,13 @@ import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.WebResource;
 import com.sun.jersey.api.client.config.ClientConfig;
 import com.sun.jersey.api.client.config.DefaultClientConfig;
-import java.util.EnumMap;
 import me.nithanim.gw2api.v2.api.account.AccountResource;
 import me.nithanim.gw2api.v2.api.achievements.AchievementResource;
 import me.nithanim.gw2api.v2.api.achievements.AchievementResourceImpl;
 import me.nithanim.gw2api.v2.api.achievements.DailyAchievement;
 import me.nithanim.gw2api.v2.api.build.BuildResource;
-import me.nithanim.gw2api.v2.api.colors.ColorsResource;
 import me.nithanim.gw2api.v2.api.characters.CharactersResource;
-import me.nithanim.gw2api.v2.api.characters.Specialization;
-import me.nithanim.gw2api.v2.api.characters.SpecializationType;
+import me.nithanim.gw2api.v2.api.colors.ColorsResource;
 import me.nithanim.gw2api.v2.api.colors.ColorsResourceImpl;
 import me.nithanim.gw2api.v2.api.commerce.CommerceResource;
 import me.nithanim.gw2api.v2.api.continents.ContinentsResource;
@@ -36,6 +33,8 @@ import me.nithanim.gw2api.v2.api.recipes.RecipesResource;
 import me.nithanim.gw2api.v2.api.recipes.RecipesResourceImpl;
 import me.nithanim.gw2api.v2.api.skins.SkinsResource;
 import me.nithanim.gw2api.v2.api.skins.SkinsResourceImpl;
+import me.nithanim.gw2api.v2.api.specializations.SpecializationsResource;
+import me.nithanim.gw2api.v2.api.specializations.SpecializationsResourceImpl;
 import me.nithanim.gw2api.v2.api.tokeninfo.TokenResource;
 import me.nithanim.gw2api.v2.api.traits.Fact;
 import me.nithanim.gw2api.v2.api.traits.TraitedFact;
@@ -50,6 +49,8 @@ import me.nithanim.gw2api.v2.util.gson.facts.FactJsonDeserializer;
 import me.nithanim.gw2api.v2.util.gson.facts.TraitedFactJsonDeserializer;
 import me.nithanim.gw2api.v2.util.gson.items.ItemInfoJsonDeserializer;
 import me.nithanim.gw2api.v2.util.time.DateTimeAdapter;
+
+import java.util.EnumMap;
 
 public class GuildWars2Api {
     public static final Gson GSON = new GsonBuilder()
@@ -82,6 +83,7 @@ public class GuildWars2Api {
     private final PvpResource pvpResource;
     private final RecipesResource recipesResource;
     private final SkinsResource skinsResource;
+    private final SpecializationsResource specializationsResource;
     private final TokenResource tokenResource;
     private final TraitsResource traitsResource;
     private final WorldsResource worldsResource;
@@ -109,6 +111,7 @@ public class GuildWars2Api {
         pvpResource = new PvpResource(baseWebResource);
         recipesResource = new RecipesResourceImpl(baseWebResource);
         skinsResource = new SkinsResourceImpl(baseWebResource);
+        specializationsResource = new SpecializationsResourceImpl(baseWebResource);
         tokenResource = new TokenResource(baseWebResource);
         traitsResource = new TraitsResourceImpl(baseWebResource);
         worldsResource = new WorldsResourceImpl(baseWebResource);
@@ -280,6 +283,18 @@ public class GuildWars2Api {
      */
     public SkinsResource skins() {
         return skinsResource;
+    }
+
+    /**
+     * This resource returns information about the specializations.
+     *
+     * @return
+     *
+     * @see <a href="http://wiki.guildwars2.com/wiki/API:2/specializations">
+     * Guild Wars 2 Wiki</a>
+     */
+    public SpecializationsResource specializations() {
+        return specializationsResource;
     }
 
     /**

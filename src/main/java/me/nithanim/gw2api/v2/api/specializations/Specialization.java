@@ -1,8 +1,9 @@
 package me.nithanim.gw2api.v2.api.specializations;
 
+import org.apache.commons.lang.builder.ToStringBuilder;
+
 import java.util.Arrays;
 import java.util.Objects;
-import org.apache.commons.lang.builder.ToStringBuilder;
 
 public class Specialization {
     private int id;
@@ -20,6 +21,30 @@ public class Specialization {
 
     public String getName() {
         return name;
+    }
+
+    public String getProfession() {
+        return profession;
+    }
+
+    public boolean isElite() {
+        return elite;
+    }
+
+    public String getIcon() {
+        return icon;
+    }
+
+    public int[] getMinorTraits() {
+        return minorTraits;
+    }
+
+    public int[] getMajorTraits() {
+        return majorTraits;
+    }
+
+    public String getBackground() {
+        return background;
     }
 
     @Override
