@@ -8,7 +8,6 @@ import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.WebResource;
 import com.sun.jersey.api.client.config.ClientConfig;
 import com.sun.jersey.api.client.config.DefaultClientConfig;
-import java.util.EnumMap;
 import me.nithanim.gw2api.v2.api.account.AccountResource;
 import me.nithanim.gw2api.v2.api.achievements.AchievementResource;
 import me.nithanim.gw2api.v2.api.achievements.AchievementResourceImpl;
@@ -50,6 +49,8 @@ import me.nithanim.gw2api.v2.util.gson.facts.FactJsonDeserializer;
 import me.nithanim.gw2api.v2.util.gson.facts.TraitedFactJsonDeserializer;
 import me.nithanim.gw2api.v2.util.gson.items.ItemInfoJsonDeserializer;
 import me.nithanim.gw2api.v2.util.time.DateTimeAdapter;
+
+import java.util.EnumMap;
 
 public class GuildWars2Api {
     public static final Gson GSON = new GsonBuilder()

@@ -1,8 +1,9 @@
 package me.nithanim.gw2api.v2.api.specializations;
 
+import org.apache.commons.lang.builder.ToStringBuilder;
+
 import java.util.Arrays;
 import java.util.Objects;
-import org.apache.commons.lang.builder.ToStringBuilder;
 
 public class Specialization {
     private int id;
