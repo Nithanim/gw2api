@@ -1,10 +1,12 @@
 package me.nithanim.gw2api.v2.api.characters;
 
 import java.util.Arrays;
+import me.nithanim.gw2api.v2.util.gson.characters.TraitDeserializer;
 import org.apache.commons.lang.builder.ToStringBuilder;
 
 public class Specialization {
     private int id;
+    @com.google.gson.annotations.JsonAdapter(TraitDeserializer.class)
     private int[] traits;
 
     public int getId() {
