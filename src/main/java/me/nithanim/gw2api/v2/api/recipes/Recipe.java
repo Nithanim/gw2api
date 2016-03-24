@@ -16,6 +16,9 @@ public class Recipe {
     private int minRating;
     private String[] flags;
     private BasicItem[] ingredients;
+    private GuildIngredient[] guildIngredients;
+    private int outputUpgradeId = -1;
+    private String chatLink;
 
     public int getId() {
         return id;
@@ -55,16 +58,19 @@ public class Recipe {
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 47 * hash + this.id;
-        hash = 47 * hash + Objects.hashCode(this.type);
-        hash = 47 * hash + this.outputItemId;
-        hash = 47 * hash + this.outputItemCount;
-        hash = 47 * hash + this.timeToCraftMs;
-        hash = 47 * hash + Arrays.deepHashCode(this.disciplines);
-        hash = 47 * hash + this.minRating;
-        hash = 47 * hash + Arrays.deepHashCode(this.flags);
-        hash = 47 * hash + Arrays.deepHashCode(this.ingredients);
+        int hash = 7;
+        hash = 67 * hash + this.id;
+        hash = 67 * hash + Objects.hashCode(this.type);
+        hash = 67 * hash + this.outputItemId;
+        hash = 67 * hash + this.outputItemCount;
+        hash = 67 * hash + this.timeToCraftMs;
+        hash = 67 * hash + Arrays.deepHashCode(this.disciplines);
+        hash = 67 * hash + this.minRating;
+        hash = 67 * hash + Arrays.deepHashCode(this.flags);
+        hash = 67 * hash + Arrays.deepHashCode(this.ingredients);
+        hash = 67 * hash + Arrays.deepHashCode(this.guildIngredients);
+        hash = 67 * hash + this.outputUpgradeId;
+        hash = 67 * hash + Objects.hashCode(this.chatLink);
         return hash;
     }
 
@@ -82,7 +88,10 @@ public class Recipe {
             && Arrays.deepEquals(this.disciplines, other.disciplines)
             && this.minRating == other.minRating
             && Arrays.deepEquals(this.flags, other.flags)
-            && Arrays.deepEquals(this.ingredients, other.ingredients);
+            && Arrays.deepEquals(this.ingredients, other.ingredients)
+            && !Arrays.deepEquals(this.guildIngredients, other.guildIngredients)
+            && this.outputUpgradeId == other.outputUpgradeId
+            && Objects.equals(this.chatLink, other.chatLink);
     }
 
     @Override
