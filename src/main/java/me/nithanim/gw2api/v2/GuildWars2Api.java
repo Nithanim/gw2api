@@ -22,6 +22,8 @@ import me.nithanim.gw2api.v2.api.currencies.CurrenciesResource;
 import me.nithanim.gw2api.v2.api.currencies.CurrenciesResourceImpl;
 import me.nithanim.gw2api.v2.api.files.FilesResource;
 import me.nithanim.gw2api.v2.api.files.FilesResourceImpl;
+import me.nithanim.gw2api.v2.api.guild.GuildResource;
+import me.nithanim.gw2api.v2.api.guild.GuildResourceImpl;
 import me.nithanim.gw2api.v2.api.items.ItemInfo;
 import me.nithanim.gw2api.v2.api.items.ItemsResource;
 import me.nithanim.gw2api.v2.api.items.ItemsResourceImpl;
@@ -77,6 +79,7 @@ public class GuildWars2Api {
     private final ContinentsResource continentsResource;
     private final CurrenciesResource currenciesResource;
     private final FilesResource filesResource;
+    private final GuildResource guildResource;
     private final ItemsResource itemsResource;
     private final MapsResource mapsResource;
     private final PvpResource pvpResource;
@@ -104,6 +107,7 @@ public class GuildWars2Api {
         continentsResource = new ContinentsResourceImpl(baseWebResource);
         currenciesResource = new CurrenciesResourceImpl(baseWebResource);
         filesResource = new FilesResourceImpl(baseWebResource);
+        guildResource = new GuildResourceImpl(baseWebResource);
         itemsResource = new ItemsResourceImpl(baseWebResource);
         mapsResource = new MapsResourceImpl(baseWebResource);
         pvpResource = new PvpResource(baseWebResource);
@@ -230,6 +234,20 @@ public class GuildWars2Api {
      */
     public FilesResource files() {
         return filesResource;
+    }
+
+    /**
+     * This resource returns information about all available <a
+     * href="https://wiki.guildwars2.com/wiki/Guild_Hall">Guild Hall</a>
+     * upgrades, including scribe decorations.
+     *
+     * @return
+     *
+     * @see
+     * <a href="https://wiki.guildwars2.com/wiki/API:2">GW2Wiki</a>
+     */
+    public GuildResource guild() {
+        return guildResource;
     }
 
     /**
