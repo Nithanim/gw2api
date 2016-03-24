@@ -8,6 +8,10 @@ At first you need to get the GuildWars2Api object by simply by calling
 ```java
 GuildWars2Api gw2api = new GuildWars2Api();
 ```
+[You might need to use this instead if you get SSL errors](15):
+```java
+GuildWars2Api gw2api = new GuildWars2Api(new GuildWars2ApiDefaultConfigWithGodaddyFix());
+```
 The resulting object can be used multiple times, even concurrently, so it is adivced to store it somewhere.
 
 When reading the official wiki pages you will find out that the bank can be accessed through /v2/account/bank with an apikey. With this library you can simply type

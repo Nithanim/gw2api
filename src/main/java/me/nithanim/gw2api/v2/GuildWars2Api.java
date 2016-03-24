@@ -6,8 +6,6 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.WebResource;
-import com.sun.jersey.api.client.config.ClientConfig;
-import com.sun.jersey.api.client.config.DefaultClientConfig;
 import java.util.EnumMap;
 import me.nithanim.gw2api.v2.api.account.AccountResource;
 import me.nithanim.gw2api.v2.api.achievements.AchievementResource;
@@ -43,6 +41,8 @@ import me.nithanim.gw2api.v2.api.traits.TraitsResource;
 import me.nithanim.gw2api.v2.api.traits.TraitsResourceImpl;
 import me.nithanim.gw2api.v2.api.worlds.WorldsResource;
 import me.nithanim.gw2api.v2.api.worlds.WorldsResourceImpl;
+import me.nithanim.gw2api.v2.configs.GuildWars2ApiConfig;
+import me.nithanim.gw2api.v2.configs.GuildWars2ApiDefaultConfig;
 import me.nithanim.gw2api.v2.util.gson.EnumMapInstanceCreator;
 import me.nithanim.gw2api.v2.util.gson.EnumTypeAdapterFactory;
 import me.nithanim.gw2api.v2.util.gson.achievements.DailyAchievementsJsonDeserializer;
@@ -92,8 +92,7 @@ public class GuildWars2Api {
     }
 
     public GuildWars2Api(GuildWars2ApiConfig config) {
-        ClientConfig clientConfig = new DefaultClientConfig();
-        client = Client.create(clientConfig);
+        client = Client.create(config.getClientConfig());
         WebResource baseWebResource = client.resource(config.getBaseUrl());
 
         accountResource = new AccountResource(baseWebResource);
