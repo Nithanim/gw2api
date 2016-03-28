@@ -1,9 +1,9 @@
 package me.nithanim.gw2api.v2.util.rest;
 
 import com.sun.jersey.api.client.ClientResponse;
-import java.util.Objects;
-import org.apache.commons.lang.builder.ToStringBuilder;
 
+@lombok.EqualsAndHashCode
+@lombok.ToString(doNotUseGetters = false)
 public class ResultImpl<T> implements PaginationResult<T> {
     private final ClientResponse clientResponse;
     private final Class<T> clazz;
@@ -61,43 +61,5 @@ public class ResultImpl<T> implements PaginationResult<T> {
                 clientResponse.getHeaders().getFirst("X-Result-Total"));
         }
         return resultTotal;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 17 * hash + Objects.hashCode(this.clientResponse);
-        hash = 17 * hash + Objects.hashCode(this.clazz);
-        hash = 17 * hash + Objects.hashCode(this.result);
-        hash = 17 * hash + this.pageSize;
-        hash = 17 * hash + this.pageTotal;
-        hash = 17 * hash + this.resultCount;
-        hash = 17 * hash + this.resultTotal;
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == null || getClass() != obj.getClass()) {
-            return false;
-        }
-        final ResultImpl<?> other = (ResultImpl<?>) obj;
-        return Objects.equals(this.clientResponse, other.clientResponse)
-            && Objects.equals(this.clazz, other.clazz)
-            && Objects.equals(this.getResult(), other.getResult())
-            && this.getPageSize() == other.getPageSize()
-            && this.getPageTotal() == other.getPageTotal()
-            && this.getResultCount() == other.getResultCount()
-            && this.getResultTotal() == other.getResultTotal();
-    }
-
-    @Override
-    public String toString() {
-        getResult();
-        getPageSize();
-        getPageTotal();
-        getResultCount();
-        getResultTotal();
-        return ToStringBuilder.reflectionToString(this);
     }
 }

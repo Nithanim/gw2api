@@ -1,7 +1,5 @@
 package me.nithanim.gw2api.v2.api.traits;
 
-import java.util.Objects;
-
 /**
  * As I understood the hierarchy: There is a fact object that has additional
  * fields based on the "type" member.
@@ -16,6 +14,11 @@ import java.util.Objects;
  * interfaces to expose only the right methods.
  *
  */
+@lombok.NoArgsConstructor
+@lombok.AllArgsConstructor
+@lombok.Getter
+@lombok.EqualsAndHashCode
+@lombok.ToString
 public class FactBase implements Fact, TraitedFact {
     private String text;
     private String icon;
@@ -23,51 +26,4 @@ public class FactBase implements Fact, TraitedFact {
 
     private int requiresTrait = -1; //Merged into "Fact" from "Traited" fact
     private int overrides = -1; //Might have been a bad idea
-
-    public String getText() {
-        return text;
-    }
-
-    public String getIcon() {
-        return icon;
-    }
-
-    public FactType getType() {
-        return type;
-    }
-
-    public int getRequiresTrait() {
-        return requiresTrait;
-    }
-
-    public int getOverrides() {
-        return overrides;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 89 * hash + Objects.hashCode(this.text);
-        hash = 89 * hash + Objects.hashCode(this.icon);
-        hash = 89 * hash + Objects.hashCode(this.type);
-        hash = 89 * hash + requiresTrait;
-        hash = 89 * hash + overrides;
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (!(obj instanceof Fact)) {
-            return false;
-        } else if (this == obj) {
-            return true;
-        }
-        final FactBase other = (FactBase) obj;
-        return Objects.equals(this.text, other.text)
-            && Objects.equals(this.icon, other.icon)
-            && this.type == other.type
-            && this.requiresTrait == other.requiresTrait
-            && this.overrides == other.overrides;
-    }
-
 }

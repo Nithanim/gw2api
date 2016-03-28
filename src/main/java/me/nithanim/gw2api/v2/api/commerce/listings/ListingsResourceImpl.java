@@ -10,7 +10,6 @@ import me.nithanim.gw2api.v2.util.rest.IdsResourceBase;
  * <a href="https://wiki.guildwars2.com/wiki/API:2/commerce/listings">https://wiki.guildwars2.com/wiki/API:2/commerce/listings</a>
  */
 public class ListingsResourceImpl extends IdsResourceBase<Listing, int[]> implements ListingsResource {
-
     public ListingsResourceImpl(WebResource commerceWebResource) {
         super(commerceWebResource.path("listings"), Listing.class, int[].class);
     }

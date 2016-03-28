@@ -1,13 +1,15 @@
 package me.nithanim.gw2api.v2.api.currencies;
 
-import java.util.Objects;
-import org.apache.commons.lang.builder.ToStringBuilder;
-
+@lombok.NoArgsConstructor
+@lombok.AllArgsConstructor
+@lombok.Getter
+@lombok.EqualsAndHashCode
+@lombok.ToString
 public class Currency {
-    private int id;
+    private int id = -1;
     private String name;
     private String description;
-    private int order;
+    private int order = -1;
     private String icon;
 
     /**
@@ -54,34 +56,5 @@ public class Currency {
      */
     public String getIcon() {
         return icon;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 5;
-        hash = 47 * hash + this.id;
-        hash = 47 * hash + Objects.hashCode(this.name);
-        hash = 47 * hash + Objects.hashCode(this.description);
-        hash = 47 * hash + this.order;
-        hash = 47 * hash + Objects.hashCode(this.icon);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == null || getClass() != obj.getClass()) {
-            return false;
-        }
-        final Currency other = (Currency) obj;
-        return this.id == other.id
-            && Objects.equals(this.name, other.name)
-            && Objects.equals(this.description, other.description)
-            && this.order == other.order
-            && Objects.equals(this.icon, other.icon);
-    }
-
-    @Override
-    public String toString() {
-        return ToStringBuilder.reflectionToString(this);
     }
 }

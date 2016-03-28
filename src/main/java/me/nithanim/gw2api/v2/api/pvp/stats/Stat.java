@@ -1,14 +1,17 @@
 package me.nithanim.gw2api.v2.api.pvp.stats;
 
 import java.util.Map;
-import java.util.Objects;
-import org.apache.commons.lang.builder.ToStringBuilder;
 
-/*
+/**
  * A players collective stats
  */
+@lombok.NoArgsConstructor
+@lombok.AllArgsConstructor
+@lombok.Getter
+@lombok.EqualsAndHashCode
+@lombok.ToString
 public class Stat {
-    private int pvpRank;
+    private int pvpRank = -1;
     private WinLoss aggregate;
     private Map<String, WinLoss> professions;
     private Map<String, WinLoss> ladders;
@@ -52,32 +55,5 @@ public class Stat {
      */
     public Map<String, WinLoss> getLadders() {
         return ladders;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 3;
-        hash = 23 * hash + this.pvpRank;
-        hash = 23 * hash + Objects.hashCode(this.aggregate);
-        hash = 23 * hash + Objects.hashCode(this.professions);
-        hash = 23 * hash + Objects.hashCode(this.ladders);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == null || getClass() != obj.getClass()) {
-            return false;
-        }
-        final Stat other = (Stat) obj;
-        return Objects.equals(this.pvpRank, other.pvpRank)
-            && Objects.equals(this.aggregate, other.aggregate)
-            && Objects.equals(this.professions, other.professions)
-            && Objects.equals(this.ladders, other.ladders);
-    }
-
-    @Override
-    public String toString() {
-        return ToStringBuilder.reflectionToString(this);
     }
 }
