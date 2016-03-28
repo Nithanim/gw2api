@@ -8,7 +8,7 @@ At first you need to get the GuildWars2Api object by simply by calling
 ```java
 GuildWars2Api gw2api = new GuildWars2Api();
 ```
-[You might need to use this instead if you get SSL errors](15):
+[You might need to use this instead if you get SSL errors](/../../issues/15):
 ```java
 GuildWars2Api gw2api = new GuildWars2Api(new GuildWars2ApiDefaultConfigWithGodaddyFix());
 ```
