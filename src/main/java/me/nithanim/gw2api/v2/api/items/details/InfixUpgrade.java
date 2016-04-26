@@ -78,8 +78,8 @@ public class InfixUpgrade {
         }
 
         public static enum AttributeType {
-            CONDITION_DAMAGE, CRIT_DAMAGE, HEALING, POWER, PRECISION, TOUGHNESS,
-            VITALITY;
+            BOON_DURATION, CONDITION_DAMAGE, CONDITION_DURATION, CRIT_DAMAGE,
+            HEALING, POWER, PRECISION, TOUGHNESS, VITALITY;
         }
     }
 
