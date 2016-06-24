@@ -37,12 +37,13 @@ public class ItemInfo extends BasicItem {
      * subclass of {@link Details} for a specific {@link ItemType} if you ever
      * need that for some reason.
      *
+     * @param <T> automatic cast to the specialized subclass of {@link Details}
      * @return the {@link Details} object that contains all additional
      * information for its {@link ItemType}. Needs to be casted manually to the
      * specific subclass according to the {@link ItemType}.
      */
-    public Details getDetails() {
-        return details;
+    public <T extends Details> T getDetails() {
+        return (T) details;
     }
 
     void setDetails(Details details) {
