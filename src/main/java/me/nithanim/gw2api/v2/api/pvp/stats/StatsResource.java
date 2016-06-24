@@ -11,11 +11,11 @@ public class StatsResource {
     }
 
     public String[] getOverview(String apiKey) {
-        return RequestHelper.getRequest(webResource, apiKey, String[].class);
+        return RequestHelper.INSTANCE.getRequest(webResource, apiKey, String[].class);
     }
 
     public Stat get(String apiKey) {
-        return RequestHelper.getRequest(
+        return RequestHelper.INSTANCE.getRequest(
             webResource,
             apiKey,
             Stat.class

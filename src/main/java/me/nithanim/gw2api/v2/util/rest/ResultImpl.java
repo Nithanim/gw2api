@@ -22,7 +22,7 @@ public class ResultImpl<T> implements PaginationResult<T> {
     public T getResult() {
         if (result == null) {
             String json = clientResponse.getEntity(String.class);
-            result = RequestHelper.jsonToObject(json, clazz);
+            result = RequestHelperImpl.jsonToObject(json, clazz);
         }
         return result;
     }

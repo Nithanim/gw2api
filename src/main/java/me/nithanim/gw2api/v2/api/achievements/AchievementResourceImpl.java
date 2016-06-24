@@ -18,6 +18,6 @@ public class AchievementResourceImpl extends IdsResourceBase<Achievement, int[]>
 
     @Override
     public EnumMap<DailyAchievement.Type, DailyAchievement[]> getDailyAchievements() {
-        return RequestHelper.getRequest(webResource.path("daily"), dailyType);
+        return RequestHelper.INSTANCE.getRequest(webResource.path("daily"), dailyType);
     }
 }

@@ -27,7 +27,7 @@ public class ExchangeResource implements ApiEndpoint {
      * @return
      */
     public CoinsPerGem coinsPerGem(int quantity) {
-        return RequestHelper.getRequest(coinsWebResource, CoinsPerGem.class, "quantity", String.valueOf(quantity));
+        return RequestHelper.INSTANCE.getRequest(coinsWebResource, CoinsPerGem.class, "quantity", String.valueOf(quantity));
     }
 
     /**
@@ -37,7 +37,7 @@ public class ExchangeResource implements ApiEndpoint {
      * @return
      */
     public CoinsPerGem gemsPerCoin(int quantity) {
-        return RequestHelper.getRequest(gemsWebResource, CoinsPerGem.class, "quantity", String.valueOf(quantity));
+        return RequestHelper.INSTANCE.getRequest(gemsWebResource, CoinsPerGem.class, "quantity", String.valueOf(quantity));
     }
 
     @lombok.NoArgsConstructor
