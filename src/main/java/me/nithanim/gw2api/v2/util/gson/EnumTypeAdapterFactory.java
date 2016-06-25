@@ -36,7 +36,7 @@ public class EnumTypeAdapterFactory implements TypeAdapterFactory {
         return new TypeAdapter<T>() {
             @Override
             public void write(JsonWriter out, T value) throws IOException {
-                out.value(toCamelCase(value));
+                out.value(value == null ? null : toCamelCase(value));
             }
 
             @Override
