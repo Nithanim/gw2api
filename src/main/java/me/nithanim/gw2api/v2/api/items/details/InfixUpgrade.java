@@ -6,6 +6,7 @@ package me.nithanim.gw2api.v2.api.items.details;
 @lombok.EqualsAndHashCode
 @lombok.ToString
 public class InfixUpgrade {
+    private int id = -1;
     private Attribute[] attributes;
     private Buff buff;
 
