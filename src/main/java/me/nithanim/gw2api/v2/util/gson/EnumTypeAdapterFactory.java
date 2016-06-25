@@ -1,7 +1,6 @@
 package me.nithanim.gw2api.v2.util.gson;
 
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.google.gson.TypeAdapter;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
@@ -37,7 +36,7 @@ public class EnumTypeAdapterFactory implements TypeAdapterFactory {
         return new TypeAdapter<T>() {
             @Override
             public void write(JsonWriter out, T value) throws IOException {
-                throw new UnsupportedOperationException("Not supported yet.");
+                out.value(toCamelCase(value));
             }
 
             @Override

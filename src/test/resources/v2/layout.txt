@@ -1,0 +1,3 @@
+The folder named "raw" contains the data that is returned by an api query.
+The subfolders are named after the call of the api (e.g. items, colors, account, ...).
+The files in this directories are named "<id>.json".
