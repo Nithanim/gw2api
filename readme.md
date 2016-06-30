@@ -47,8 +47,8 @@ System.out.println(
 ## How to get this library
 
 ### Repository
-The releases are available in the [jCenter](https://bintray.com/bintray/jcenter) repository.
-You can use this to add jcenter to the repository list of maven:
+The full releases are available in the [jCenter](https://bintray.com/bintray/jcenter) repository.
+You can use this code to add jcenter to the repository list of maven:
 ```xml
 <repositories>
 	<repository>
@@ -81,15 +81,36 @@ After that set this library as a dependency. To do this add this to your pom.xml
 	<dependency>
 		<groupId>me.nithanim.gw2api</groupId>
 		<artifactId>gw2api</artifactId>
-		<version>0.0.3</version>
+		<version>0.0.4</version>
 	</dependency>
 </dependencies>
 ```
 or this to your build.gradle if you are using gradle:
 ```groovy
 dependencies {
-	compile 'me.nithanim.gw2api:gw2api:0.0.3'
+	compile 'me.nithanim.gw2api:gw2api:0.0.4'
 }
+```
+
+In case you are not using any of those (I don't know why you wouldn't though) you can [follow this link into jcenter for the jars directly](http://jcenter.bintray.com/me/nithanim/gw2api/gw2api/).
+
+If you would like to use snapshots you can use the following repository:
+```
+<repositories>
+	<repository>
+		<id>jfrog-artifactory-nithanim</id>
+		<url>https://oss.jfrog.org/artifactory/repo/</url>
+		<snapshots>
+			<enabled>true</enabled>
+			<updatePolicy>daily</updatePolicy>
+			<checksumPolicy>fail</checksumPolicy>
+		</snapshots>
+		<releases>
+			<enabled>false</enabled>
+			<checksumPolicy>fail</checksumPolicy>
+		</releases>
+	</repository>
+</repositories>
 ```
 
 ### Building
