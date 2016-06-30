@@ -16,6 +16,7 @@ import me.nithanim.gw2api.v2.api.characters.SpecializationType;
 public class EnumTypeAdapterFactory implements TypeAdapterFactory {
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+        @SuppressWarnings("unchecked")
         Class<T> rawType = (Class<T>) type.getRawType();
         if (!rawType.isEnum()) {
             return null;
