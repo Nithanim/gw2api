@@ -11,4 +11,5 @@ public class AchievementStatus {
     private int max = -1;
     private boolean done = false;
     private int[] bits;
+    private int repeated = -1;
 }
