@@ -28,31 +28,30 @@ public class IdsResourceBase<DATA_CLASS, OVERVIEW_CLASS> {
     }
 
     public OVERVIEW_CLASS getOverview() {
-        return RequestHelper.getRequest(webResource, overviewClass);
+        return RequestHelper.INSTANCE.getRequest(webResource, overviewClass);
     }
-    
 
     public DATA_CLASS get(int id) {
-        return RequestHelper.getRequest(webResource.path(String.valueOf(id)), dataClass);
+        return RequestHelper.INSTANCE.getRequest(webResource.path(String.valueOf(id)), dataClass);
     }
 
     public DATA_CLASS get(int id, String language) {
-        return RequestHelper.getRequest(webResource.path(String.valueOf(id)), dataClass, "lang", language);
+        return RequestHelper.INSTANCE.getRequest(webResource.path(String.valueOf(id)), dataClass, "lang", language);
     }
 
     public DATA_CLASS[] get(int[] ids) {
-        return RequestHelper.getRequest(webResource, dataClassArray, "ids", DataUtil.intsToCommaSeparatedString(ids));
+        return RequestHelper.INSTANCE.getRequest(webResource, dataClassArray, "ids", DataUtil.intsToCommaSeparatedString(ids));
     }
 
     public DATA_CLASS[] get(int[] ids, String language) {
-        return RequestHelper.getRequest(webResource, dataClassArray, "ids", DataUtil.intsToCommaSeparatedString(ids), "lang", language);
+        return RequestHelper.INSTANCE.getRequest(webResource, dataClassArray, "ids", DataUtil.intsToCommaSeparatedString(ids), "lang", language);
     }
-    
+
     public DATA_CLASS[] getAll() {
-        return RequestHelper.getRequest(webResource, dataClassArray, "ids", "all");
+        return RequestHelper.INSTANCE.getRequest(webResource, dataClassArray, "ids", "all");
     }
-    
+
     public DATA_CLASS[] getAll(String language) {
-        return RequestHelper.getRequest(webResource, dataClassArray, "ids", "all", "lang", language);
+        return RequestHelper.INSTANCE.getRequest(webResource, dataClassArray, "ids", "all", "lang", language);
     }
 }

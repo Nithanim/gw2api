@@ -1,14 +1,12 @@
 package me.nithanim.gw2api.v2.api.traits.facttypes;
 
 import me.nithanim.gw2api.v2.api.traits.FactBase;
-import org.apache.commons.lang.builder.ToStringBuilder;
 
+@lombok.NoArgsConstructor
+@lombok.Getter
+@lombok.ToString
 public class DistanceFact extends FactBase {
     private int distance;
-
-    public int getDistance() {
-        return distance;
-    }
 
     @Override
     public int hashCode() {
@@ -26,10 +24,5 @@ public class DistanceFact extends FactBase {
         }
         final DistanceFact other = (DistanceFact) obj;
         return this.distance == other.distance;
-    }
-
-    @Override
-    public String toString() {
-        return ToStringBuilder.reflectionToString(this);
     }
 }

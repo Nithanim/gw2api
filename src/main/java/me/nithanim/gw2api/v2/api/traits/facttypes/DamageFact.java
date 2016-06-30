@@ -1,14 +1,12 @@
 package me.nithanim.gw2api.v2.api.traits.facttypes;
 
 import me.nithanim.gw2api.v2.api.traits.FactBase;
-import org.apache.commons.lang.builder.ToStringBuilder;
 
+@lombok.NoArgsConstructor
+@lombok.Getter
+@lombok.ToString
 public class DamageFact extends FactBase {
     private int hitCount;
-
-    public int getHitCount() {
-        return hitCount;
-    }
 
     @Override
     public int hashCode() {
@@ -26,10 +24,5 @@ public class DamageFact extends FactBase {
         }
         final DamageFact other = (DamageFact) obj;
         return this.hitCount == other.hitCount;
-    }
-
-    @Override
-    public String toString() {
-        return ToStringBuilder.reflectionToString(this);
     }
 }

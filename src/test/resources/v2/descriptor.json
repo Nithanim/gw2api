@@ -1,0 +1,23 @@
+{
+    "items": {
+        "weapons": [
+            54590,
+            70527
+        ],
+        "armor": [
+            54600
+        ],
+        "container": [
+            54645
+        ],
+        "trinket": [
+            39276
+        ],
+        "upgradeComponent": [
+            24672
+        ]
+    },
+    "colors": [
+        10
+    ]
+}

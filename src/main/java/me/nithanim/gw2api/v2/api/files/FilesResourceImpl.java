@@ -13,21 +13,21 @@ public class FilesResourceImpl implements FilesResource {
 
     @Override
     public String[] getOverview() {
-        return RequestHelper.getRequest(webResource, String[].class);
+        return RequestHelper.INSTANCE.getRequest(webResource, String[].class);
     }
 
     @Override
     public File get(String id) {
-        return RequestHelper.getRequest(webResource.path(String.valueOf(id)), File.class);
+        return RequestHelper.INSTANCE.getRequest(webResource.path(String.valueOf(id)), File.class);
     }
 
     @Override
     public File[] get(String[] ids) {
-        return RequestHelper.getRequest(webResource, File[].class, "ids", DataUtil.stringstsToCommaSeparatedString(ids));
+        return RequestHelper.INSTANCE.getRequest(webResource, File[].class, "ids", DataUtil.stringstsToCommaSeparatedString(ids));
     }
 
     @Override
     public File[] getAll() {
-        return RequestHelper.getRequest(webResource, File[].class, "ids", "all");
+        return RequestHelper.INSTANCE.getRequest(webResource, File[].class, "ids", "all");
     }
 }

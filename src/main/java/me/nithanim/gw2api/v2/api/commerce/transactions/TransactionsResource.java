@@ -31,7 +31,7 @@ public class TransactionsResource implements ApiEndpoint {
     }
 
     public Transaction[] currentBuys(String apiKey) {
-        return RequestHelper.getRequest(currentBuys, apiKey, Transaction[].class);
+        return RequestHelper.INSTANCE.getRequest(currentBuys, apiKey, Transaction[].class);
     }
 
     public PaginationResult<Transaction[]> currentBuysExtendedWithPage(String apiKey, int page) {
@@ -47,7 +47,7 @@ public class TransactionsResource implements ApiEndpoint {
     }
 
     public Transaction[] currentSells(String apiKey) {
-        return RequestHelper.getRequest(currentSells, apiKey, Transaction[].class);
+        return RequestHelper.INSTANCE.getRequest(currentSells, apiKey, Transaction[].class);
     }
 
     public PaginationResult<Transaction[]> currentSellsExtendedWithPage(String apiKey, int page) {
@@ -63,7 +63,7 @@ public class TransactionsResource implements ApiEndpoint {
     }
 
     public Transaction[] historyBuys(String apiKey) {
-        return RequestHelper.getRequest(historyBuys, apiKey, Transaction[].class);
+        return RequestHelper.INSTANCE.getRequest(historyBuys, apiKey, Transaction[].class);
     }
 
     public PaginationResult<Transaction[]> historyBuysExtendedWithPage(String apiKey, int page) {
@@ -79,7 +79,7 @@ public class TransactionsResource implements ApiEndpoint {
     }
 
     public Transaction[] historySells(String apiKey) {
-        return RequestHelper.getRequest(historySells, apiKey, Transaction[].class);
+        return RequestHelper.INSTANCE.getRequest(historySells, apiKey, Transaction[].class);
     }
 
     public PaginationResult<Transaction[]> historySellsExtendedWithPage(String apiKey, int page) {
@@ -95,7 +95,7 @@ public class TransactionsResource implements ApiEndpoint {
     }
 
     private PaginationResult<Transaction[]> queryApiWithPage(WebResource wr, String apiKey, int page) {
-        return RequestHelper.getRequestExtended(
+        return RequestHelper.INSTANCE.getRequestExtended(
             wr,
             apiKey,
             Transaction[].class,
@@ -104,7 +104,7 @@ public class TransactionsResource implements ApiEndpoint {
     }
 
     private PaginationResult<Transaction[]> queryApiWithPageSize(WebResource wr, String apiKey, int pageSize) {
-        return RequestHelper.getRequestExtended(
+        return RequestHelper.INSTANCE.getRequestExtended(
             wr,
             apiKey,
             Transaction[].class,
@@ -113,7 +113,7 @@ public class TransactionsResource implements ApiEndpoint {
     }
 
     private PaginationResult<Transaction[]> queryApiWithPageAndPageSize(WebResource wr, String apiKey, int page, int pageSize) {
-        return RequestHelper.getRequestExtended(
+        return RequestHelper.INSTANCE.getRequestExtended(
             wr,
             apiKey,
             Transaction[].class,

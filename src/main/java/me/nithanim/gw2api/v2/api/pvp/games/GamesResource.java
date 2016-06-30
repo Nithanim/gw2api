@@ -10,13 +10,13 @@ public class GamesResource {
     public GamesResource(WebResource webResource) {
         this.webResource = webResource.path("games");
     }
-    
+
     public String[] getOverview(String apiKey) {
-        return RequestHelper.getRequest(webResource, apiKey, String[].class);
+        return RequestHelper.INSTANCE.getRequest(webResource, apiKey, String[].class);
     }
 
     public Game get(String id, String apiKey) {
-        return RequestHelper.getRequest(
+        return RequestHelper.INSTANCE.getRequest(
             webResource,
             apiKey,
             Game.class,
@@ -25,7 +25,7 @@ public class GamesResource {
     }
 
     public Game[] get(String[] ids, String apiKey) {
-        return RequestHelper.getRequest(
+        return RequestHelper.INSTANCE.getRequest(
             webResource,
             apiKey,
             Game[].class,

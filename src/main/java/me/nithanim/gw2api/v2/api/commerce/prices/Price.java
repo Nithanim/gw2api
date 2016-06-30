@@ -1,7 +1,10 @@
 package me.nithanim.gw2api.v2.api.commerce.prices;
 
-import org.apache.commons.lang.builder.ToStringBuilder;
-
+@lombok.NoArgsConstructor
+@lombok.AllArgsConstructor
+@lombok.Getter
+@lombok.EqualsAndHashCode
+@lombok.ToString
 public class Price {
     private int quantity;
     private int unitPrice;
@@ -22,28 +25,5 @@ public class Price {
      */
     public int getUnitPrice() {
         return unitPrice;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 71 * hash + this.quantity;
-        hash = 71 * hash + this.unitPrice;
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == null || getClass() != obj.getClass()) {
-            return false;
-        }
-        final Price other = (Price) obj;
-        return this.quantity == other.quantity
-            && this.unitPrice == other.unitPrice;
-    }
-
-    @Override
-    public String toString() {
-        return ToStringBuilder.reflectionToString(this);
     }
 }
