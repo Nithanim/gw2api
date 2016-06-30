@@ -60,7 +60,7 @@ public class GuildWars2Api {
         .registerTypeAdapterFactory(new EnumTypeAdapterFactory())
         .registerTypeAdapter(
             new TypeToken<EnumMap>() {
-            }.getType(),
+        }.getType(),
             new EnumMapInstanceCreator<>()
         )
         .registerTypeAdapter(Fact.class, new FactJsonDeserializer())
@@ -123,7 +123,7 @@ public class GuildWars2Api {
      * This resource returns information about player accounts. This endpoint is
      * only accessible with a valid API key.
      *
-     * @return
+     * @return a resource that enables fetching account details
      *
      * @see <a href="https://wiki.guildwars2.com/wiki/API:2/account">Guild Wars
      * 2 Wiki</a>
@@ -136,7 +136,7 @@ public class GuildWars2Api {
      * This resource returns information about achievements. This endpoint is
      * only accessible with a valid API key.
      *
-     * @return
+     * @return a resource that enables fetching achievement details
      *
      * @see <a href="https://wiki.guildwars2.com/wiki/API:2/achievements">Guild
      * Wars 2 Wiki</a>
@@ -149,7 +149,7 @@ public class GuildWars2Api {
      * This resource returns the current build id of the game. This can be used,
      * for example, to register when event timers reset due to server restarts.
      *
-     * @return
+     * @return a resource that enables fetching game-build details
      *
      * @see <a href="https://wiki.guildwars2.com/wiki/API:2/build">Guild Wars 2
      * Wiki</a>
@@ -162,7 +162,7 @@ public class GuildWars2Api {
      * This resource returns information about characters attached to a specific
      * account.
      *
-     * @return
+     * @return a resource that enables fetching character details
      *
      * @see <a href="https://wiki.guildwars2.com/wiki/API:2/characters">Guild
      * Wars 2 Wiki</a>
@@ -175,7 +175,7 @@ public class GuildWars2Api {
      * This resource returns information about prices, listings, exchange rates
      * and transactions.
      *
-     * @return
+     * @return a resource that enables fetching trading post details
      */
     public CommerceResource commerce() {
         return commerceResource;
@@ -185,7 +185,7 @@ public class GuildWars2Api {
      * This resource returns all dye colors in the game, including localized
      * names and their color component information.
      *
-     * @return
+     * @return a resource that enables fetching color details
      *
      * @see <a href="https://wiki.guildwars2.com/wiki/API:2/colors">Guild Wars 2
      * Wiki</a>
@@ -198,7 +198,7 @@ public class GuildWars2Api {
      * This resource returns static information about the continents, floors,
      * regions, maps, sectors, points of interest and tasks.
      *
-     * @return
+     * @return a resource that enables fetching continent details
      *
      * @see <a href="https://wiki.guildwars2.com/wiki/API:2/continents">Guild
      * Wars 2 Wiki</a>
@@ -207,14 +207,11 @@ public class GuildWars2Api {
         return continentsResource;
     }
 
-    /*public FloorsResource continents(int continentId) {
-     return new FloorsResourceImpl(continentsResource, continentId);
-     }*/
     /**
      * This resource returns a list of the currencies contained in the account
      * wallet.
      *
-     * @return
+     * @return a resource that enables fetching currency details
      *
      * @see <a href="https://wiki.guildwars2.com/wiki/API:2/currencies">Guild
      * Wars 2 Wiki</a>
@@ -227,7 +224,7 @@ public class GuildWars2Api {
      * This resource returns commonly requested in-game assets that may be used
      * to enhance API-derived applications.
      *
-     * @return
+     * @return a resource that enables fetching file details
      *
      * @see
      * <a href="https://wiki.guildwars2.com/wiki/API:2/files">GW2Wiki</a>
@@ -241,7 +238,7 @@ public class GuildWars2Api {
      * href="https://wiki.guildwars2.com/wiki/Guild_Hall">Guild Hall</a>
      * upgrades, including scribe decorations.
      *
-     * @return
+     * @return a resource that enables fetching guild details
      *
      * @see
      * <a href="https://wiki.guildwars2.com/wiki/API:2">GW2Wiki</a>
@@ -254,7 +251,7 @@ public class GuildWars2Api {
      * This resource returns information about items that were discovered by
      * players in the game.
      *
-     * @return
+     * @return a resource that enables fetching item details
      *
      * @see
      * <a href="https://wiki.guildwars2.com/wiki/API:2/items">GW2Wiki</a>
@@ -268,7 +265,7 @@ public class GuildWars2Api {
      * about floor and translation data on how to translate between world
      * coordinates and map coordinates.
      *
-     * @return
+     * @return a resource that enables fetching map details
      *
      * @see
      * <a href="https://wiki.guildwars2.com/wiki/API:2/maps">GW2Wiki</a>
@@ -285,7 +282,7 @@ public class GuildWars2Api {
      * This resource returns information about recipes that were discovered by
      * players in the game.
      *
-     * @return
+     * @return a resource that enables fetching recipe details
      */
     public RecipesResource recipes() {
         return recipesResource;
@@ -295,7 +292,7 @@ public class GuildWars2Api {
      * This resource returns information about skins that were discovered by
      * players in the game.
      *
-     * @return
+     * @return a resource that enables fetching skin details
      */
     public SkinsResource skins() {
         return skinsResource;
@@ -304,7 +301,7 @@ public class GuildWars2Api {
     /**
      * This resource returns information about the specializations.
      *
-     * @return
+     * @return a resource that enables fetching specialization details
      *
      * @see <a href="http://wiki.guildwars2.com/wiki/API:2/specializations">
      * Guild Wars 2 Wiki</a>
@@ -316,7 +313,7 @@ public class GuildWars2Api {
     /**
      * This resource returns information about the supplied API key.
      *
-     * @return
+     * @return a resource that enables fetching details about an access token
      *
      * @see <a href="https://wiki.guildwars2.com/wiki/API:2/tokeninfo">Guild
      * Wars 2 Wiki</a>
@@ -329,7 +326,7 @@ public class GuildWars2Api {
      * This resource returns information about specific traits which are
      * contained within specializations.
      *
-     * @return
+     * @return a resource that enables fetching trait details
      */
     public TraitsResource traits() {
         return traitsResource;
@@ -338,7 +335,7 @@ public class GuildWars2Api {
     /**
      * This resource returns information about the available worlds, or servers.
      *
-     * @return
+     * @return a resource that enables fetching world details
      */
     public WorldsResource worlds() {
         return worldsResource;
