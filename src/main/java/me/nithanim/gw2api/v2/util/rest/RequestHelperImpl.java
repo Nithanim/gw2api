@@ -119,8 +119,17 @@ public class RequestHelperImpl implements RequestHelper {
 
     private static GuildWars2ApiException handleUniformInterfaceException(UniformInterfaceException ex) {
         ClientResponse cr = ex.getResponse();
-        ApiErrorText message = jsonToObject(cr.getEntity(String.class), ApiErrorText.class);
-        return new GuildWars2ApiException("The server returned with message: " + message.getText(), ex);
+        String body = cr.getEntity(String.class);
+        try {
+            ApiErrorText message = jsonToObject(body, ApiErrorText.class);
+            return new GuildWars2ApiException("The servers json message was: " + message.getText(), ex);
+        } catch (Exception ex2) {
+            return new GuildWars2ApiException(
+                "For this request, the server answered with status " + cr.getStatus()
+                + " and the following document: " + body,
+                ex
+            );
+        }
     }
 
     static <T> T jsonToObject(String json, Class<T> clazz) {
