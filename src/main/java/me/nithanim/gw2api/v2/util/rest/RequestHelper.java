@@ -12,13 +12,13 @@ public interface RequestHelper {
 
     public <T> PaginationResult<T> getRequestExtended(WebResource wr, String apiKey, Class<T> clazz);
 
-    public <T> T getRequest(WebResource wr, Class<T> clazz, String arg0Name, String arg0Value);
+    public <T> T getRequest(WebResource wr, Type type, String arg0Name, String arg0Value);
 
     public <T> T getRequest(WebResource wr, String apiKey, Class<T> clazz, String arg0Name, String arg0Value);
 
     public <T> PaginationResult<T> getRequestExtended(WebResource wr, String apiKey, Class<T> clazz, String arg0Name, String arg0Value);
 
-    public <T> T getRequest(WebResource wr, Class<T> clazz, String arg0Name, String arg0Value, String arg1Name, String arg1Value);
+    public <T> T getRequest(WebResource wr, Type type, String arg0Name, String arg0Value, String arg1Name, String arg1Value);
 
     public <T> PaginationResult<T> getRequestExtended(WebResource wr, String apiKey, Class<T> clazz, String arg0Name, String arg0Value, String arg1Name, String arg1Value);
 }

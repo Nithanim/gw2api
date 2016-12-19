@@ -48,13 +48,13 @@ public class RequestHelperImpl implements RequestHelper {
     }
 
     @Override
-    public <T> T getRequest(WebResource wr, Class<T> clazz, String arg0Name, String arg0Value) {
+    public <T> T getRequest(WebResource wr, Type type, String arg0Name, String arg0Value) {
         try {
             String json = wr
                 .queryParam(arg0Name, arg0Value)
                 .accept(MediaType.APPLICATION_JSON_TYPE)
                 .get(String.class);
-            return jsonToObject(json, clazz);
+            return jsonToObject(json, type);
         } catch (UniformInterfaceException ex) {
             throw handleUniformInterfaceException(ex);
         }
@@ -89,14 +89,14 @@ public class RequestHelperImpl implements RequestHelper {
     }
 
     @Override
-    public <T> T getRequest(WebResource wr, Class<T> clazz, String arg0Name, String arg0Value, String arg1Name, String arg1Value) {
+    public <T> T getRequest(WebResource wr, Type type, String arg0Name, String arg0Value, String arg1Name, String arg1Value) {
         try {
             String json = wr
                 .queryParam(arg0Name, arg0Value)
                 .queryParam(arg1Name, arg1Value)
                 .accept(MediaType.APPLICATION_JSON_TYPE)
                 .get(String.class);
-            return jsonToObject(json, clazz);
+            return jsonToObject(json, type);
         } catch (UniformInterfaceException ex) {
             throw handleUniformInterfaceException(ex);
         }
@@ -132,8 +132,8 @@ public class RequestHelperImpl implements RequestHelper {
         }
     }
 
-    static <T> T jsonToObject(String json, Class<T> clazz) {
-        return GuildWars2Api.GSON.fromJson(json, clazz);
+    static <T> T jsonToObject(String json, Type type) {
+        return GuildWars2Api.GSON.fromJson(json, type);
     }
 
     private static class ApiErrorText {

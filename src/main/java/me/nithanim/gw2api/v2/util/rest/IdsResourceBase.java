@@ -1,7 +1,11 @@
 package me.nithanim.gw2api.v2.util.rest;
 
 import com.sun.jersey.api.client.WebResource;
+import me.nithanim.gw2api.v2.util.collections.LibraryAvailabilityChecker;
+import me.nithanim.gw2api.v2.util.collections.IntObjMap;
+import me.nithanim.gw2api.v2.util.mappings.IntMappable;
 import me.nithanim.gw2api.v2.util.reflect.ReflectUtil;
+import me.nithanim.gw2api.v2.util.reflect.SimpleParameterizedType;
 
 /**
  * This class aims to provide a base class that can handle various combinations
@@ -20,11 +24,19 @@ public class IdsResourceBase<DATA_CLASS, OVERVIEW_CLASS> {
     private final Class<DATA_CLASS[]> dataClassArray;
     private final Class<OVERVIEW_CLASS> overviewClass;
 
+    private final SimpleParameterizedType mapType;
+
     public IdsResourceBase(WebResource webResource, Class<DATA_CLASS> dataClass, Class<OVERVIEW_CLASS> overviewClass) {
         this.webResource = webResource;
         this.dataClass = dataClass;
         this.dataClassArray = ReflectUtil.getArrayClass(dataClass);
         this.overviewClass = overviewClass;
+
+        if (IntMappable.class.isAssignableFrom(dataClass) && LibraryAvailabilityChecker.checkKoloboke()) {
+            mapType = new SimpleParameterizedType(IntObjMap.class, dataClass);
+        } else {
+            mapType = null;
+        }
     }
 
     public OVERVIEW_CLASS getOverview() {
@@ -41,6 +53,16 @@ public class IdsResourceBase<DATA_CLASS, OVERVIEW_CLASS> {
 
     public DATA_CLASS[] get(int[] ids) {
         return RequestHelper.INSTANCE.getRequest(webResource, dataClassArray, "ids", DataUtil.intsToCommaSeparatedString(ids));
+    }
+
+    public IntObjMap<DATA_CLASS> getMap(int[] ids) {
+        LibraryAvailabilityChecker.requireKoloboke();
+        return RequestHelper.INSTANCE.getRequest(webResource, mapType, "ids", DataUtil.intsToCommaSeparatedString(ids));
+    }
+    
+    public IntObjMap<DATA_CLASS> getMap(int[] ids, String language) {
+        LibraryAvailabilityChecker.requireKoloboke();
+        return RequestHelper.INSTANCE.getRequest(webResource, mapType, "ids", DataUtil.intsToCommaSeparatedString(ids), "lang", language);
     }
 
     public DATA_CLASS[] get(int[] ids, String language) {

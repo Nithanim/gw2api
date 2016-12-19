@@ -1,12 +1,13 @@
 package me.nithanim.gw2api.v2.api.items;
 
 import me.nithanim.gw2api.v2.common.BasicItem;
+import me.nithanim.gw2api.v2.util.mappings.IntMappable;
 
 @lombok.NoArgsConstructor
 @lombok.Getter
 @lombok.EqualsAndHashCode(callSuper = true)
 @lombok.ToString
-public class ItemInfo extends BasicItem {
+public class ItemInfo extends BasicItem implements IntMappable {
     private String name;
     private String icon;
     private String description;
@@ -20,6 +21,11 @@ public class ItemInfo extends BasicItem {
     private GameType[] gameTypes;
     private String[] restrictions;
     private Details details;
+
+    @Override
+    public int getMappableId() {
+        return getId();
+    }
 
     /**
      * Returns an object containing additional information specific to the

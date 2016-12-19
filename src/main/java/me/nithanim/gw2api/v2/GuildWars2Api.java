@@ -50,6 +50,7 @@ import me.nithanim.gw2api.v2.util.gson.EnumTypeAdapterFactory;
 import me.nithanim.gw2api.v2.util.gson.achievements.DailyAchievementsJsonDeserializer;
 import me.nithanim.gw2api.v2.util.gson.facts.FactJsonDeserializer;
 import me.nithanim.gw2api.v2.util.gson.facts.TraitedFactJsonDeserializer;
+import me.nithanim.gw2api.v2.util.gson.IntObjMapTypeAdapterFactory;
 import me.nithanim.gw2api.v2.util.gson.items.ItemInfoJsonDeserializer;
 import me.nithanim.gw2api.v2.util.time.DateTimeAdapter;
 
@@ -63,6 +64,7 @@ public class GuildWars2Api {
         }.getType(),
             new EnumMapInstanceCreator<>()
         )
+        .registerTypeAdapterFactory(new IntObjMapTypeAdapterFactory())
         .registerTypeAdapter(Fact.class, new FactJsonDeserializer())
         .registerTypeAdapter(TraitedFact.class, new TraitedFactJsonDeserializer())
         .registerTypeAdapter(ItemInfo.class, new ItemInfoJsonDeserializer())

@@ -33,8 +33,8 @@ public class TestRequestHelper implements RequestHelper {
     }
 
     @Override
-    public <T> T getRequest(WebResource wr, Class<T> clazz, String arg0Name, String arg0Value) {
-        return getRequest(wr, clazz);
+    public <T> T getRequest(WebResource wr, Type type, String arg0Name, String arg0Value) {
+        return getRequest(wr, type);
     }
 
     @Override
@@ -48,7 +48,7 @@ public class TestRequestHelper implements RequestHelper {
     }
 
     @Override
-    public <T> T getRequest(WebResource wr, Class<T> clazz, String arg0Name, String arg0Value, String arg1Name, String arg1Value) {
+    public <T> T getRequest(WebResource wr, Type type, String arg0Name, String arg0Value, String arg1Name, String arg1Value) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
