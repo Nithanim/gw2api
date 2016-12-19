@@ -1,6 +1,7 @@
 package me.nithanim.gw2api.v2.api.continents.floors.regions;
 
 import me.nithanim.gw2api.v2.api.continents.floors.regions.maps.Map;
+import me.nithanim.gw2api.v2.util.collections.IntObjMap;
 
 @lombok.NoArgsConstructor
 @lombok.AllArgsConstructor
@@ -10,5 +11,5 @@ import me.nithanim.gw2api.v2.api.continents.floors.regions.maps.Map;
 public class Region {
     private String name;
     private int[] labelCoord;
-    private java.util.Map<Integer, Map> maps;
+    private IntObjMap<Map> maps;
 }

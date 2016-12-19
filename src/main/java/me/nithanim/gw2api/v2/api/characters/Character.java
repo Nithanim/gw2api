@@ -32,6 +32,6 @@ public class Character {
     }
 
     public static enum Profession {
-        ELEMENTALIST, ENGINEER, GUARDIAN, MESMER, NECROMANCER, RANGER, THIEF, WARRIOR;
+        ELEMENTALIST, ENGINEER, GUARDIAN, MESMER, NECROMANCER, RANGER, THIEF, WARRIOR, REVENANT;
     }
 }

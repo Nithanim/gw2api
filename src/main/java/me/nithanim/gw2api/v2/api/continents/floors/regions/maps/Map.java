@@ -1,5 +1,7 @@
 package me.nithanim.gw2api.v2.api.continents.floors.regions.maps;
 
+import me.nithanim.gw2api.v2.util.collections.IntObjMap;
+
 @lombok.NoArgsConstructor
 @lombok.AllArgsConstructor
 @lombok.Getter
@@ -13,8 +15,8 @@ public class Map {
     private int defaultFloor = -1;
     private int[][] mapRect;
     private int[][] continentRect;
-    private java.util.Map<Integer, PointOfInterest> pointsOfInterest;
-    private java.util.Map<Integer, Task> tasks;
+    private IntObjMap<PointOfInterest> pointsOfInterest;
+    private IntObjMap<Task> tasks;
     private SkillChallenge[] skillChallenges;
-    private java.util.Map<Integer, Sector> sectors;
+    private IntObjMap<Sector> sectors;
 }

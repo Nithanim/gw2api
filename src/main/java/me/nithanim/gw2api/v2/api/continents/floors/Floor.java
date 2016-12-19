@@ -1,7 +1,7 @@
 package me.nithanim.gw2api.v2.api.continents.floors;
 
-import java.util.Map;
 import me.nithanim.gw2api.v2.api.continents.floors.regions.Region;
+import me.nithanim.gw2api.v2.util.collections.IntObjMap;
 
 @lombok.NoArgsConstructor
 @lombok.AllArgsConstructor
@@ -11,5 +11,5 @@ import me.nithanim.gw2api.v2.api.continents.floors.regions.Region;
 public class Floor {
     private int id = -1;
     private int[] textureDims;
-    private Map<Integer, Region> regions;
+    private IntObjMap<Region> regions;
 }
