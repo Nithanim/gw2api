@@ -10,17 +10,17 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
-import me.nithanim.gw2api.v2.util.collections.LibraryAvailabilityChecker;
 import me.nithanim.gw2api.v2.util.collections.IntObjMap;
+import me.nithanim.gw2api.v2.util.collections.LibraryAvailabilityChecker;
 import me.nithanim.gw2api.v2.util.mappings.IntMappable;
 
 public class IntObjMapTypeAdapterFactory implements TypeAdapterFactory {
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-        if(!LibraryAvailabilityChecker.checkKoloboke()) {
+        if (!LibraryAvailabilityChecker.checkKoloboke()) {
             return null;
         }
-        
+
         //We can only handle our map
         if (!IntObjMap.class.isAssignableFrom(type.getRawType())) {
             return null;
@@ -60,12 +60,25 @@ public class IntObjMapTypeAdapterFactory implements TypeAdapterFactory {
                     return null;
                 } else {
                     IntObjMap<Object> map = IntObjMap.withExpectedSize(10);
-                    in.beginArray();
-                    while (in.hasNext()) {
-                        IntMappable im = (IntMappable) genericTypeAdapter.read(in);
-                        map.put(im.getMappableId(), im);
+
+                    if (in.peek() == JsonToken.BEGIN_ARRAY) {
+                        in.beginArray();
+                        while (in.hasNext()) {
+                            IntMappable im = (IntMappable) genericTypeAdapter.read(in);
+                            map.put(im.getMappableId(), im);
+                        }
+                        in.endArray();
+                    } else if (in.peek() == JsonToken.BEGIN_OBJECT) {
+                        in.beginObject();
+                        while (in.hasNext()) {
+                            in.nextName(); //discard key that is the same as object id
+                            IntMappable im = (IntMappable) genericTypeAdapter.read(in);
+                            map.put(im.getMappableId(), im);
+                        }
+                        in.endObject();
+                    } else {
+                        throw new IllegalStateException("Can't handle " + in.peek());
                     }
-                    in.endArray();
                     return (T) map;
                 }
             }
