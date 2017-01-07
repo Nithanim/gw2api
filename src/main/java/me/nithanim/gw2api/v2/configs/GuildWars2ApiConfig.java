@@ -12,5 +12,7 @@ import me.nithanim.gw2api.v2.GuildWars2Api;
 public interface GuildWars2ApiConfig {
     String getBaseUrl();
 
-    public ClientConfig getClientConfig();
+    ClientConfig getClientConfig();
+    
+    boolean isGoDaddyFixEnabled();
 }
