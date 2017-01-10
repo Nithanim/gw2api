@@ -1,6 +1,6 @@
 package me.nithanim.gw2api.v2.api.commerce;
 
-import com.sun.jersey.api.client.WebResource;
+import javax.ws.rs.client.WebTarget;
 import me.nithanim.gw2api.v2.ApiMidpoint;
 import me.nithanim.gw2api.v2.api.commerce.exchange.ExchangeResource;
 import me.nithanim.gw2api.v2.api.commerce.listings.ListingsResource;
@@ -15,12 +15,12 @@ public class CommerceResource implements ApiMidpoint {
     private final PricesResource prices;
     private final TransactionsResource transactions;
 
-    public CommerceResource(WebResource webResource) {
-        WebResource commerceWebResource = webResource.path("commerce");
-        exchange = new ExchangeResource(commerceWebResource);
-        listings = new ListingsResourceImpl(commerceWebResource);
-        prices = new PricesResourceImpl(commerceWebResource);
-        transactions = new TransactionsResource(commerceWebResource);
+    public CommerceResource(WebTarget webTarget) {
+        WebTarget commerceWebTarget = webTarget.path("commerce");
+        exchange = new ExchangeResource(commerceWebTarget);
+        listings = new ListingsResourceImpl(commerceWebTarget);
+        prices = new PricesResourceImpl(commerceWebTarget);
+        transactions = new TransactionsResource(commerceWebTarget);
     }
 
     /**
@@ -41,12 +41,12 @@ public class CommerceResource implements ApiMidpoint {
     public ListingsResource listings() {
         return listings;
     }
-    
+
     /**
      * This resource returns current aggregated buy and sell listing information
      * from the trading post.
-     * 
-     * @return 
+     *
+     * @return
      */
     public PricesResource prices() {
         return prices;

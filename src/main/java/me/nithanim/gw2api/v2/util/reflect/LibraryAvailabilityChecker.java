@@ -1,6 +1,7 @@
-package me.nithanim.gw2api.v2.util.collections;
+package me.nithanim.gw2api.v2.util.reflect;
 
 import lombok.experimental.UtilityClass;
+import me.nithanim.gw2api.v2.util.collections.IntObjMap;
 
 @UtilityClass
 public class LibraryAvailabilityChecker {

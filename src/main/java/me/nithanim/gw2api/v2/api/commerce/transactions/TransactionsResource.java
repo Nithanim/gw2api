@@ -1,6 +1,6 @@
 package me.nithanim.gw2api.v2.api.commerce.transactions;
 
-import com.sun.jersey.api.client.WebResource;
+import javax.ws.rs.client.WebTarget;
 import me.nithanim.gw2api.v2.ApiEndpoint;
 import me.nithanim.gw2api.v2.util.rest.PaginationResult;
 import me.nithanim.gw2api.v2.util.rest.RequestHelper;
@@ -14,15 +14,15 @@ import me.nithanim.gw2api.v2.util.rest.RequestHelper;
  * <a href="https://wiki.guildwars2.com/wiki/API:2/commerce/transactions">https://wiki.guildwars2.com/wiki/API:2/commerce/transactions</a>
  */
 public class TransactionsResource implements ApiEndpoint {
-    private final WebResource currentBuys;
-    private final WebResource historySells;
-    private final WebResource historyBuys;
-    private final WebResource currentSells;
+    private final WebTarget currentBuys;
+    private final WebTarget historySells;
+    private final WebTarget historyBuys;
+    private final WebTarget currentSells;
 
-    public TransactionsResource(WebResource commerceWebResource) {
-        WebResource ws = commerceWebResource.path("transactions");
-        WebResource current = ws.path("current");
-        WebResource history = ws.path("history");
+    public TransactionsResource(WebTarget commerceWebTarget) {
+        WebTarget ws = commerceWebTarget.path("transactions");
+        WebTarget current = ws.path("current");
+        WebTarget history = ws.path("history");
 
         currentBuys = current.path("buys");
         currentSells = current.path("sells");
@@ -94,7 +94,7 @@ public class TransactionsResource implements ApiEndpoint {
         return queryApiWithPageAndPageSize(historySells, apiKey, page, pageSize);
     }
 
-    private PaginationResult<Transaction[]> queryApiWithPage(WebResource wr, String apiKey, int page) {
+    private PaginationResult<Transaction[]> queryApiWithPage(WebTarget wr, String apiKey, int page) {
         return RequestHelper.INSTANCE.getRequestExtended(
             wr,
             apiKey,
@@ -103,7 +103,7 @@ public class TransactionsResource implements ApiEndpoint {
         );
     }
 
-    private PaginationResult<Transaction[]> queryApiWithPageSize(WebResource wr, String apiKey, int pageSize) {
+    private PaginationResult<Transaction[]> queryApiWithPageSize(WebTarget wr, String apiKey, int pageSize) {
         return RequestHelper.INSTANCE.getRequestExtended(
             wr,
             apiKey,
@@ -112,7 +112,7 @@ public class TransactionsResource implements ApiEndpoint {
         );
     }
 
-    private PaginationResult<Transaction[]> queryApiWithPageAndPageSize(WebResource wr, String apiKey, int page, int pageSize) {
+    private PaginationResult<Transaction[]> queryApiWithPageAndPageSize(WebTarget wr, String apiKey, int page, int pageSize) {
         return RequestHelper.INSTANCE.getRequestExtended(
             wr,
             apiKey,

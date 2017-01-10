@@ -4,9 +4,9 @@ import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
-import com.sun.jersey.api.client.Client;
-import com.sun.jersey.api.client.WebResource;
 import java.util.EnumMap;
+import javax.ws.rs.client.Client;
+import javax.ws.rs.client.WebTarget;
 import me.nithanim.gw2api.v2.api.account.AccountResource;
 import me.nithanim.gw2api.v2.api.achievements.AchievementResource;
 import me.nithanim.gw2api.v2.api.achievements.AchievementResourceImpl;
@@ -43,16 +43,21 @@ import me.nithanim.gw2api.v2.api.traits.TraitsResource;
 import me.nithanim.gw2api.v2.api.traits.TraitsResourceImpl;
 import me.nithanim.gw2api.v2.api.worlds.WorldsResource;
 import me.nithanim.gw2api.v2.api.worlds.WorldsResourceImpl;
+import me.nithanim.gw2api.v2.configs.GoDaddyFix;
 import me.nithanim.gw2api.v2.configs.GuildWars2ApiConfig;
 import me.nithanim.gw2api.v2.configs.GuildWars2ApiDefaultConfig;
 import me.nithanim.gw2api.v2.util.gson.EnumMapInstanceCreator;
 import me.nithanim.gw2api.v2.util.gson.EnumTypeAdapterFactory;
+import me.nithanim.gw2api.v2.util.gson.IntObjMapTypeAdapterFactory;
 import me.nithanim.gw2api.v2.util.gson.achievements.DailyAchievementsJsonDeserializer;
 import me.nithanim.gw2api.v2.util.gson.facts.FactJsonDeserializer;
 import me.nithanim.gw2api.v2.util.gson.facts.TraitedFactJsonDeserializer;
-import me.nithanim.gw2api.v2.util.gson.IntObjMapTypeAdapterFactory;
 import me.nithanim.gw2api.v2.util.gson.items.ItemInfoJsonDeserializer;
 import me.nithanim.gw2api.v2.util.time.DateTimeAdapter;
+import org.glassfish.jersey.apache.connector.ApacheConnectorProvider;
+import org.glassfish.jersey.client.ClientConfig;
+import org.glassfish.jersey.client.JerseyClient;
+import org.glassfish.jersey.client.JerseyClientBuilder;
 
 public class GuildWars2Api {
     public static final Gson GSON = new GsonBuilder()
@@ -95,30 +100,55 @@ public class GuildWars2Api {
     public GuildWars2Api() {
         this(new GuildWars2ApiDefaultConfig());
     }
-
+    
     public GuildWars2Api(GuildWars2ApiConfig config) {
-        client = Client.create(config.getClientConfig());
-        WebResource baseWebResource = client.resource(config.getBaseUrl());
+        this(buildClient(config), config);
+    }
+    
+    private GuildWars2Api(Client client, GuildWars2ApiConfig config) {
+        this(client, client.target(config.getBaseUrl()));
+    }
+    
+    private static JerseyClient buildClient(GuildWars2ApiConfig config) {
+        ClientConfig jerseyConfig = config.getClientConfig();
+        JerseyClientBuilder builder = new JerseyClientBuilder().withConfig(jerseyConfig);
+        if (config.isGoDaddyFixEnabled()) {
+            GoDaddyFix.insertFix(builder);
+        }
 
-        accountResource = new AccountResource(baseWebResource);
-        achievements = new AchievementResourceImpl(baseWebResource);
-        buildResource = new BuildResource(baseWebResource);
-        commerceResource = new CommerceResource(baseWebResource);
-        charactersResource = new CharactersResource(baseWebResource);
-        colorResource = new ColorsResourceImpl(baseWebResource);
-        continentsResource = new ContinentsResourceImpl(baseWebResource);
-        currenciesResource = new CurrenciesResourceImpl(baseWebResource);
-        filesResource = new FilesResourceImpl(baseWebResource);
-        guildResource = new GuildResourceImpl(baseWebResource);
-        itemsResource = new ItemsResourceImpl(baseWebResource);
-        mapsResource = new MapsResourceImpl(baseWebResource);
-        pvpResource = new PvpResource(baseWebResource);
-        recipesResource = new RecipesResourceImpl(baseWebResource);
-        skinsResource = new SkinsResourceImpl(baseWebResource);
-        specializationsResource = new SpecializationsResourceImpl(baseWebResource);
-        tokenResource = new TokenResource(baseWebResource);
-        traitsResource = new TraitsResourceImpl(baseWebResource);
-        worldsResource = new WorldsResourceImpl(baseWebResource);
+        if (config.isApacheHttpClientEnabled()) {
+            jerseyConfig.connectorProvider(new ApacheConnectorProvider());
+        }
+        return builder.build();
+    }
+
+    /**
+     * Intended for testing only
+     * @param client
+     * @param baseResource 
+     */
+    @Deprecated
+    public GuildWars2Api(Client client, WebTarget baseResource) {
+        this.client = client;
+        accountResource = new AccountResource(baseResource);
+        achievements = new AchievementResourceImpl(baseResource);
+        buildResource = new BuildResource(baseResource);
+        commerceResource = new CommerceResource(baseResource);
+        charactersResource = new CharactersResource(baseResource);
+        colorResource = new ColorsResourceImpl(baseResource);
+        continentsResource = new ContinentsResourceImpl(baseResource);
+        currenciesResource = new CurrenciesResourceImpl(baseResource);
+        filesResource = new FilesResourceImpl(baseResource);
+        guildResource = new GuildResourceImpl(baseResource);
+        itemsResource = new ItemsResourceImpl(baseResource);
+        mapsResource = new MapsResourceImpl(baseResource);
+        pvpResource = new PvpResource(baseResource);
+        recipesResource = new RecipesResourceImpl(baseResource);
+        skinsResource = new SkinsResourceImpl(baseResource);
+        specializationsResource = new SpecializationsResourceImpl(baseResource);
+        tokenResource = new TokenResource(baseResource);
+        traitsResource = new TraitsResourceImpl(baseResource);
+        worldsResource = new WorldsResourceImpl(baseResource);
     }
 
     /**
@@ -344,11 +374,9 @@ public class GuildWars2Api {
     }
 
     /**
-     * {@link Client#destroy()}
-     *
-     * @see Client#destroy()
+     * Releases all resources.
      */
     public void destroy() {
-        client.destroy();
+        client.close();
     }
 }

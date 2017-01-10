@@ -1,12 +1,12 @@
 package me.nithanim.gw2api.v2.api.items;
 
-import com.sun.jersey.api.client.WebResource;
+import javax.ws.rs.client.WebTarget;
 import me.nithanim.gw2api.v2.util.rest.IdsResourceBase;
 
 public class ItemsResourceImpl extends IdsResourceBase<ItemInfo, int[]> implements ItemsResource {
 
-    public ItemsResourceImpl(WebResource webResource) {
-        super(webResource.path("items"), ItemInfo.class, int[].class);
+    public ItemsResourceImpl(WebTarget webTarget) {
+        super(webTarget.path("items"), ItemInfo.class, int[].class);
     }
 
 }

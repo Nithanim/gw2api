@@ -1,11 +1,11 @@
 package me.nithanim.gw2api.v2.util.rest;
 
-import com.sun.jersey.api.client.ClientResponse;
+import javax.ws.rs.core.Response;
 
 @lombok.EqualsAndHashCode
 @lombok.ToString(doNotUseGetters = false)
 public class ResultImpl<T> implements PaginationResult<T> {
-    private final ClientResponse clientResponse;
+    private final Response response;
     private final Class<T> clazz;
     private T result;
     private int pageSize = -1;
@@ -13,15 +13,15 @@ public class ResultImpl<T> implements PaginationResult<T> {
     private int resultCount = -1;
     private int resultTotal = -1;
 
-    public ResultImpl(ClientResponse clientResponse, Class<T> clazz) {
-        this.clientResponse = clientResponse;
+    public ResultImpl(Response Response, Class<T> clazz) {
+        this.response = Response;
         this.clazz = clazz;
     }
 
     @Override
     public T getResult() {
         if (result == null) {
-            String json = clientResponse.getEntity(String.class);
+            String json = response.readEntity(String.class);
             result = RequestHelperImpl.jsonToObject(json, clazz);
         }
         return result;
@@ -31,7 +31,8 @@ public class ResultImpl<T> implements PaginationResult<T> {
     public int getPageSize() {
         if (pageSize == -1) {
             pageSize = Integer.parseInt(
-                clientResponse.getHeaders().getFirst("X-Page-Size"));
+                response.getStringHeaders().getFirst("X-Page-Size")
+            );
         }
         return pageSize;
     }
@@ -40,7 +41,7 @@ public class ResultImpl<T> implements PaginationResult<T> {
     public int getPageTotal() {
         if (pageTotal == -1) {
             pageTotal = Integer.parseInt(
-                clientResponse.getHeaders().getFirst("X-Page-Total"));
+                response.getStringHeaders().getFirst("X-Page-Total"));
         }
         return pageTotal;
     }
@@ -49,7 +50,7 @@ public class ResultImpl<T> implements PaginationResult<T> {
     public int getResultCount() {
         if (resultCount == -1) {
             resultCount = Integer.parseInt(
-                clientResponse.getHeaders().getFirst("X-Result-Count"));
+                response.getStringHeaders().getFirst("X-Result-Count"));
         }
         return resultCount;
     }
@@ -58,7 +59,7 @@ public class ResultImpl<T> implements PaginationResult<T> {
     public int getResultTotal() {
         if (resultTotal == -1) {
             resultTotal = Integer.parseInt(
-                clientResponse.getHeaders().getFirst("X-Result-Total"));
+                response.getStringHeaders().getFirst("X-Result-Total"));
         }
         return resultTotal;
     }

@@ -1,9 +1,9 @@
 package me.nithanim.gw2api.v2.util.rest;
 
-import com.sun.jersey.api.client.WebResource;
-import me.nithanim.gw2api.v2.util.collections.LibraryAvailabilityChecker;
+import javax.ws.rs.client.WebTarget;
 import me.nithanim.gw2api.v2.util.collections.IntObjMap;
 import me.nithanim.gw2api.v2.util.mappings.IntMappable;
+import me.nithanim.gw2api.v2.util.reflect.LibraryAvailabilityChecker;
 import me.nithanim.gw2api.v2.util.reflect.ReflectUtil;
 import me.nithanim.gw2api.v2.util.reflect.SimpleParameterizedType;
 
@@ -19,15 +19,15 @@ import me.nithanim.gw2api.v2.util.reflect.SimpleParameterizedType;
  * querying all possible ids
  */
 public class IdsResourceBase<DATA_CLASS, OVERVIEW_CLASS> {
-    protected final WebResource webResource;
+    protected final WebTarget webTarget;
     private final Class<DATA_CLASS> dataClass;
     private final Class<DATA_CLASS[]> dataClassArray;
     private final Class<OVERVIEW_CLASS> overviewClass;
 
     private final SimpleParameterizedType mapType;
 
-    public IdsResourceBase(WebResource webResource, Class<DATA_CLASS> dataClass, Class<OVERVIEW_CLASS> overviewClass) {
-        this.webResource = webResource;
+    public IdsResourceBase(WebTarget webTarget, Class<DATA_CLASS> dataClass, Class<OVERVIEW_CLASS> overviewClass) {
+        this.webTarget = webTarget;
         this.dataClass = dataClass;
         this.dataClassArray = ReflectUtil.getArrayClass(dataClass);
         this.overviewClass = overviewClass;
@@ -40,40 +40,40 @@ public class IdsResourceBase<DATA_CLASS, OVERVIEW_CLASS> {
     }
 
     public OVERVIEW_CLASS getOverview() {
-        return RequestHelper.INSTANCE.getRequest(webResource, overviewClass);
+        return RequestHelper.INSTANCE.getRequest(webTarget, overviewClass);
     }
 
     public DATA_CLASS get(int id) {
-        return RequestHelper.INSTANCE.getRequest(webResource.path(String.valueOf(id)), dataClass);
+        return RequestHelper.INSTANCE.getRequest(webTarget.path(String.valueOf(id)), dataClass);
     }
 
     public DATA_CLASS get(int id, String language) {
-        return RequestHelper.INSTANCE.getRequest(webResource.path(String.valueOf(id)), dataClass, "lang", language);
+        return RequestHelper.INSTANCE.getRequest(webTarget.path(String.valueOf(id)), dataClass, "lang", language);
     }
 
     public DATA_CLASS[] get(int[] ids) {
-        return RequestHelper.INSTANCE.getRequest(webResource, dataClassArray, "ids", DataUtil.intsToCommaSeparatedString(ids));
+        return RequestHelper.INSTANCE.getRequest(webTarget, dataClassArray, "ids", DataUtil.intsToCommaSeparatedString(ids));
     }
 
     public IntObjMap<DATA_CLASS> getMap(int[] ids) {
         LibraryAvailabilityChecker.requireKoloboke();
-        return RequestHelper.INSTANCE.getRequest(webResource, mapType, "ids", DataUtil.intsToCommaSeparatedString(ids));
+        return RequestHelper.INSTANCE.getRequest(webTarget, mapType, "ids", DataUtil.intsToCommaSeparatedString(ids));
     }
     
     public IntObjMap<DATA_CLASS> getMap(int[] ids, String language) {
         LibraryAvailabilityChecker.requireKoloboke();
-        return RequestHelper.INSTANCE.getRequest(webResource, mapType, "ids", DataUtil.intsToCommaSeparatedString(ids), "lang", language);
+        return RequestHelper.INSTANCE.getRequest(webTarget, mapType, "ids", DataUtil.intsToCommaSeparatedString(ids), "lang", language);
     }
 
     public DATA_CLASS[] get(int[] ids, String language) {
-        return RequestHelper.INSTANCE.getRequest(webResource, dataClassArray, "ids", DataUtil.intsToCommaSeparatedString(ids), "lang", language);
+        return RequestHelper.INSTANCE.getRequest(webTarget, dataClassArray, "ids", DataUtil.intsToCommaSeparatedString(ids), "lang", language);
     }
 
     public DATA_CLASS[] getAll() {
-        return RequestHelper.INSTANCE.getRequest(webResource, dataClassArray, "ids", "all");
+        return RequestHelper.INSTANCE.getRequest(webTarget, dataClassArray, "ids", "all");
     }
 
     public DATA_CLASS[] getAll(String language) {
-        return RequestHelper.INSTANCE.getRequest(webResource, dataClassArray, "ids", "all", "lang", language);
+        return RequestHelper.INSTANCE.getRequest(webTarget, dataClassArray, "ids", "all", "lang", language);
     }
 }

@@ -1,14 +1,14 @@
 package me.nithanim.gw2api.v2.api.pvp.games;
 
-import com.sun.jersey.api.client.WebResource;
+import javax.ws.rs.client.WebTarget;
 import me.nithanim.gw2api.v2.util.rest.DataUtil;
 import me.nithanim.gw2api.v2.util.rest.RequestHelper;
 
 public class GamesResource {
-    private final WebResource webResource;
+    private final WebTarget webResource;
 
-    public GamesResource(WebResource webResource) {
-        this.webResource = webResource.path("games");
+    public GamesResource(WebTarget webTarget) {
+        this.webResource = webTarget.path("games");
     }
 
     public String[] getOverview(String apiKey) {

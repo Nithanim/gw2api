@@ -1,6 +1,6 @@
 package me.nithanim.gw2api.v2.api.pvp;
 
-import com.sun.jersey.api.client.WebResource;
+import javax.ws.rs.client.WebTarget;
 import me.nithanim.gw2api.v2.ApiMidpoint;
 import me.nithanim.gw2api.v2.api.pvp.games.GamesResource;
 import me.nithanim.gw2api.v2.api.pvp.stats.StatsResource;
@@ -9,10 +9,10 @@ public class PvpResource implements ApiMidpoint {
     private final GamesResource gamesResource;
     private final StatsResource statsResource;
 
-    public PvpResource(WebResource webResource) {
-        webResource = webResource.path("pvp");
-        gamesResource = new GamesResource(webResource);
-        statsResource = new StatsResource(webResource);
+    public PvpResource(WebTarget webTarget) {
+        webTarget = webTarget.path("pvp");
+        gamesResource = new GamesResource(webTarget);
+        statsResource = new StatsResource(webTarget);
     }
 
     /**

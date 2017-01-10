@@ -1,10 +1,10 @@
 package me.nithanim.gw2api.v2.api.continents.floors.regions.maps;
 
-import com.sun.jersey.api.client.WebResource;
+import javax.ws.rs.client.WebTarget;
 import me.nithanim.gw2api.v2.util.rest.IdsResourceBase;
 
 public class MapsResourceImpl extends IdsResourceBase<Map, int[]> implements MapsResource {
-    public MapsResourceImpl(WebResource webResource) {
-        super(webResource.path("maps"), Map.class, int[].class);
+    public MapsResourceImpl(WebTarget webTarget) {
+        super(webTarget.path("maps"), Map.class, int[].class);
     }
 }

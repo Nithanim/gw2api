@@ -1,6 +1,6 @@
 package me.nithanim.gw2api.v2.api.commerce.exchange;
 
-import com.sun.jersey.api.client.WebResource;
+import javax.ws.rs.client.WebTarget;
 import me.nithanim.gw2api.v2.ApiEndpoint;
 import me.nithanim.gw2api.v2.util.rest.RequestHelper;
 
@@ -11,13 +11,13 @@ import me.nithanim.gw2api.v2.util.rest.RequestHelper;
  * <a href="https://wiki.guildwars2.com/wiki/API:2/commerce/exchange">https://wiki.guildwars2.com/wiki/API:2/commerce/exchange</a>
  */
 public class ExchangeResource implements ApiEndpoint {
-    private final WebResource coinsWebResource;
-    private final WebResource gemsWebResource;
+    private final WebTarget coinsWebTarget;
+    private final WebTarget gemsWebTarget;
 
-    public ExchangeResource(WebResource commerceWebResource) {
-        WebResource ws = commerceWebResource.path("exchange");
-        coinsWebResource = ws.path("coins");
-        gemsWebResource = ws.path("gems");
+    public ExchangeResource(WebTarget commerceWebTarget) {
+        WebTarget ws = commerceWebTarget.path("exchange");
+        coinsWebTarget = ws.path("coins");
+        gemsWebTarget = ws.path("gems");
     }
 
     /**
@@ -27,7 +27,7 @@ public class ExchangeResource implements ApiEndpoint {
      * @return
      */
     public CoinsPerGem coinsPerGem(int quantity) {
-        return RequestHelper.INSTANCE.getRequest(coinsWebResource, CoinsPerGem.class, "quantity", String.valueOf(quantity));
+        return RequestHelper.INSTANCE.getRequest(coinsWebTarget, CoinsPerGem.class, "quantity", String.valueOf(quantity));
     }
 
     /**
@@ -37,7 +37,7 @@ public class ExchangeResource implements ApiEndpoint {
      * @return
      */
     public CoinsPerGem gemsPerCoin(int quantity) {
-        return RequestHelper.INSTANCE.getRequest(gemsWebResource, CoinsPerGem.class, "quantity", String.valueOf(quantity));
+        return RequestHelper.INSTANCE.getRequest(gemsWebTarget, CoinsPerGem.class, "quantity", String.valueOf(quantity));
     }
 
     @lombok.NoArgsConstructor
