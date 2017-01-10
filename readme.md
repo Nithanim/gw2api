@@ -81,14 +81,14 @@ After that set this library as a dependency. To do this add this to your pom.xml
 	<dependency>
 		<groupId>me.nithanim.gw2api</groupId>
 		<artifactId>gw2api</artifactId>
-		<version>0.0.4</version>
+		<version>0.0.5</version>
 	</dependency>
 </dependencies>
 ```
 or this to your build.gradle if you are using gradle:
 ```groovy
 dependencies {
-	compile 'me.nithanim.gw2api:gw2api:0.0.4'
+	compile 'me.nithanim.gw2api:gw2api:0.0.5'
 }
 ```
 
