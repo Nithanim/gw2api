@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import me.nithanim.gw2api.v2.util.collections.IntObjMap;
-import me.nithanim.gw2api.v2.util.collections.LibraryAvailabilityChecker;
+import me.nithanim.gw2api.v2.util.reflect.LibraryAvailabilityChecker;
 import me.nithanim.gw2api.v2.util.mappings.IntMappable;
 
 public class IntObjMapTypeAdapterFactory implements TypeAdapterFactory {

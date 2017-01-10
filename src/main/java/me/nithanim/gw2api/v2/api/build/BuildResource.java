@@ -1,6 +1,6 @@
 package me.nithanim.gw2api.v2.api.build;
 
-import com.sun.jersey.api.client.WebResource;
+import javax.ws.rs.client.WebTarget;
 import me.nithanim.gw2api.v2.ApiEndpoint;
 import me.nithanim.gw2api.v2.util.rest.RequestHelper;
 
@@ -12,10 +12,10 @@ import me.nithanim.gw2api.v2.util.rest.RequestHelper;
  * <a href="https://wiki.guildwars2.com/wiki/API:2/build">https://wiki.guildwars2.com/wiki/API:2/build</a>
  */
 public class BuildResource implements ApiEndpoint {
-    private final WebResource webResource;
+    private final WebTarget webTarget;
 
-    public BuildResource(WebResource webResource) {
-        this.webResource = webResource.path("build");
+    public BuildResource(WebTarget webResource) {
+        this.webTarget = webResource.path("build");
     }
 
     /**
@@ -25,6 +25,6 @@ public class BuildResource implements ApiEndpoint {
      * @return the current build number
      */
     public Build get() {
-        return RequestHelper.INSTANCE.getRequest(webResource, Build.class);
+        return RequestHelper.INSTANCE.getRequest(webTarget, Build.class);
     }
 }

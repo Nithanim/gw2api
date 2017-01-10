@@ -1,6 +1,6 @@
 package me.nithanim.gw2api.v2.api.account;
 
-import com.sun.jersey.api.client.WebResource;
+import javax.ws.rs.client.WebTarget;
 import me.nithanim.gw2api.v2.ApiEndpoint;
 import me.nithanim.gw2api.v2.ApiMidpoint;
 import me.nithanim.gw2api.v2.common.Item;
@@ -14,24 +14,24 @@ import me.nithanim.gw2api.v2.util.rest.RequestHelper;
  * <a href="https://wiki.guildwars2.com/wiki/API:2/account">https://wiki.guildwars2.com/wiki/API:2/account</a>
  */
 public class AccountResource implements ApiMidpoint, ApiEndpoint {
-    private final WebResource achievementsWebResource;
-    private final WebResource webResource;
-    private final WebResource bankWebResource;
-    private final WebResource dyesWebResource;
-    private final WebResource materialsWebResource;
-    private final WebResource minisWebResource;
-    private final WebResource skinsWebResource;
-    private final WebResource walletWebResource;
+    private final WebTarget webTarget;
+    private final WebTarget achievementsWebTarget;
+    private final WebTarget bankWebTarget;
+    private final WebTarget dyesWebTarget;
+    private final WebTarget materialsWebTarget;
+    private final WebTarget minisWebTarget;
+    private final WebTarget skinsWebTarget;
+    private final WebTarget walletWebTarget;
 
-    public AccountResource(WebResource webResource) {
-        this.webResource = webResource.path("account");
-        this.achievementsWebResource = this.webResource.path("achievements");
-        this.bankWebResource = this.webResource.path("bank");
-        this.dyesWebResource = this.webResource.path("dyes");
-        this.materialsWebResource = this.webResource.path("materials");
-        this.minisWebResource = this.webResource.path("minis");
-        this.skinsWebResource = this.webResource.path("skins");
-        this.walletWebResource = this.webResource.path("wallet");
+    public AccountResource(WebTarget webTarget) {
+        this.webTarget = webTarget.path("account");
+        this.achievementsWebTarget = this.webTarget.path("achievements");
+        this.bankWebTarget = this.webTarget.path("bank");
+        this.dyesWebTarget = this.webTarget.path("dyes");
+        this.materialsWebTarget = this.webTarget.path("materials");
+        this.minisWebTarget = this.webTarget.path("minis");
+        this.skinsWebTarget = this.webTarget.path("skins");
+        this.walletWebTarget = this.webTarget.path("wallet");
     }
 
     /**
@@ -42,7 +42,7 @@ public class AccountResource implements ApiMidpoint, ApiEndpoint {
      * @return
      */
     public AchievementStatus[] achievements(String apiKey) {
-        return RequestHelper.INSTANCE.getRequest(achievementsWebResource, apiKey, AchievementStatus[].class);
+        return RequestHelper.INSTANCE.getRequest(achievementsWebTarget, apiKey, AchievementStatus[].class);
     }
 
     /**
@@ -53,7 +53,7 @@ public class AccountResource implements ApiMidpoint, ApiEndpoint {
      * @return
      */
     public Account get(String apiKey) {
-        return RequestHelper.INSTANCE.getRequest(webResource, apiKey, Account.class);
+        return RequestHelper.INSTANCE.getRequest(webTarget, apiKey, Account.class);
     }
 
     /**
@@ -67,7 +67,7 @@ public class AccountResource implements ApiMidpoint, ApiEndpoint {
      * <a href="https://wiki.guildwars2.com/wiki/API:2/account/bank">https://wiki.guildwars2.com/wiki/API:2/account/bank</a>
      */
     public Item[] bank(String apiKey) {
-        return RequestHelper.INSTANCE.getRequest(bankWebResource, apiKey, Item[].class);
+        return RequestHelper.INSTANCE.getRequest(bankWebTarget, apiKey, Item[].class);
     }
 
     /**
@@ -78,7 +78,7 @@ public class AccountResource implements ApiMidpoint, ApiEndpoint {
      * @return
      */
     public int[] dyes(String apiKey) {
-        return RequestHelper.INSTANCE.getRequest(dyesWebResource, apiKey, int[].class);
+        return RequestHelper.INSTANCE.getRequest(dyesWebTarget, apiKey, int[].class);
     }
 
     /**
@@ -89,7 +89,7 @@ public class AccountResource implements ApiMidpoint, ApiEndpoint {
      * @return
      */
     public Item[] materials(String apiKey) {
-        return RequestHelper.INSTANCE.getRequest(materialsWebResource, apiKey, Item[].class);
+        return RequestHelper.INSTANCE.getRequest(materialsWebTarget, apiKey, Item[].class);
     }
 
     /**
@@ -100,7 +100,7 @@ public class AccountResource implements ApiMidpoint, ApiEndpoint {
      * @return
      */
     public int[] minis(String apiKey) {
-        return RequestHelper.INSTANCE.getRequest(minisWebResource, apiKey, int[].class);
+        return RequestHelper.INSTANCE.getRequest(minisWebTarget, apiKey, int[].class);
     }
 
     /**
@@ -111,7 +111,7 @@ public class AccountResource implements ApiMidpoint, ApiEndpoint {
      * @return
      */
     public int[] skins(String apiKey) {
-        return RequestHelper.INSTANCE.getRequest(skinsWebResource, apiKey, int[].class);
+        return RequestHelper.INSTANCE.getRequest(skinsWebTarget, apiKey, int[].class);
     }
 
     /**
@@ -122,6 +122,6 @@ public class AccountResource implements ApiMidpoint, ApiEndpoint {
      * @return
      */
     public CurrencyBelonging[] wallet(String apiKey) {
-        return RequestHelper.INSTANCE.getRequest(walletWebResource, apiKey, CurrencyBelonging[].class);
+        return RequestHelper.INSTANCE.getRequest(walletWebTarget, apiKey, CurrencyBelonging[].class);
     }
 }

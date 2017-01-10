@@ -1,7 +1,5 @@
 package me.nithanim.gw2api.v2.configs;
 
-import com.sun.jersey.api.client.config.ClientConfig;
-import com.sun.jersey.client.urlconnection.HTTPSProperties;
 import java.io.IOException;
 import java.io.InputStream;
 import java.security.GeneralSecurityException;
@@ -14,6 +12,7 @@ import java.security.cert.X509Certificate;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.TrustManagerFactory;
 import lombok.experimental.UtilityClass;
+import org.glassfish.jersey.client.JerseyClientBuilder;
 
 /**
  * According to
@@ -38,10 +37,10 @@ import lombok.experimental.UtilityClass;
  */
 @UtilityClass
 public class GoDaddyFix {
-    public static void insertFix(ClientConfig jerseyClientConfig) {
+    public static void insertFix(JerseyClientBuilder builder) {
         try {
             SSLContext ctx = getSSlContextWithCert();
-            jerseyClientConfig.getProperties().put(HTTPSProperties.PROPERTY_HTTPS_PROPERTIES, new HTTPSProperties(null, ctx));
+            builder.sslContext(ctx);
         } catch (Exception ex) {
             throw new RuntimeException(ex);
         }

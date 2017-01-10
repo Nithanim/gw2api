@@ -1,18 +1,18 @@
 package me.nithanim.gw2api.v2.configs;
 
-import com.sun.jersey.api.client.config.ClientConfig;
-import com.sun.jersey.api.client.config.DefaultClientConfig;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
+import org.glassfish.jersey.client.ClientConfig;
 
 @NoArgsConstructor
 @Setter
 @Accessors(chain = true, fluent = true)
 public class GuildWars2ApiDefaultConfig implements GuildWars2ApiConfig {
-    private ClientConfig jerseyClientConfig = new DefaultClientConfig();
+    private ClientConfig jerseyClientConfig = new ClientConfig();
     private String baseUrl = "https://api.guildwars2.com/v2/";
-    private boolean goDaddyFix = true;
+    private boolean useGoDaddyFix = true;
+    private boolean useApacheHttpClient = false;
 
     @Override
     public String getBaseUrl() {
@@ -26,6 +26,11 @@ public class GuildWars2ApiDefaultConfig implements GuildWars2ApiConfig {
 
     @Override
     public boolean isGoDaddyFixEnabled() {
-        return goDaddyFix;
+        return useGoDaddyFix;
+    }
+
+    @Override
+    public boolean isApacheHttpClientEnabled() {
+        return useApacheHttpClient;
     }
 }

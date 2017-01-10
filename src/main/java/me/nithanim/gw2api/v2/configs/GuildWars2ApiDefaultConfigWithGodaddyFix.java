@@ -1,7 +1,5 @@
 package me.nithanim.gw2api.v2.configs;
 
-import com.sun.jersey.api.client.config.ClientConfig;
-
 /**
  * This configuartion is a workaround for the fact that ArenaNet switched their
  * certificate autority to godaddy.
@@ -9,14 +7,12 @@ import com.sun.jersey.api.client.config.ClientConfig;
  * {@link GoDaddyFix}
  *
  * @deprecated Use {@link GuildWars2ApiDefaultConfig} instead and set
- * {@link GuildWars2ApiDefaultConfig#goDaddyFix(boolean)} too true
+ * {@link GuildWars2ApiDefaultConfig#useGoDaddyFix(boolean) } to true
  */
 @Deprecated
 public class GuildWars2ApiDefaultConfigWithGodaddyFix extends GuildWars2ApiDefaultConfig {
     @Override
-    public ClientConfig getClientConfig() {
-        ClientConfig cc = super.getClientConfig();
-        GoDaddyFix.insertFix(cc);
-        return cc;
+    public boolean isGoDaddyFixEnabled() {
+        return true;
     }
 }
