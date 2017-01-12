@@ -14,13 +14,14 @@ import me.nithanim.gw2api.v2.exceptions.GuildWars2ApiRequestException;
 
 public class RequestHelperImpl implements RequestHelper {
     private static final MediaType[] DEFAULT_MEDIA_TYPES = new MediaType[] {MediaType.APPLICATION_JSON_TYPE};
+    private static final String HEADER_CACHE_CONTROL = "max-age=0, no-cache";
 
     @Override
     public <T> T getRequest(WebTarget wr, Type type) {
         try {
             String json = wr
                 .request(DEFAULT_MEDIA_TYPES)
-                .header("Cache-Control", "max-age=0")
+                .header("Cache-Control", HEADER_CACHE_CONTROL)
                 .get(String.class);
             return jsonToObject(json, type);
         } catch (ProcessingException | WebApplicationException ex) {
@@ -33,7 +34,7 @@ public class RequestHelperImpl implements RequestHelper {
         try {
             String json = wr
                 .request(DEFAULT_MEDIA_TYPES)
-                .header("Cache-Control", "max-age=0")
+                .header("Cache-Control", HEADER_CACHE_CONTROL)
                 .header("Authorization", "Bearer " + apiKey)
                 .get(String.class);
             return jsonToObject(json, clazz);
@@ -47,7 +48,7 @@ public class RequestHelperImpl implements RequestHelper {
         try {
             Response response = wr
                 .request(DEFAULT_MEDIA_TYPES)
-                .header("Cache-Control", "max-age=0")
+                .header("Cache-Control", HEADER_CACHE_CONTROL)
                 .header("Authorization", "Bearer " + apiKey)
                 .get();
             return new ResultImpl<>(response, clazz);
@@ -62,7 +63,7 @@ public class RequestHelperImpl implements RequestHelper {
             String json = wr
                 .queryParam(arg0Name, arg0Value)
                 .request(DEFAULT_MEDIA_TYPES)
-                .header("Cache-Control", "max-age=0")
+                .header("Cache-Control", HEADER_CACHE_CONTROL)
                 .get(String.class);
             return jsonToObject(json, type);
         } catch (ProcessingException | WebApplicationException ex) {
@@ -76,7 +77,7 @@ public class RequestHelperImpl implements RequestHelper {
             String json = wr
                 .queryParam(arg0Name, arg0Value)
                 .request(DEFAULT_MEDIA_TYPES)
-                .header("Cache-Control", "max-age=0")
+                .header("Cache-Control", HEADER_CACHE_CONTROL)
                 .header("Authorization", "Bearer " + apiKey)
                 .get(String.class);
             return jsonToObject(json, clazz);
@@ -91,7 +92,7 @@ public class RequestHelperImpl implements RequestHelper {
             Response response = wr
                 .queryParam(arg0Name, arg0Value)
                 .request(DEFAULT_MEDIA_TYPES)
-                .header("Cache-Control", "max-age=0")
+                .header("Cache-Control", HEADER_CACHE_CONTROL)
                 .header("Authorization", "Bearer " + apiKey)
                 .get();
             return new ResultImpl<>(response, clazz);
@@ -107,7 +108,7 @@ public class RequestHelperImpl implements RequestHelper {
                 .queryParam(arg0Name, arg0Value)
                 .queryParam(arg1Name, arg1Value)
                 .request(DEFAULT_MEDIA_TYPES)
-                .header("Cache-Control", "max-age=0")
+                .header("Cache-Control",HEADER_CACHE_CONTROL)
                 .get(String.class);
             return jsonToObject(json, type);
         } catch (ProcessingException | WebApplicationException ex) {
@@ -122,6 +123,7 @@ public class RequestHelperImpl implements RequestHelper {
                 .queryParam(arg0Name, arg0Value)
                 .queryParam(arg1Name, arg1Value)
                 .request(DEFAULT_MEDIA_TYPES)
+                .header("Cache-Control", HEADER_CACHE_CONTROL)
                 .header("Authorization", "Bearer " + apiKey)
                 .get();
             return new ResultImpl<>(response, clazz);
