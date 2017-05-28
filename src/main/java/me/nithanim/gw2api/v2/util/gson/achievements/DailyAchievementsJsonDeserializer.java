@@ -16,7 +16,8 @@ public class DailyAchievementsJsonDeserializer implements JsonDeserializer<Daily
         JsonObject level = e.get("level").getAsJsonObject();
         int levelMin = level.get("min").getAsInt();
         int levelMax = level.get("max").getAsInt();
+        String[] requiredAccess = context.deserialize(level.get("required_access"), String[].class);
 
-        return new DailyAchievement(id, levelMin, levelMax);
+        return new DailyAchievement(id, levelMin, levelMax, requiredAccess);
     }
 }

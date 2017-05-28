@@ -9,6 +9,7 @@ public class DailyAchievement {
     private int id = -1;
     private int levelMin = -1;
     private int levelMax = -1;
+    private String[] requiredAccess;
 
     public static enum Type {
         PVE, PVP, WVW, FRACTALS, SPECIAL;
