@@ -16,7 +16,6 @@ public class RequestHelperImpl implements RequestHelper {
     private static final MultivaluedHashMap<String, Object> DEFAULT_HEADERS = new MultivaluedHashMap<>();
     static {
         DEFAULT_HEADERS.add("Accept", "application/json");
-        DEFAULT_HEADERS.add("Cache-Control", "max-age=0, no-cache");
     }
 
     @Override
