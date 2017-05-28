@@ -11,6 +11,6 @@ public class DailyAchievement {
     private int levelMax = -1;
 
     public static enum Type {
-        PVE, PVP, WVW;
+        PVE, PVP, WVW, FRACTALS, SPECIAL;
     }
 }
