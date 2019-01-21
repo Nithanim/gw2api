@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>me.nithanim.gw2api</groupId>
     <artifactId>gw2api</artifactId>
-    <version>0.0.7-SNAPSHOT</version>
+    <version>0.0.7</version>
     <packaging>jar</packaging>
     <name>gw2api</name>
     <description>A java wrapper for the official Guild Wars 2 api.</description>
