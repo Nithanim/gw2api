@@ -7,5 +7,5 @@ import me.nithanim.gw2api.v2.api.traits.FactBase;
 @lombok.EqualsAndHashCode(callSuper = true)
 @lombok.ToString
 public class RechargeFact extends FactBase {
-    private int value = -1;
+  private int value = -1;
 }

@@ -9,20 +9,20 @@ import me.nithanim.gw2api.v2.util.mappings.IntMappable;
 @lombok.EqualsAndHashCode
 @lombok.ToString
 public class Map implements IntMappable {
-    private int id = -1;
-    private String name;
-    private int minLevel = -1;
-    private int maxLevel = -1;
-    private int defaultFloor = -1;
-    private int[][] mapRect;
-    private int[][] continentRect;
-    private IntObjMap<PointOfInterest> pointsOfInterest;
-    private IntObjMap<Task> tasks;
-    private SkillChallenge[] skillChallenges;
-    private IntObjMap<Sector> sectors;
+  private int id = -1;
+  private String name;
+  private int minLevel = -1;
+  private int maxLevel = -1;
+  private int defaultFloor = -1;
+  private int[][] mapRect;
+  private int[][] continentRect;
+  private IntObjMap<PointOfInterest> pointsOfInterest;
+  private IntObjMap<Task> tasks;
+  private SkillChallenge[] skillChallenges;
+  private IntObjMap<Sector> sectors;
 
-    @Override
-    public int getMappableId() {
-        return getId();
-    }
+  @Override
+  public int getMappableId() {
+    return getId();
+  }
 }

@@ -7,5 +7,5 @@ import me.nithanim.gw2api.v2.api.traits.FactBase;
 @lombok.EqualsAndHashCode(callSuper = true)
 @lombok.ToString
 public class UnblockableFact extends FactBase {
-    private boolean unblockable;
+  private boolean unblockable;
 }

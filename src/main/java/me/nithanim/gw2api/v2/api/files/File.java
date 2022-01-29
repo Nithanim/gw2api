@@ -6,24 +6,24 @@ package me.nithanim.gw2api.v2.api.files;
 @lombok.EqualsAndHashCode
 @lombok.ToString
 public class File {
-    private String id;
-    private String icon;
+  private String id;
+  private String icon;
 
-    /**
-     * The file identifier.
-     *
-     * @return
-     */
-    public String getId() {
-        return id;
-    }
+  /**
+   * The file identifier.
+   *
+   * @return
+   */
+  public String getId() {
+    return id;
+  }
 
-    /**
-     * The URL to the image.
-     *
-     * @return
-     */
-    public String getIcon() {
-        return icon;
-    }
+  /**
+   * The URL to the image.
+   *
+   * @return
+   */
+  public String getIcon() {
+    return icon;
+  }
 }

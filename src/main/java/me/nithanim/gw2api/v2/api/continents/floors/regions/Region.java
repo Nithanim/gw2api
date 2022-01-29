@@ -10,13 +10,13 @@ import me.nithanim.gw2api.v2.util.mappings.IntMappable;
 @lombok.EqualsAndHashCode
 @lombok.ToString
 public class Region implements IntMappable {
-    private int id = -1;
-    private String name;
-    private int[] labelCoord;
-    private IntObjMap<Map> maps;
+  private int id = -1;
+  private String name;
+  private int[] labelCoord;
+  private IntObjMap<Map> maps;
 
-    @Override
-    public int getMappableId() {
-        return getId();
-    }
+  @Override
+  public int getMappableId() {
+    return getId();
+  }
 }

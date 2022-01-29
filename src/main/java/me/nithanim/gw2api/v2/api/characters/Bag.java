@@ -8,7 +8,7 @@ import me.nithanim.gw2api.v2.common.Item;
 @lombok.EqualsAndHashCode
 @lombok.ToString
 public class Bag {
-    private int id;
-    private int size;
-    private Item[] inventory;
+  private int id;
+  private int size;
+  private Item[] inventory;
 }

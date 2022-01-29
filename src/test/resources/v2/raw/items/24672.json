@@ -1,1 +1,55 @@
-{"name":"Superior Sigil of Mad Scientists","description":"Double-click to apply to a weapon.","type":"UpgradeComponent","level":60,"rarity":"Exotic","vendor_value":216,"game_types":["Activity","Wvw","Dungeon","Pve"],"flags":["HideSuffix"],"restrictions":[],"id":24672,"chat_link":"[&AgFgYAAA]","icon":"https://render.guildwars2.com/file/BA4C0C33CFB4DC5707DC0E9C01190A1644085908/340608.png","details":{"type":"Sigil","flags":["ShortBow","Dagger","Focus","Greatsword","Hammer","Harpoon","Mace","Pistol","Rifle","Scepter","Shield","Speargun","Axe","Staff","Sword","Torch","Trident","Warhorn","LongBow"],"infusion_upgrade_flags":[],"infix_upgrade":{"id":318,"buff":{"skill_id":9359,"description":"+10% Damage vs. Inquest"},"attributes":[]},"suffix":"of Mad Scientists"}}
+{
+  "name": "Superior Sigil of Mad Scientists",
+  "description": "Double-click to apply to a weapon.",
+  "type": "UpgradeComponent",
+  "level": 60,
+  "rarity": "Exotic",
+  "vendor_value": 216,
+  "game_types": [
+    "Activity",
+    "Wvw",
+    "Dungeon",
+    "Pve"
+  ],
+  "flags": [
+    "HideSuffix"
+  ],
+  "restrictions": [],
+  "id": 24672,
+  "chat_link": "[&AgFgYAAA]",
+  "icon": "https://render.guildwars2.com/file/BA4C0C33CFB4DC5707DC0E9C01190A1644085908/340608.png",
+  "details": {
+    "type": "Sigil",
+    "flags": [
+      "ShortBow",
+      "Dagger",
+      "Focus",
+      "Greatsword",
+      "Hammer",
+      "Harpoon",
+      "Mace",
+      "Pistol",
+      "Rifle",
+      "Scepter",
+      "Shield",
+      "Speargun",
+      "Axe",
+      "Staff",
+      "Sword",
+      "Torch",
+      "Trident",
+      "Warhorn",
+      "LongBow"
+    ],
+    "infusion_upgrade_flags": [],
+    "infix_upgrade": {
+      "id": 318,
+      "buff": {
+        "skill_id": 9359,
+        "description": "+10% Damage vs. Inquest"
+      },
+      "attributes": []
+    },
+    "suffix": "of Mad Scientists"
+  }
+}

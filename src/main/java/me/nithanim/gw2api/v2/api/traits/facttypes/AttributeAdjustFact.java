@@ -7,6 +7,6 @@ import me.nithanim.gw2api.v2.api.traits.FactBase;
 @lombok.EqualsAndHashCode(callSuper = true)
 @lombok.ToString
 public class AttributeAdjustFact extends FactBase {
-    private int value = -1;
-    private String target;
+  private int value = -1;
+  private String target;
 }

@@ -8,9 +8,11 @@ import me.nithanim.gw2api.v2.api.items.Details;
 @lombok.EqualsAndHashCode
 @lombok.ToString
 public class GatheringToolsDetails implements Details {
-    private GatheringToolsType type;
+  private GatheringToolsType type;
 
-    public static enum GatheringToolsType {
-        FORAGING, LOGGING, MINING;
-    }
+  public static enum GatheringToolsType {
+    FORAGING,
+    LOGGING,
+    MINING;
+  }
 }

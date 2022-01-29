@@ -8,7 +8,7 @@ import me.nithanim.gw2api.v2.common.WeightClass;
 @lombok.EqualsAndHashCode
 @lombok.ToString
 public class SkinDetails {
-    private String type;
-    private WeightClass weightClass;
-    private String damageType;
+  private String type;
+  private WeightClass weightClass;
+  private String damageType;
 }

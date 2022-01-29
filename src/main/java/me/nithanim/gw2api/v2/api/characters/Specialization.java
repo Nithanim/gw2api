@@ -8,7 +8,8 @@ import me.nithanim.gw2api.v2.util.gson.characters.TraitDeserializer;
 @lombok.EqualsAndHashCode
 @lombok.ToString
 public class Specialization {
-    private int id;
-    @com.google.gson.annotations.JsonAdapter(TraitDeserializer.class)
-    private int[] traits;
+  private int id;
+
+  @com.google.gson.annotations.JsonAdapter(TraitDeserializer.class)
+  private int[] traits;
 }

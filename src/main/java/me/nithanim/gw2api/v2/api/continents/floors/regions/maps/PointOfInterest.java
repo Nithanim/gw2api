@@ -8,13 +8,13 @@ import me.nithanim.gw2api.v2.util.mappings.IntMappable;
 @lombok.EqualsAndHashCode
 @lombok.ToString
 public class PointOfInterest implements IntMappable {
-    private int id;
-    private String name;
-    private String type;
-    private float[] coord;
+  private int id;
+  private String name;
+  private String type;
+  private float[] coord;
 
-    @Override
-    public int getMappableId() {
-        return getId();
-    }
+  @Override
+  public int getMappableId() {
+    return getId();
+  }
 }

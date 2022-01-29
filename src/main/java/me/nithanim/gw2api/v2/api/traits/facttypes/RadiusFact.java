@@ -7,5 +7,5 @@ import me.nithanim.gw2api.v2.api.traits.FactBase;
 @lombok.EqualsAndHashCode(callSuper = true)
 @lombok.ToString
 public class RadiusFact extends FactBase {
-    private int radius = -1;
+  private int radius = -1;
 }

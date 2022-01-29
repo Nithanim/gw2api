@@ -1,1 +1,38 @@
-{"name":"Homespun Espadrilles","type":"Armor","level":10,"rarity":"Masterwork","vendor_value":38,"default_skin":874,"game_types":["Wvw","Dungeon","Pve"],"flags":["HideSuffix","AccountBound","SoulBindOnUse"],"restrictions":[],"id":54600,"chat_link":"[&AgFI1QAA]","icon":"https://render.guildwars2.com/file/BE0AB22E500933489AFCBF2CBBF80641BF0B2916/61244.png","details":{"type":"Boots","weight_class":"Light","defense":21,"infusion_slots":[],"secondary_suffix_item_id":"","stat_choices":[144,145,152,142,146,149,755]}}
+{
+  "name": "Homespun Espadrilles",
+  "type": "Armor",
+  "level": 10,
+  "rarity": "Masterwork",
+  "vendor_value": 38,
+  "default_skin": 874,
+  "game_types": [
+    "Wvw",
+    "Dungeon",
+    "Pve"
+  ],
+  "flags": [
+    "HideSuffix",
+    "AccountBound",
+    "SoulBindOnUse"
+  ],
+  "restrictions": [],
+  "id": 54600,
+  "chat_link": "[&AgFI1QAA]",
+  "icon": "https://render.guildwars2.com/file/BE0AB22E500933489AFCBF2CBBF80641BF0B2916/61244.png",
+  "details": {
+    "type": "Boots",
+    "weight_class": "Light",
+    "defense": 21,
+    "infusion_slots": [],
+    "secondary_suffix_item_id": "",
+    "stat_choices": [
+      144,
+      145,
+      152,
+      142,
+      146,
+      149,
+      755
+    ]
+  }
+}

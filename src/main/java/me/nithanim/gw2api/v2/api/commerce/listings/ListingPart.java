@@ -6,7 +6,7 @@ package me.nithanim.gw2api.v2.api.commerce.listings;
 @lombok.EqualsAndHashCode
 @lombok.ToString
 public class ListingPart {
-    private int listings;
-    private int unitPrice;
-    private int quantity;
+  private int listings;
+  private int unitPrice;
+  private int quantity;
 }

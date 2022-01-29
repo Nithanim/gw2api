@@ -6,9 +6,18 @@ import me.nithanim.gw2api.v2.api.traits.FactBase;
 @lombok.Getter
 @lombok.ToString
 public class ComboFieldFact extends FactBase {
-    private FieldType fieldType;
+  private FieldType fieldType;
 
-    public static enum FieldType {
-        AIR, DARK, FIRE, ICE, LIGHT, LIGHTNING, POISON, SMOKE, ETHEREAL, WATER;
-    }
+  public static enum FieldType {
+    AIR,
+    DARK,
+    FIRE,
+    ICE,
+    LIGHT,
+    LIGHTNING,
+    POISON,
+    SMOKE,
+    ETHEREAL,
+    WATER;
+  }
 }

@@ -8,9 +8,11 @@ import me.nithanim.gw2api.v2.api.items.Details;
 @lombok.EqualsAndHashCode
 @lombok.ToString
 public class ContainerDetails implements Details {
-    private ContainerType type;
+  private ContainerType type;
 
-    public static enum ContainerType {
-        DEFAULT, GIFT_BOX, OPEN_UI;
-    }
+  public static enum ContainerType {
+    DEFAULT,
+    GIFT_BOX,
+    OPEN_UI;
+  }
 }

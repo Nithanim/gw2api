@@ -8,13 +8,13 @@ import me.nithanim.gw2api.v2.util.mappings.IntMappable;
 @lombok.EqualsAndHashCode
 @lombok.ToString
 public class Task implements IntMappable {
-    private int id = -1;
-    private int level = -1;
-    private String objective;
-    private float[] coord;
+  private int id = -1;
+  private int level = -1;
+  private String objective;
+  private float[] coord;
 
-    @Override
-    public int getMappableId() {
-        return getId();
-    }
+  @Override
+  public int getMappableId() {
+    return getId();
+  }
 }

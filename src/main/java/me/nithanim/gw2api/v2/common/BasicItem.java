@@ -8,7 +8,8 @@ import com.google.gson.annotations.SerializedName;
 @lombok.EqualsAndHashCode
 @lombok.ToString
 public class BasicItem {
-    @SerializedName(value = "id", alternate = "item_id")
-    private int id = -1;
-    private int count = 1;
+  @SerializedName(value = "id", alternate = "item_id")
+  private int id = -1;
+
+  private int count = 1;
 }

@@ -8,6 +8,6 @@ import me.nithanim.gw2api.v2.common.InfusionType;
 @lombok.EqualsAndHashCode
 @lombok.ToString
 public class InfusionSlot {
-    private InfusionType[] flags;
-    private int itemId = -1;
+  private InfusionType[] flags;
+  private int itemId = -1;
 }

@@ -1,1 +1,26 @@
-{"name":"Woundwolf","description":"A mysteriously light and well-balanced weapon that seems malleable to your wishes. Double-click to choose what form it should take.","type":"Container","level":0,"rarity":"Exotic","vendor_value":0,"game_types":["Activity","Wvw","Dungeon","Pve"],"flags":["AccountBound","NoSell","AccountBindOnUse"],"restrictions":[],"id":54645,"chat_link":"[&AgF11QAA]","icon":"https://render.guildwars2.com/file/C7DFB75197D3DF2D94D4275A7832293B2A5EDF63/575160.png","details":{"type":"Default"}}
+{
+  "name": "Woundwolf",
+  "description": "A mysteriously light and well-balanced weapon that seems malleable to your wishes. Double-click to choose what form it should take.",
+  "type": "Container",
+  "level": 0,
+  "rarity": "Exotic",
+  "vendor_value": 0,
+  "game_types": [
+    "Activity",
+    "Wvw",
+    "Dungeon",
+    "Pve"
+  ],
+  "flags": [
+    "AccountBound",
+    "NoSell",
+    "AccountBindOnUse"
+  ],
+  "restrictions": [],
+  "id": 54645,
+  "chat_link": "[&AgF11QAA]",
+  "icon": "https://render.guildwars2.com/file/C7DFB75197D3DF2D94D4275A7832293B2A5EDF63/575160.png",
+  "details": {
+    "type": "Default"
+  }
+}

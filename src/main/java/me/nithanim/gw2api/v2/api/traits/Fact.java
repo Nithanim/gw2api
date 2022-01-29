@@ -1,9 +1,9 @@
 package me.nithanim.gw2api.v2.api.traits;
 
 public interface Fact {
-    String getText();
+  String getText();
 
-    String getIcon();
+  String getIcon();
 
-    FactType getType();
+  FactType getType();
 }

@@ -8,6 +8,6 @@ import me.nithanim.gw2api.v2.api.items.Details;
 @lombok.EqualsAndHashCode
 @lombok.ToString
 public class BagDetails implements Details {
-    private int size = -1;
-    private boolean noSellOrSort;
+  private int size = -1;
+  private boolean noSellOrSort;
 }

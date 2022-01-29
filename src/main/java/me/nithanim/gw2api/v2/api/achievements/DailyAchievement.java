@@ -6,12 +6,16 @@ package me.nithanim.gw2api.v2.api.achievements;
 @lombok.EqualsAndHashCode
 @lombok.ToString
 public class DailyAchievement {
-    private int id = -1;
-    private int levelMin = -1;
-    private int levelMax = -1;
-    private String[] requiredAccess;
+  private int id = -1;
+  private int levelMin = -1;
+  private int levelMax = -1;
+  private String[] requiredAccess;
 
-    public static enum Type {
-        PVE, PVP, WVW, FRACTALS, SPECIAL;
-    }
+  public static enum Type {
+    PVE,
+    PVP,
+    WVW,
+    FRACTALS,
+    SPECIAL;
+  }
 }

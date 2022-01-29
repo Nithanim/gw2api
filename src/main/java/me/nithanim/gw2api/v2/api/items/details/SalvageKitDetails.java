@@ -8,10 +8,10 @@ import me.nithanim.gw2api.v2.api.items.Details;
 @lombok.EqualsAndHashCode
 @lombok.ToString
 public class SalvageKitDetails implements Details {
-    private SalvageKitType type;
-    private int charges = -1;
+  private SalvageKitType type;
+  private int charges = -1;
 
-    public static enum SalvageKitType {
-        SALVAGE;
-    }
+  public static enum SalvageKitType {
+    SALVAGE;
+  }
 }

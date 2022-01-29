@@ -6,5 +6,5 @@ package me.nithanim.gw2api.v2.api.build;
 @lombok.EqualsAndHashCode
 @lombok.ToString
 public class Build {
-    private int id = -1;
+  private int id = -1;
 }

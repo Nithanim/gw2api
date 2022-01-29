@@ -5,13 +5,14 @@ package me.nithanim.gw2api.v2.common;
 @lombok.EqualsAndHashCode(callSuper = true)
 @lombok.ToString
 public class Item extends BasicItem {
-    private int skin = -1;
-    private int[] upgrades;
-    private int[] infusions;
-    private Binding binding;
-    private String boundTo;
+  private int skin = -1;
+  private int[] upgrades;
+  private int[] infusions;
+  private Binding binding;
+  private String boundTo;
 
-    public enum Binding {
-        ACCOUNT, CHARACTER;
-    }
+  public enum Binding {
+    ACCOUNT,
+    CHARACTER;
+  }
 }

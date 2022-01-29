@@ -10,12 +10,12 @@ import me.nithanim.gw2api.v2.util.mappings.IntMappable;
 @lombok.EqualsAndHashCode
 @lombok.ToString
 public class Floor implements IntMappable {
-    private int id = -1;
-    private int[] textureDims;
-    private IntObjMap<Region> regions;
+  private int id = -1;
+  private int[] textureDims;
+  private IntObjMap<Region> regions;
 
-    @Override
-    public int getMappableId() {
-        return getId();
-    }
+  @Override
+  public int getMappableId() {
+    return getId();
+  }
 }

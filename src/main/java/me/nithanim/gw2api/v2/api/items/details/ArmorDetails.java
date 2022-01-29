@@ -9,16 +9,22 @@ import me.nithanim.gw2api.v2.common.WeightClass;
 @lombok.EqualsAndHashCode
 @lombok.ToString
 public class ArmorDetails implements Details {
-    private ArmorSlotType type;
-    private WeightClass weightClass;
-    private int defense;
-    private InfusionSlot[] infusionSlots;
-    private InfixUpgrade infixUpgrade;
-    private int suffixItemId = -1;
-    private String secondarySuffixItemId;
-    private int[] statChoices;
+  private ArmorSlotType type;
+  private WeightClass weightClass;
+  private int defense;
+  private InfusionSlot[] infusionSlots;
+  private InfixUpgrade infixUpgrade;
+  private int suffixItemId = -1;
+  private String secondarySuffixItemId;
+  private int[] statChoices;
 
-    public static enum ArmorSlotType {
-        BOOTS, COAT, GLOVES, HELM, HELM_AQUATIC, LEGGINGS, SHOULDERS;
-    }
+  public static enum ArmorSlotType {
+    BOOTS,
+    COAT,
+    GLOVES,
+    HELM,
+    HELM_AQUATIC,
+    LEGGINGS,
+    SHOULDERS;
+  }
 }

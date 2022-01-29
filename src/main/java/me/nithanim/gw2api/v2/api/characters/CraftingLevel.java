@@ -6,7 +6,7 @@ package me.nithanim.gw2api.v2.api.characters;
 @lombok.EqualsAndHashCode
 @lombok.ToString
 public class CraftingLevel {
-    private CraftingDiscipline discipline;
-    private int rating;
-    private boolean active;
+  private CraftingDiscipline discipline;
+  private int rating;
+  private boolean active;
 }

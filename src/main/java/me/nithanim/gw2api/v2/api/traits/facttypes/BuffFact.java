@@ -7,8 +7,8 @@ import me.nithanim.gw2api.v2.api.traits.FactBase;
 @lombok.EqualsAndHashCode(callSuper = true)
 @lombok.ToString
 public class BuffFact extends FactBase {
-    private int duration;
-    private String status;
-    private String description;
-    private int applyCount;
+  private int duration;
+  private String status;
+  private String description;
+  private int applyCount;
 }

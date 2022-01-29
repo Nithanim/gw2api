@@ -7,5 +7,5 @@ import me.nithanim.gw2api.v2.api.traits.FactBase;
 @lombok.EqualsAndHashCode(callSuper = true)
 @lombok.ToString
 public class TimeFact extends FactBase {
-    private int duration = -1;
+  private int duration = -1;
 }
