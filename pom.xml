@@ -14,6 +14,13 @@
             <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
         </license>
     </licenses>
+    <developers>
+        <developer>
+            <id>Nithanim</id>
+            <name>Nithanim</name>
+            <email>git@nithanim.me</email>
+        </developer>
+    </developers>
     <scm>
         <connection>scm:git:git://github.com/Nithanim/gw2api.git</connection>
         <developerConnection>scm:git:git@github.com:Nithanim/gw2api.git</developerConnection>
