@@ -16,4 +16,8 @@ public interface TraitsResource extends ApiEndpoint {
   Trait get(int id, String language);
 
   Trait[] get(int[] ids, String language);
+
+  Trait[] getAll();
+
+  Trait[] getAll(String language);
 }
