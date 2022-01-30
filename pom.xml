@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>me.nithanim.gw2api</groupId>
     <artifactId>gw2api</artifactId>
-    <version>0.0.8-SNAPSHOT</version>
+    <version>0.0.8</version>
     <packaging>jar</packaging>
     <name>gw2api</name>
     <description>A java wrapper for the official Guild Wars 2 api.</description>
@@ -25,7 +25,7 @@
         <connection>scm:git:git://github.com/Nithanim/gw2api.git</connection>
         <developerConnection>scm:git:git@github.com:Nithanim/gw2api.git</developerConnection>
         <url>https://github.com/Nithanim/gw2api</url>
-        <tag>HEAD</tag>
+        <tag>gw2api-0.0.8</tag>
     </scm>
     <build>
         <plugins>
