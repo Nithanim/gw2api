@@ -17,6 +17,11 @@ public class FactJsonDeserializer implements JsonDeserializer<Fact> {
       throws JsonParseException {
     JsonObject parent = (JsonObject) json;
     FactType type = context.deserialize(parent.get("type"), FactType.class);
-    return context.deserialize(json, type.getTypeClass());
+    if (type != null) {
+      return context.deserialize(json, type.getTypeClass());
+    } else {
+      // E.g. https://api.guildwars2.com/v2/traits/2123 "Life Force Cost"
+      return null;
+    }
   }
 }
