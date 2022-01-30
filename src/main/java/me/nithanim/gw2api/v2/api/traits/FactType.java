@@ -14,6 +14,7 @@ import me.nithanim.gw2api.v2.api.traits.facttypes.PrefixedBuffFact;
 import me.nithanim.gw2api.v2.api.traits.facttypes.RadiusFact;
 import me.nithanim.gw2api.v2.api.traits.facttypes.RangeFact;
 import me.nithanim.gw2api.v2.api.traits.facttypes.RechargeFact;
+import me.nithanim.gw2api.v2.api.traits.facttypes.StunBreak;
 import me.nithanim.gw2api.v2.api.traits.facttypes.TimeFact;
 import me.nithanim.gw2api.v2.api.traits.facttypes.UnblockableFact;
 
@@ -32,6 +33,7 @@ public enum FactType {
   RADIUS(RadiusFact.class),
   RANGE(RangeFact.class),
   RECHARGE(RechargeFact.class),
+  STUN_BREAK(StunBreak.class),
   TIME(TimeFact.class),
   UNBLOCKABLE(UnblockableFact.class);
 
