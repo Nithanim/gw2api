@@ -1,13 +1,19 @@
 package me.nithanim.gw2api.v2.api.maps;
 
+import java.util.List;
+
 public interface MapsResource {
   int[] getOverview();
 
-  Map get(int id);
+  WorldMap get(int id);
 
-  Map get(int id, String language);
+  WorldMap get(int id, String lang);
 
-  Map[] get(int[] id);
+  List<WorldMap> get(int[] id);
 
-  Map[] get(int[] id, String language);
+  List<WorldMap> get(int[] id, String lang);
+
+  List<WorldMap> getAll();
+
+  List<WorldMap> getAll(String lang);
 }

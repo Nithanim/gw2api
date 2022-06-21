@@ -1,26 +1,43 @@
 package me.nithanim.gw2api.v2.api.items;
 
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.databind.annotation.JsonTypeIdResolver;
+
+import lombok.Builder;
+import lombok.EqualsAndHashCode;
+import lombok.Value;
+import lombok.experimental.SuperBuilder;
+import lombok.extern.jackson.Jacksonized;
 import me.nithanim.gw2api.v2.common.BasicItem;
 import me.nithanim.gw2api.v2.util.mappings.IntMappable;
 
-@lombok.NoArgsConstructor
-@lombok.Getter
-@lombok.EqualsAndHashCode(callSuper = true)
-@lombok.ToString
+@Value
+@SuperBuilder
+@Jacksonized
+@EqualsAndHashCode(callSuper = true)
 public class ItemInfo extends BasicItem implements IntMappable {
-  private String name;
-  private String icon;
-  private String description;
-  private String chatLink;
-  private ItemType type;
-  private ItemRarity rarity;
-  private int level = -1;
-  private int vendorValue = -1;
-  private int defaultSkin = -1;
-  private String[] flags;
-  private GameType[] gameTypes;
-  private String[] restrictions;
-  private Details details;
+  String name;
+  String icon;
+  String description;
+  String chatLink;
+  ItemType type;
+  ItemRarity rarity;
+  @Builder.Default int level = -1;
+  @Builder.Default int vendorValue = -1;
+  @Builder.Default int defaultSkin = -1;
+  Set<String> flags;
+  Set<GameType> gameTypes;
+  String[] restrictions;
+
+  @JsonTypeInfo(
+      use = JsonTypeInfo.Id.CUSTOM,
+      include = JsonTypeInfo.As.EXTERNAL_PROPERTY,
+      property = "type",
+      visible = true)
+  @JsonTypeIdResolver(ItemTypeResolver.class)
+  Details details;
 
   @Override
   public int getMappableId() {
@@ -32,7 +49,7 @@ public class ItemInfo extends BasicItem implements IntMappable {
    * resulting {@link Details} of this method has to be casted manually to the specialized subclass.
    *
    * <p>All the available subclasses can be found in the subpackage "details". The names of the
-   * classes start with the type and ends with "Details". As an example, {@link ItemType.ARMOR}
+   * classes start with the type and ends with "Details". As an example, {@link ItemType#ARMOR}
    * relates to {@link me.nithanim.gw2api.v2.api.items.details.ArmorDetails}. You might want to use
    * your IDE to list all possible subclasses of {@link Details}.
    *
@@ -44,11 +61,8 @@ public class ItemInfo extends BasicItem implements IntMappable {
    *     ItemType}. Needs to be casted manually to the specific subclass according to the {@link
    *     ItemType}.
    */
+  @SuppressWarnings("unchecked")
   public <T extends Details> T getDetails() {
     return (T) details;
-  }
-
-  void setDetails(Details details) {
-    this.details = details;
   }
 }

@@ -1,24 +1,25 @@
 package me.nithanim.gw2api.v2.api.items.details;
 
+import lombok.Builder;
+import lombok.Value;
+import lombok.extern.jackson.Jacksonized;
 import me.nithanim.gw2api.v2.api.items.Details;
 import me.nithanim.gw2api.v2.common.WeightClass;
 
-@lombok.NoArgsConstructor
-@lombok.AllArgsConstructor
-@lombok.Getter
-@lombok.EqualsAndHashCode
-@lombok.ToString
+@Value
+@Builder
+@Jacksonized
 public class ArmorDetails implements Details {
-  private ArmorSlotType type;
-  private WeightClass weightClass;
-  private int defense;
-  private InfusionSlot[] infusionSlots;
-  private InfixUpgrade infixUpgrade;
-  private int suffixItemId = -1;
-  private String secondarySuffixItemId;
-  private int[] statChoices;
+  ArmorSlotType type;
+  WeightClass weightClass;
+  int defense;
+  InfusionSlot[] infusionSlots;
+  InfixUpgrade infixUpgrade;
+  int suffixItemId = -1;
+  String secondarySuffixItemId;
+  int[] statChoices;
 
-  public static enum ArmorSlotType {
+  public enum ArmorSlotType {
     BOOTS,
     COAT,
     GLOVES,

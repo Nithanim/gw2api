@@ -1,24 +1,27 @@
 package me.nithanim.gw2api.v2.api.items.details;
 
+import java.util.List;
+
+import lombok.Builder;
+import lombok.Value;
+import lombok.extern.jackson.Jacksonized;
 import me.nithanim.gw2api.v2.api.items.Details;
 
-@lombok.NoArgsConstructor
-@lombok.AllArgsConstructor
-@lombok.Getter
-@lombok.EqualsAndHashCode
-@lombok.ToString
+@Value
+@Builder
+@Jacksonized
 public class WeaponDetails implements Details {
-  private WeaponType type;
-  private DamageType damageType;
-  private int minPower = -1;
-  private int maxPower = -1;
-  private int defense = -1;
-  private InfusionSlot[] infusionSlots;
-  private InfixUpgrade infixUpgrade;
-  private int suffixItemId = -1;
-  private String secondarySuffixItemId;
+  WeaponType type;
+  DamageType damageType;
+  @Builder.Default int minPower = -1;
+  @Builder.Default int maxPower = -1;
+  @Builder.Default int defense = -1;
+  List<InfusionSlot> infusionSlots;
+  InfixUpgrade infixUpgrade;
+  @Builder.Default int suffixItemId = -1;
+  String secondarySuffixItemId;
 
-  public static enum WeaponType {
+  public enum WeaponType {
     AXE,
     DAGGER,
     MACE,
@@ -44,7 +47,7 @@ public class WeaponDetails implements Details {
     TWO_HANDED_TOY;
   }
 
-  public static enum DamageType {
+  public enum DamageType {
     FIRE,
     ICE,
     LIGHTNING,

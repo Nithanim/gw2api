@@ -1,10 +1,11 @@
 package me.nithanim.gw2api.v2.util.rest;
 
+import java.util.List;
+import java.util.Map;
+
 import javax.ws.rs.client.WebTarget;
 
-import me.nithanim.gw2api.v2.util.collections.IntObjMap;
 import me.nithanim.gw2api.v2.util.mappings.IntMappable;
-import me.nithanim.gw2api.v2.util.reflect.LibraryAvailabilityChecker;
 import me.nithanim.gw2api.v2.util.reflect.ReflectUtil;
 import me.nithanim.gw2api.v2.util.reflect.SimpleParameterizedType;
 
@@ -32,9 +33,8 @@ public class IdsResourceBase<DATA_CLASS, OVERVIEW_CLASS> {
     this.dataClassArray = ReflectUtil.getArrayClass(dataClass);
     this.overviewClass = overviewClass;
 
-    if (IntMappable.class.isAssignableFrom(dataClass)
-        && LibraryAvailabilityChecker.checkKoloboke()) {
-      mapType = new SimpleParameterizedType(IntObjMap.class, dataClass);
+    if (IntMappable.class.isAssignableFrom(dataClass)) {
+      mapType = new SimpleParameterizedType(Map.class, dataClass);
     } else {
       mapType = null;
     }
@@ -58,14 +58,12 @@ public class IdsResourceBase<DATA_CLASS, OVERVIEW_CLASS> {
         webTarget, dataClassArray, "ids", DataUtil.intsToCommaSeparatedString(ids));
   }
 
-  public IntObjMap<DATA_CLASS> getMap(int[] ids) {
-    LibraryAvailabilityChecker.requireKoloboke();
+  public Map<Integer, DATA_CLASS> getMap(int[] ids) {
     return RequestHelper.INSTANCE.getRequest(
         webTarget, mapType, "ids", DataUtil.intsToCommaSeparatedString(ids));
   }
 
-  public IntObjMap<DATA_CLASS> getMap(int[] ids, String language) {
-    LibraryAvailabilityChecker.requireKoloboke();
+  public Map<Integer, DATA_CLASS> getMap(int[] ids, String language) {
     return RequestHelper.INSTANCE.getRequest(
         webTarget, mapType, "ids", DataUtil.intsToCommaSeparatedString(ids), "lang", language);
   }

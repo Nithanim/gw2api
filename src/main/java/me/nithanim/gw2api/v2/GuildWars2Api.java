@@ -2,53 +2,86 @@ package me.nithanim.gw2api.v2;
 
 import java.util.EnumMap;
 
+import javax.ws.rs.Priorities;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.WebTarget;
+import javax.ws.rs.core.MediaType;
 
 import org.glassfish.jersey.apache.connector.ApacheConnectorProvider;
 import org.glassfish.jersey.client.ClientConfig;
 import org.glassfish.jersey.client.JerseyClient;
 import org.glassfish.jersey.client.JerseyClientBuilder;
+import org.jboss.resteasy.client.jaxrs.ProxyConfig;
+import org.jboss.resteasy.client.jaxrs.ResteasyClientBuilder;
+import org.jboss.resteasy.client.jaxrs.ResteasyWebTarget;
 
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.MapperFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.PropertyNamingStrategies;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
 import me.nithanim.gw2api.v2.api.account.AccountResource;
-import me.nithanim.gw2api.v2.api.achievements.AchievementResource;
-import me.nithanim.gw2api.v2.api.achievements.AchievementResourceImpl;
-import me.nithanim.gw2api.v2.api.achievements.DailyAchievement;
+import me.nithanim.gw2api.v2.api.achievements.AchievementsDailyResourceWs;
+import me.nithanim.gw2api.v2.api.achievements.AchievementsResource;
+import me.nithanim.gw2api.v2.api.achievements.AchievementsResourceImpl;
+import me.nithanim.gw2api.v2.api.achievements.AchievementsResourceWs;
 import me.nithanim.gw2api.v2.api.build.BuildResource;
+import me.nithanim.gw2api.v2.api.build.BuildResourceImpl;
+import me.nithanim.gw2api.v2.api.build.BuildResourceWs;
 import me.nithanim.gw2api.v2.api.characters.CharactersResource;
+import me.nithanim.gw2api.v2.api.characters.CharactersResourceImpl;
+import me.nithanim.gw2api.v2.api.characters.CharactersResourceWs;
 import me.nithanim.gw2api.v2.api.colors.ColorsResource;
 import me.nithanim.gw2api.v2.api.colors.ColorsResourceImpl;
+import me.nithanim.gw2api.v2.api.colors.ColorsResourceWs;
 import me.nithanim.gw2api.v2.api.commerce.CommerceResource;
 import me.nithanim.gw2api.v2.api.continents.ContinentsResource;
 import me.nithanim.gw2api.v2.api.continents.ContinentsResourceImpl;
 import me.nithanim.gw2api.v2.api.currencies.CurrenciesResource;
 import me.nithanim.gw2api.v2.api.currencies.CurrenciesResourceImpl;
+import me.nithanim.gw2api.v2.api.currencies.CurrenciesResourceWs;
 import me.nithanim.gw2api.v2.api.files.FilesResource;
 import me.nithanim.gw2api.v2.api.files.FilesResourceImpl;
+import me.nithanim.gw2api.v2.api.files.FilesResourceWs;
+import me.nithanim.gw2api.v2.api.gliders.GliderResource;
+import me.nithanim.gw2api.v2.api.gliders.GliderResourceImpl;
+import me.nithanim.gw2api.v2.api.gliders.GliderResourceWs;
 import me.nithanim.gw2api.v2.api.guild.GuildResource;
 import me.nithanim.gw2api.v2.api.guild.GuildResourceImpl;
-import me.nithanim.gw2api.v2.api.items.ItemInfo;
 import me.nithanim.gw2api.v2.api.items.ItemsResource;
 import me.nithanim.gw2api.v2.api.items.ItemsResourceImpl;
+import me.nithanim.gw2api.v2.api.items.ItemsResourceWs;
 import me.nithanim.gw2api.v2.api.maps.MapsResource;
 import me.nithanim.gw2api.v2.api.maps.MapsResourceImpl;
+import me.nithanim.gw2api.v2.api.maps.MapsResourceWs;
+import me.nithanim.gw2api.v2.api.minis.MinisResource;
+import me.nithanim.gw2api.v2.api.minis.MinisResourceImpl;
+import me.nithanim.gw2api.v2.api.minis.MinisResourceWs;
 import me.nithanim.gw2api.v2.api.pvp.PvpResource;
+import me.nithanim.gw2api.v2.api.pvp.games.GamesResourceWs;
 import me.nithanim.gw2api.v2.api.recipes.RecipesResource;
 import me.nithanim.gw2api.v2.api.recipes.RecipesResourceImpl;
+import me.nithanim.gw2api.v2.api.recipes.RecipesResourceWs;
+import me.nithanim.gw2api.v2.api.recipes.RecipesSearchResourceWs;
 import me.nithanim.gw2api.v2.api.skins.SkinsResource;
 import me.nithanim.gw2api.v2.api.skins.SkinsResourceImpl;
+import me.nithanim.gw2api.v2.api.skins.SkinsResourceWs;
 import me.nithanim.gw2api.v2.api.specializations.SpecializationsResource;
 import me.nithanim.gw2api.v2.api.specializations.SpecializationsResourceImpl;
+import me.nithanim.gw2api.v2.api.specializations.SpecializationsResourceWs;
 import me.nithanim.gw2api.v2.api.tokeninfo.TokenResource;
+import me.nithanim.gw2api.v2.api.tokeninfo.TokenResourceImpl;
+import me.nithanim.gw2api.v2.api.tokeninfo.TokenResourceWs;
 import me.nithanim.gw2api.v2.api.traits.Fact;
 import me.nithanim.gw2api.v2.api.traits.TraitedFact;
 import me.nithanim.gw2api.v2.api.traits.TraitsResource;
 import me.nithanim.gw2api.v2.api.traits.TraitsResourceImpl;
+import me.nithanim.gw2api.v2.api.traits.TraitsResourceWs;
 import me.nithanim.gw2api.v2.api.worlds.WorldsResource;
 import me.nithanim.gw2api.v2.api.worlds.WorldsResourceImpl;
 import me.nithanim.gw2api.v2.configs.GoDaddyFix;
@@ -56,11 +89,7 @@ import me.nithanim.gw2api.v2.configs.GuildWars2ApiConfig;
 import me.nithanim.gw2api.v2.configs.GuildWars2ApiDefaultConfig;
 import me.nithanim.gw2api.v2.util.gson.EnumMapInstanceCreator;
 import me.nithanim.gw2api.v2.util.gson.EnumTypeAdapterFactory;
-import me.nithanim.gw2api.v2.util.gson.IntObjMapTypeAdapterFactory;
-import me.nithanim.gw2api.v2.util.gson.achievements.DailyAchievementsJsonDeserializer;
-import me.nithanim.gw2api.v2.util.gson.facts.FactJsonDeserializer;
-import me.nithanim.gw2api.v2.util.gson.facts.TraitedFactJsonDeserializer;
-import me.nithanim.gw2api.v2.util.gson.items.ItemInfoJsonDeserializer;
+import me.nithanim.gw2api.v2.util.jackson.EnumDeserializers;
 import me.nithanim.gw2api.v2.util.time.DateTimeAdapter;
 
 public class GuildWars2Api {
@@ -71,16 +100,11 @@ public class GuildWars2Api {
           .registerTypeAdapterFactory(new EnumTypeAdapterFactory())
           .registerTypeAdapter(
               new TypeToken<EnumMap>() {}.getType(), new EnumMapInstanceCreator<>())
-          .registerTypeAdapterFactory(new IntObjMapTypeAdapterFactory())
-          .registerTypeAdapter(Fact.class, new FactJsonDeserializer())
-          .registerTypeAdapter(TraitedFact.class, new TraitedFactJsonDeserializer())
-          .registerTypeAdapter(ItemInfo.class, new ItemInfoJsonDeserializer())
-          .registerTypeAdapter(DailyAchievement.class, new DailyAchievementsJsonDeserializer())
           .create();
 
   private final Client client;
   private final AccountResource accountResource;
-  private final AchievementResource achievements;
+  private final AchievementsResource achievements;
   private final BuildResource buildResource;
   private final CommerceResource commerceResource;
   private final CharactersResource charactersResource;
@@ -88,9 +112,11 @@ public class GuildWars2Api {
   private final ContinentsResource continentsResource;
   private final CurrenciesResource currenciesResource;
   private final FilesResource filesResource;
+  private final GliderResourceImpl glidersResource;
   private final GuildResource guildResource;
   private final ItemsResource itemsResource;
   private final MapsResource mapsResource;
+  private final MinisResource minisResource;
   private final PvpResource pvpResource;
   private final RecipesResource recipesResource;
   private final SkinsResource skinsResource;
@@ -111,33 +137,39 @@ public class GuildWars2Api {
     this(client, client.target(config.getBaseUrl()));
   }
 
-  /**
-   * Intended for testing only
-   *
-   * @param client
-   * @param baseResource
-   */
+  /** Intended for testing only */
   @Deprecated
-  public GuildWars2Api(Client client, WebTarget baseResource) {
-    this.client = client;
+  public GuildWars2Api(Client client_, WebTarget baseResource) {
+    this.client = client_;
+
+    Builder builder = new Builder();
+
     accountResource = new AccountResource(baseResource);
-    achievements = new AchievementResourceImpl(baseResource);
-    buildResource = new BuildResource(baseResource);
+    achievements =
+        new AchievementsResourceImpl(
+            builder.build(AchievementsResourceWs.class),
+            builder.build(AchievementsDailyResourceWs.class));
+    buildResource = new BuildResourceImpl(builder.build(BuildResourceWs.class));
     commerceResource = new CommerceResource(baseResource);
-    charactersResource = new CharactersResource(baseResource);
-    colorResource = new ColorsResourceImpl(baseResource);
+    charactersResource = new CharactersResourceImpl(builder.build(CharactersResourceWs.class));
+    colorResource = new ColorsResourceImpl(builder.build(ColorsResourceWs.class));
     continentsResource = new ContinentsResourceImpl(baseResource);
-    currenciesResource = new CurrenciesResourceImpl(baseResource);
-    filesResource = new FilesResourceImpl(baseResource);
+    currenciesResource = new CurrenciesResourceImpl(builder.build(CurrenciesResourceWs.class));
+    filesResource = new FilesResourceImpl(builder.build(FilesResourceWs.class));
+    glidersResource = new GliderResourceImpl(builder.build(GliderResourceWs.class));
     guildResource = new GuildResourceImpl(baseResource);
-    itemsResource = new ItemsResourceImpl(baseResource);
-    mapsResource = new MapsResourceImpl(baseResource);
-    pvpResource = new PvpResource(baseResource);
-    recipesResource = new RecipesResourceImpl(baseResource);
-    skinsResource = new SkinsResourceImpl(baseResource);
-    specializationsResource = new SpecializationsResourceImpl(baseResource);
-    tokenResource = new TokenResource(baseResource);
-    traitsResource = new TraitsResourceImpl(baseResource);
+    itemsResource = new ItemsResourceImpl(builder.build(ItemsResourceWs.class));
+    mapsResource = new MapsResourceImpl(builder.build(MapsResourceWs.class));
+    minisResource = new MinisResourceImpl(builder.build(MinisResourceWs.class));
+    pvpResource = new PvpResource(baseResource, builder.build(GamesResourceWs.class));
+    recipesResource =
+        new RecipesResourceImpl(
+            builder.build(RecipesResourceWs.class), builder.build(RecipesSearchResourceWs.class));
+    skinsResource = new SkinsResourceImpl(builder.build(SkinsResourceWs.class));
+    specializationsResource =
+        new SpecializationsResourceImpl(builder.build(SpecializationsResourceWs.class));
+    tokenResource = new TokenResourceImpl(builder.build(TokenResourceWs.class));
+    traitsResource = new TraitsResourceImpl(builder.build(TraitsResourceWs.class));
     worldsResource = new WorldsResourceImpl(baseResource);
   }
 
@@ -172,7 +204,7 @@ public class GuildWars2Api {
    * @return a resource that enables fetching achievement details
    * @see <a href="https://wiki.guildwars2.com/wiki/API:2/achievements">Guild Wars 2 Wiki</a>
    */
-  public AchievementResource achievements() {
+  public AchievementsResource achievements() {
     return achievements;
   }
 
@@ -249,6 +281,11 @@ public class GuildWars2Api {
     return filesResource;
   }
 
+  /** This resource returns information about gliders that are available in-game. */
+  public GliderResource gliders() {
+    return glidersResource;
+  }
+
   /**
    * This resource returns information about all available <a
    * href="https://wiki.guildwars2.com/wiki/Guild_Hall">Guild Hall</a> upgrades, including scribe
@@ -280,6 +317,11 @@ public class GuildWars2Api {
    */
   public MapsResource maps() {
     return mapsResource;
+  }
+
+  /** This resource returns information about gliders that are available in-game. */
+  public MinisResource minis() {
+    return minisResource;
   }
 
   public PvpResource pvp() {
@@ -346,5 +388,34 @@ public class GuildWars2Api {
   /** Releases all resources. */
   public void destroy() {
     client.close();
+  }
+
+  private static class Builder {
+    private final ProxyConfig pc;
+    private final ResteasyWebTarget target;
+
+    public Builder() {
+      ObjectMapper objectMapper =
+          new ObjectMapper()
+              .registerModule(new JavaTimeModule())
+              .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
+              .setPropertyNamingStrategy(PropertyNamingStrategies.SNAKE_CASE)
+              .enable(MapperFeature.ACCEPT_CASE_INSENSITIVE_ENUMS)
+              .registerModule(new EnumDeserializers.MyModule());
+      Gw2ResteasyJackson2Provider jsonDeserializer = new Gw2ResteasyJackson2Provider(objectMapper);
+      Client client =
+          ResteasyClientBuilder.newBuilder().register(jsonDeserializer, Priorities.USER).build();
+
+      target = (ResteasyWebTarget) client.target("https://api.guildwars2.com/v2");
+      pc =
+          new ProxyConfig(
+              Thread.currentThread().getContextClassLoader(),
+              MediaType.APPLICATION_JSON_TYPE,
+              MediaType.APPLICATION_JSON_TYPE);
+    }
+
+    public <T> T build(Class<T> clazz) {
+      return target.proxyBuilder(clazz).build(pc);
+    }
   }
 }

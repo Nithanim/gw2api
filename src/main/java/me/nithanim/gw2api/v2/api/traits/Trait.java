@@ -1,19 +1,23 @@
 package me.nithanim.gw2api.v2.api.traits;
 
-@lombok.NoArgsConstructor
-@lombok.AllArgsConstructor
-@lombok.Getter
-@lombok.EqualsAndHashCode
-@lombok.ToString
+import java.util.List;
+
+import lombok.Builder;
+import lombok.Value;
+import lombok.extern.jackson.Jacksonized;
+
+@Value
+@Builder
+@Jacksonized
 public class Trait {
-  private int id;
-  private String name;
-  private String icon;
-  private String description;
-  private int specialization;
-  private int tier;
-  private String slot;
-  private Fact[] facts;
-  private TraitedFact[] traitedFacts;
-  private Skill[] skills;
+  int id;
+  String name;
+  String icon;
+  String description;
+  int specialization;
+  int tier;
+  String slot;
+  List<Fact> facts;
+  List<TraitedFact> traitedFacts;
+  List<Skill> skills;
 }

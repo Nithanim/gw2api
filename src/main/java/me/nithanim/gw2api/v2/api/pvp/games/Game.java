@@ -1,24 +1,25 @@
 package me.nithanim.gw2api.v2.api.pvp.games;
 
-import org.joda.time.DateTime;
+import java.time.OffsetDateTime;
 
-import com.google.gson.annotations.SerializedName;
-
+import lombok.Builder;
+import lombok.Value;
+import lombok.extern.jackson.Jacksonized;
 import me.nithanim.gw2api.v2.api.characters.Character.Profession;
 
-@lombok.NoArgsConstructor
-@lombok.AllArgsConstructor
-@lombok.Getter
-@lombok.EqualsAndHashCode
-@lombok.ToString
+@Value
+@Builder
+@Jacksonized
 public class Game {
-  private String id;
-  private int mapId = -1;
-  private DateTime started;
-  private DateTime ended;
-  private String result;
-  private Profession profession;
+  String id;
+  @Builder.Default int mapId = -1;
+  OffsetDateTime started;
+  OffsetDateTime ended;
+  String result;
+  Profession profession;
 
-  @SerializedName("score")
-  private Score score;
+  Score score;
+  String ratingType;
+  int ratingChange;
+  String season;
 }

@@ -1,27 +1,13 @@
 package me.nithanim.gw2api.v2.api.pvp.games;
 
-import javax.ws.rs.client.WebTarget;
+import java.util.List;
 
-import me.nithanim.gw2api.v2.util.rest.DataUtil;
-import me.nithanim.gw2api.v2.util.rest.RequestHelper;
+import me.nithanim.gw2api.v2.ApiEndpoint;
 
-public class GamesResource {
-  private final WebTarget webResource;
+public interface GamesResource extends ApiEndpoint {
+  List<String> getOverview(String apiKey);
 
-  public GamesResource(WebTarget webTarget) {
-    this.webResource = webTarget.path("games");
-  }
+  Game get(String id, String apiKey);
 
-  public String[] getOverview(String apiKey) {
-    return RequestHelper.INSTANCE.getRequest(webResource, apiKey, String[].class);
-  }
-
-  public Game get(String id, String apiKey) {
-    return RequestHelper.INSTANCE.getRequest(webResource, apiKey, Game.class, "id", id);
-  }
-
-  public Game[] get(String[] ids, String apiKey) {
-    return RequestHelper.INSTANCE.getRequest(
-        webResource, apiKey, Game[].class, "ids", DataUtil.stringstsToCommaSeparatedString(ids));
-  }
+  List<Game> get(List<String> ids, String apiKey);
 }

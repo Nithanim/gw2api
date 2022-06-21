@@ -1,11 +1,15 @@
 package me.nithanim.gw2api.v2.api.traits.facttypes;
 
+import lombok.EqualsAndHashCode;
+import lombok.Value;
+import lombok.experimental.SuperBuilder;
+import lombok.extern.jackson.Jacksonized;
 import me.nithanim.gw2api.v2.api.traits.FactBase;
 
-@lombok.NoArgsConstructor
-@lombok.Getter
-@lombok.EqualsAndHashCode(callSuper = true)
-@lombok.ToString
+@Value
+@SuperBuilder
+@Jacksonized
+@EqualsAndHashCode(callSuper = true)
 public class NumberFact extends FactBase {
-  private int value = -1;
+  int value = -1;
 }

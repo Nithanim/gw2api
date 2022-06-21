@@ -1,5 +1,7 @@
 package me.nithanim.gw2api.v2.api.specializations;
 
+import java.util.List;
+
 import me.nithanim.gw2api.v2.ApiEndpoint;
 
 /** This resource returns information on currently released specializations. */
@@ -8,9 +10,9 @@ public interface SpecializationsResource extends ApiEndpoint {
 
   Specialization get(int id);
 
-  Specialization[] get(int[] ids);
+  List<Specialization> get(int[] ids);
 
-  Specialization get(int id, String language);
+  Specialization get(int id, String lang);
 
-  Specialization[] get(int[] ids, String language);
+  List<Specialization> get(int[] ids, String lang);
 }

@@ -2,17 +2,21 @@ package me.nithanim.gw2api.v2.api.pvp;
 
 import javax.ws.rs.client.WebTarget;
 
+import org.jboss.resteasy.client.jaxrs.ProxyConfig;
+
 import me.nithanim.gw2api.v2.ApiMidpoint;
 import me.nithanim.gw2api.v2.api.pvp.games.GamesResource;
+import me.nithanim.gw2api.v2.api.pvp.games.GamesResourceImpl;
+import me.nithanim.gw2api.v2.api.pvp.games.GamesResourceWs;
 import me.nithanim.gw2api.v2.api.pvp.stats.StatsResource;
 
 public class PvpResource implements ApiMidpoint {
   private final GamesResource gamesResource;
   private final StatsResource statsResource;
 
-  public PvpResource(WebTarget webTarget) {
+  public PvpResource(WebTarget webTarget, GamesResourceWs grws) {
     webTarget = webTarget.path("pvp");
-    gamesResource = new GamesResource(webTarget);
+    gamesResource = new GamesResourceImpl(grws);
     statsResource = new StatsResource(webTarget);
   }
 

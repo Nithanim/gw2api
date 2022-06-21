@@ -1,21 +1,32 @@
 package me.nithanim.gw2api.v2.api.achievements;
 
-@lombok.NoArgsConstructor
-@lombok.AllArgsConstructor
-@lombok.Getter
-@lombok.EqualsAndHashCode
-@lombok.ToString
-public class DailyAchievement {
-  private int id = -1;
-  private int levelMin = -1;
-  private int levelMax = -1;
-  private String[] requiredAccess;
+import java.util.List;
 
-  public static enum Type {
+import lombok.Builder;
+import lombok.Value;
+import lombok.extern.jackson.Jacksonized;
+
+@Value
+@Builder
+@Jacksonized
+public class DailyAchievement {
+  @Builder.Default int id = -1;
+  Level level;
+  List<String> requiredAccess;
+
+  @Value
+  @Builder
+  @Jacksonized
+  public static class Level {
+    @Builder.Default int min = -1;
+    @Builder.Default int max = -1;
+  }
+
+  public enum Type {
     PVE,
     PVP,
     WVW,
     FRACTALS,
-    SPECIAL;
+    SPECIAL
   }
 }

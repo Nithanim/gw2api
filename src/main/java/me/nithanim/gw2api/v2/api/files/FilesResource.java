@@ -1,5 +1,7 @@
 package me.nithanim.gw2api.v2.api.files;
 
+import java.util.List;
+
 import me.nithanim.gw2api.v2.ApiEndpoint;
 
 /**
@@ -9,11 +11,11 @@ import me.nithanim.gw2api.v2.ApiEndpoint;
  * @see <a href="https://wiki.guildwars2.com/wiki/API:2/files">GW2Wiki</a>
  */
 public interface FilesResource extends ApiEndpoint {
-  String[] getOverview();
+  List<String> getOverview();
 
   File get(String id);
 
-  File[] get(String[] ids);
+  List<File> get(List<String> ids);
 
-  File[] getAll();
+  List<File> getAll();
 }

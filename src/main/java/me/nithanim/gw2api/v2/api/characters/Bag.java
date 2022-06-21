@@ -1,14 +1,17 @@
 package me.nithanim.gw2api.v2.api.characters;
 
+import java.util.List;
+
+import lombok.Builder;
+import lombok.Value;
+import lombok.extern.jackson.Jacksonized;
 import me.nithanim.gw2api.v2.common.Item;
 
-@lombok.NoArgsConstructor
-@lombok.AllArgsConstructor
-@lombok.Getter
-@lombok.EqualsAndHashCode
-@lombok.ToString
+@Value
+@Builder
+@Jacksonized
 public class Bag {
-  private int id;
-  private int size;
-  private Item[] inventory;
+  int id;
+  int size;
+  List<Item> inventory;
 }

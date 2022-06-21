@@ -1,13 +1,18 @@
 package me.nithanim.gw2api.v2.api.items.details;
 
+import java.util.List;
+
+import lombok.Builder;
+import lombok.Value;
+import lombok.extern.jackson.Jacksonized;
 import me.nithanim.gw2api.v2.common.InfusionType;
 
-@lombok.NoArgsConstructor
-@lombok.AllArgsConstructor
-@lombok.Getter
-@lombok.EqualsAndHashCode
-@lombok.ToString
+@Value
+@Builder
+@Jacksonized
 public class InfusionSlot {
-  private InfusionType[] flags;
-  private int itemId = -1;
+  /** TODO may be broken */
+  List<InfusionType> flags;
+
+  @Builder.Default int itemId = -1;
 }

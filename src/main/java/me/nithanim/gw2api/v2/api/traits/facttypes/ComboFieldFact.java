@@ -1,14 +1,19 @@
 package me.nithanim.gw2api.v2.api.traits.facttypes;
 
+import lombok.EqualsAndHashCode;
+import lombok.Value;
+import lombok.experimental.SuperBuilder;
+import lombok.extern.jackson.Jacksonized;
 import me.nithanim.gw2api.v2.api.traits.FactBase;
 
-@lombok.NoArgsConstructor
-@lombok.Getter
-@lombok.ToString
+@Value
+@SuperBuilder
+@Jacksonized
+@EqualsAndHashCode(callSuper = true)
 public class ComboFieldFact extends FactBase {
-  private FieldType fieldType;
+  FieldType fieldType;
 
-  public static enum FieldType {
+  public enum FieldType {
     AIR,
     DARK,
     FIRE,
@@ -18,6 +23,6 @@ public class ComboFieldFact extends FactBase {
     POISON,
     SMOKE,
     ETHEREAL,
-    WATER;
+    WATER,
   }
 }

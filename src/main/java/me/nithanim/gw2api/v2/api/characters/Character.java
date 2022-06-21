@@ -1,30 +1,32 @@
 package me.nithanim.gw2api.v2.api.characters;
 
+import java.time.OffsetDateTime;
 import java.util.EnumMap;
+import java.util.List;
 
-import org.joda.time.DateTime;
+import lombok.Builder;
+import lombok.Value;
+import lombok.extern.jackson.Jacksonized;
 
-@lombok.NoArgsConstructor
-@lombok.AllArgsConstructor
-@lombok.Getter
-@lombok.EqualsAndHashCode
-@lombok.ToString
+@Value
+@Builder
+@Jacksonized
 public class Character {
-  private String name;
-  private Race race;
-  private String gender;
-  private String profession;
-  private byte level;
-  private String guild;
-  private int age;
-  private DateTime created;
-  private int deaths;
-  private CraftingLevel[] crafting;
-  private EnumMap<SpecializationType, Specialization[]> specializations;
-  private WornItem[] equipment;
-  private Bag[] bags;
+  String name;
+  Race race;
+  Gender gender;
+  String profession;
+  byte level;
+  String guild;
+  int age;
+  OffsetDateTime created;
+  int deaths;
+  List<CraftingLevel> crafting;
+  EnumMap<SpecializationType, List<Specialization>> specializations;
+  List<WornItem> equipment;
+  List<Bag> bags;
 
-  public static enum Race {
+  public enum Race {
     ASURA,
     CHARR,
     HUMAN,
@@ -32,12 +34,12 @@ public class Character {
     SYLVARI;
   }
 
-  public static enum Gender {
+  public enum Gender {
     MALE,
     FEMALE;
   }
 
-  public static enum Profession {
+  public enum Profession {
     ELEMENTALIST,
     ENGINEER,
     GUARDIAN,
@@ -46,6 +48,6 @@ public class Character {
     RANGER,
     THIEF,
     WARRIOR,
-    REVENANT;
+    REVENANT
   }
 }

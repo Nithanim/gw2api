@@ -1,5 +1,14 @@
 package me.nithanim.gw2api.v2.api.traits;
 
+import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.ToString;
+import lombok.experimental.FieldDefaults;
+import lombok.experimental.SuperBuilder;
+import lombok.extern.jackson.Jacksonized;
+
 /**
  * As I understood the hierarchy: There is a fact object that has additional fields based on the
  * "type" member.
@@ -12,16 +21,17 @@ package me.nithanim.gw2api.v2.api.traits;
  * <p>So I merged the fact and the traited fact into this base class and created interfaces to
  * expose only the right methods.
  */
-@lombok.NoArgsConstructor
-@lombok.AllArgsConstructor
-@lombok.Getter
-@lombok.EqualsAndHashCode
-@lombok.ToString
+@SuperBuilder
+@Jacksonized
+@EqualsAndHashCode
+@Getter
+@FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
+@ToString
 public class FactBase implements Fact, TraitedFact {
-  private String text;
-  private String icon;
-  private FactType type;
+  String text;
+  String icon;
+  FactType type;
 
-  private int requiresTrait = -1; // Merged into "Fact" from "Traited" fact
-  private int overrides = -1; // Might have been a bad idea
+  @Builder.Default int requiresTrait = -1; // Merged into "Fact" from "Traited" fact
+  @Builder.Default int overrides = -1; // Might have been a bad idea
 }

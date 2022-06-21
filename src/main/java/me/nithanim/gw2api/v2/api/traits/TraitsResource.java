@@ -1,5 +1,7 @@
 package me.nithanim.gw2api.v2.api.traits;
 
+import java.util.List;
+
 import me.nithanim.gw2api.v2.ApiEndpoint;
 
 /**
@@ -11,13 +13,13 @@ public interface TraitsResource extends ApiEndpoint {
 
   Trait get(int id);
 
-  Trait[] get(int[] ids);
+  List<Trait> get(int[] ids);
 
-  Trait get(int id, String language);
+  Trait get(int id, String lang);
 
-  Trait[] get(int[] ids, String language);
+  List<Trait> get(int[] ids, String lang);
 
-  Trait[] getAll();
+  List<Trait> getAll();
 
-  Trait[] getAll(String language);
+  List<Trait> getAll(String lang);
 }

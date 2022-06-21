@@ -1,15 +1,16 @@
 package me.nithanim.gw2api.v2.api.characters;
 
-import me.nithanim.gw2api.v2.util.gson.characters.TraitDeserializer;
+import java.util.List;
 
-@lombok.NoArgsConstructor
-@lombok.AllArgsConstructor
-@lombok.Getter
-@lombok.EqualsAndHashCode
-@lombok.ToString
+import lombok.Builder;
+import lombok.Value;
+import lombok.extern.jackson.Jacksonized;
+
+@Value
+@Builder
+@Jacksonized
 public class Specialization {
-  private int id;
+  int id;
 
-  @com.google.gson.annotations.JsonAdapter(TraitDeserializer.class)
-  private int[] traits;
+  List<Integer> traits;
 }

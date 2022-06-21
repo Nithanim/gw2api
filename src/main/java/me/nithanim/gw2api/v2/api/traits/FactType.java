@@ -17,8 +17,9 @@ import me.nithanim.gw2api.v2.api.traits.facttypes.RechargeFact;
 import me.nithanim.gw2api.v2.api.traits.facttypes.StunBreak;
 import me.nithanim.gw2api.v2.api.traits.facttypes.TimeFact;
 import me.nithanim.gw2api.v2.api.traits.facttypes.UnblockableFact;
+import me.nithanim.gw2api.v2.util.jackson.SubtypeEnum;
 
-public enum FactType {
+public enum FactType implements SubtypeEnum<Fact> {
   ATTRIBUTE_ADJUST(AttributeAdjustFact.class),
   BUFF(BuffFact.class),
   BUFF_CONVERSION(BuffConversionFact.class),
@@ -37,13 +38,14 @@ public enum FactType {
   TIME(TimeFact.class),
   UNBLOCKABLE(UnblockableFact.class);
 
-  private final Class<? extends FactBase> clazz;
+  private final Class<? extends Fact> detailsClass;
 
-  private FactType(Class<? extends FactBase> clazz) {
-    this.clazz = clazz;
+  FactType(Class<? extends Fact> detailsClass) {
+    this.detailsClass = detailsClass;
   }
 
-  public Class<? extends FactBase> getTypeClass() {
-    return clazz;
+  @Override
+  public Class<? extends Fact> getEnumClass() {
+    return detailsClass;
   }
 }

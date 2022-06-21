@@ -2,7 +2,7 @@ package me.nithanim.gw2api.v2.api.items;
 
 import me.nithanim.gw2api.v2.api.items.details.ArmorDetails;
 import me.nithanim.gw2api.v2.api.items.details.BackDetails;
-import me.nithanim.gw2api.v2.api.items.details.ConsumeableDetails;
+import me.nithanim.gw2api.v2.api.items.details.ConsumableDetails;
 import me.nithanim.gw2api.v2.api.items.details.ContainerDetails;
 import me.nithanim.gw2api.v2.api.items.details.GatheringToolsDetails;
 import me.nithanim.gw2api.v2.api.items.details.GizmoDetails;
@@ -10,16 +10,18 @@ import me.nithanim.gw2api.v2.api.items.details.SalvageKitDetails;
 import me.nithanim.gw2api.v2.api.items.details.TrinketDetails;
 import me.nithanim.gw2api.v2.api.items.details.UpgradeComponentDetails;
 import me.nithanim.gw2api.v2.api.items.details.WeaponDetails;
+import me.nithanim.gw2api.v2.util.jackson.SubtypeEnum;
 
-public enum ItemType {
+public enum ItemType implements SubtypeEnum<Details> {
   ARMOR(ArmorDetails.class),
   BACK(BackDetails.class),
   BAG(BackDetails.class),
-  CONSUMABLE(ConsumeableDetails.class),
+  CONSUMABLE(ConsumableDetails.class),
   CONTAINER(ContainerDetails.class),
   CRAFTING_MATERIAL,
   GATHERING(GatheringToolsDetails.class),
   GIZMO(GizmoDetails.class),
+  KEY,
   MINI_PET,
   TOOL(SalvageKitDetails.class),
   TRAIT,
@@ -30,15 +32,16 @@ public enum ItemType {
 
   private final Class<? extends Details> detailsClass;
 
-  private ItemType() {
+  ItemType() {
     this(null);
   }
 
-  private ItemType(Class<? extends Details> detailsClass) {
+  ItemType(Class<? extends Details> detailsClass) {
     this.detailsClass = detailsClass;
   }
 
-  public Class<? extends Details> getDetailsClass() {
+  @Override
+  public Class<? extends Details> getEnumClass() {
     return detailsClass;
   }
 }

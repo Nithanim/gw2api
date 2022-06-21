@@ -1,20 +1,23 @@
 package me.nithanim.gw2api.v2.api.items.details;
 
+import java.util.List;
+
+import lombok.Builder;
+import lombok.Value;
+import lombok.extern.jackson.Jacksonized;
 import me.nithanim.gw2api.v2.api.items.Details;
 
-@lombok.NoArgsConstructor
-@lombok.AllArgsConstructor
-@lombok.Getter
-@lombok.EqualsAndHashCode
-@lombok.ToString
+@Value
+@Builder
+@Jacksonized
 public class TrinketDetails implements Details {
-  private TrinketType type;
-  private InfusionSlot[] infusionSlots;
-  private InfixUpgrade infixUpgrade;
-  private int suffixItemId = -1;
-  private String secondarySuffixItemId;
+  TrinketType type;
+  List<InfusionSlot> infusionSlots;
+  InfixUpgrade infixUpgrade;
+  @Builder.Default int suffixItemId = -1;
+  String secondarySuffixItemId;
 
-  public static enum TrinketType {
+  public enum TrinketType {
     ACCESSORY,
     AMULET,
     RING;

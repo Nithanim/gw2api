@@ -1,5 +1,7 @@
 package me.nithanim.gw2api.v2.api.minis;
 
+import java.util.List;
+
 import me.nithanim.gw2api.v2.ApiEndpoint;
 
 /**
@@ -12,9 +14,13 @@ public interface MinisResource extends ApiEndpoint {
 
   Mini get(int id);
 
-  Mini get(int id, String language);
+  Mini get(int id, String lang);
 
-  Mini[] get(int[] ids);
+  List<Mini> get(int[] ids);
 
-  Mini[] get(int[] ids, String language);
+  List<Mini> get(int[] ids, String lang);
+
+  List<Mini> getAll();
+
+  List<Mini> getAll(String lang);
 }

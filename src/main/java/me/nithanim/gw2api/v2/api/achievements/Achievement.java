@@ -1,28 +1,40 @@
 package me.nithanim.gw2api.v2.api.achievements;
 
-@lombok.NoArgsConstructor
-@lombok.AllArgsConstructor
-@lombok.Getter
-@lombok.EqualsAndHashCode
-@lombok.ToString
-public class Achievement {
-  private int id = -1;
-  private String icon;
-  private String name;
-  private String description;
-  private String requirement;
-  private Type type;
-  private Flag[] flags;
+import java.util.List;
 
-  public static enum Type {
+import lombok.Builder;
+import lombok.Value;
+import lombok.extern.jackson.Jacksonized;
+
+@Value
+@Builder
+@Jacksonized
+public class Achievement {
+  @Builder.Default int id = -1;
+  String icon;
+  String name;
+  String description;
+  String requirement;
+  Type type;
+  List<Flag> flags;
+
+  public enum Type {
     DEFAULT,
-    ITEM_SET;
+    ITEM_SET
   }
 
-  public static enum Flag {
+  public enum Flag {
     PVP,
     CATEGORY_DISPLAY,
     MOVE_TO_TOP,
-    IGNORE_NEARLY_COMPLETE;
+    IGNORE_NEARLY_COMPLETE,
+    REPEATABLE,
+    HIDDEN,
+    REQUIRES_UNLOCK,
+    REPAIR_ON_LOGIN,
+    DAILY,
+    WEEKLY,
+    MONTHLY,
+    PERMANENT,
   }
 }

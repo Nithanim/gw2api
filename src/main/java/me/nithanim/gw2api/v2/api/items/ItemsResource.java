@@ -1,6 +1,6 @@
 package me.nithanim.gw2api.v2.api.items;
 
-import me.nithanim.gw2api.v2.util.collections.IntObjMap;
+import java.util.List;
 
 public interface ItemsResource {
   int[] getOverview();
@@ -9,11 +9,7 @@ public interface ItemsResource {
 
   ItemInfo get(int id, String language);
 
-  ItemInfo[] get(int[] ids);
+  List<ItemInfo> get(int[] ids);
 
-  IntObjMap<ItemInfo> getMap(int[] ids);
-
-  IntObjMap<ItemInfo> getMap(int[] ids, String lang);
-
-  ItemInfo[] get(int[] ids, String language);
+  List<ItemInfo> get(int[] ids, String language);
 }

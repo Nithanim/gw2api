@@ -1,5 +1,9 @@
 package me.nithanim.gw2api.v2.util.rest;
 
+import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
+
 public class DataUtil {
   public static String intsToCommaSeparatedString(int[] ints) {
     StringBuilder sb = new StringBuilder(ints.length * 5 + ints.length);
@@ -7,6 +11,10 @@ public class DataUtil {
       sb.append(ints[i]).append(',');
     }
     return sb.toString();
+  }
+
+  public static <T> String objectsToCommaSeparatedString(List<T> a) {
+    return a.stream().map(Objects::toString).collect(Collectors.joining(","));
   }
 
   public static String stringstsToCommaSeparatedString(String[] strings) {

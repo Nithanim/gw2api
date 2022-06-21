@@ -1,17 +1,18 @@
 package me.nithanim.gw2api.v2.api.items.details;
 
+import lombok.Builder;
+import lombok.Value;
+import lombok.extern.jackson.Jacksonized;
 import me.nithanim.gw2api.v2.api.items.Details;
 
-@lombok.NoArgsConstructor
-@lombok.AllArgsConstructor
-@lombok.Getter
-@lombok.EqualsAndHashCode
-@lombok.ToString
+@Value
+@Builder
+@Jacksonized
 public class SalvageKitDetails implements Details {
-  private SalvageKitType type;
-  private int charges = -1;
+  SalvageKitType type;
+  @Builder.Default int charges = -1;
 
-  public static enum SalvageKitType {
-    SALVAGE;
+  public enum SalvageKitType {
+    SALVAGE
   }
 }

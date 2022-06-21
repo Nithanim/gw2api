@@ -1,18 +1,31 @@
 package me.nithanim.gw2api.v2.common;
 
-@lombok.NoArgsConstructor
-@lombok.Getter
-@lombok.EqualsAndHashCode(callSuper = true)
-@lombok.ToString
+import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.ToString;
+import lombok.experimental.FieldDefaults;
+import lombok.experimental.SuperBuilder;
+import lombok.extern.jackson.Jacksonized;
+
+@SuperBuilder
+@Jacksonized
+@Getter
+@RequiredArgsConstructor(access = AccessLevel.PROTECTED)
+@FieldDefaults(level = AccessLevel.PRIVATE)
+@EqualsAndHashCode(callSuper = true)
+@ToString(callSuper = true)
 public class Item extends BasicItem {
-  private int skin = -1;
-  private int[] upgrades;
-  private int[] infusions;
-  private Binding binding;
-  private String boundTo;
+  @Builder.Default int skin = -1;
+  int[] upgrades;
+  int[] infusions;
+  Binding binding;
+  String boundTo;
 
   public enum Binding {
     ACCOUNT,
-    CHARACTER;
+    CHARACTER
   }
 }

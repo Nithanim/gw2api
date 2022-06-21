@@ -1,27 +1,22 @@
 package me.nithanim.gw2api.v2.api.recipes;
 
-import javax.ws.rs.client.WebTarget;
+import me.nithanim.gw2api.v2.util.rest.IdsResourceBaseInt;
 
-import me.nithanim.gw2api.v2.util.rest.IdsResourceBase;
-import me.nithanim.gw2api.v2.util.rest.RequestHelper;
+public class RecipesResourceImpl extends IdsResourceBaseInt<Recipe> implements RecipesResource {
+  private final RecipesSearchResourceWs searchWs;
 
-public class RecipesResourceImpl extends IdsResourceBase<Recipe, int[]> implements RecipesResource {
-  private final WebTarget searchWebTarget;
-
-  public RecipesResourceImpl(WebTarget webResource) {
-    super(webResource.path("recipes"), Recipe.class, int[].class);
-    searchWebTarget = this.webTarget.path("search");
+  public RecipesResourceImpl(RecipesResourceWs ws, RecipesSearchResourceWs searchWs) {
+    super(ws);
+    this.searchWs = searchWs;
   }
 
   @Override
   public int[] searchByInput(int id) {
-    return RequestHelper.INSTANCE.getRequest(
-        searchWebTarget, int[].class, "input", String.valueOf(id));
+    return searchWs.searchByInput(id);
   }
 
   @Override
   public int[] searchByOutput(int id) {
-    return RequestHelper.INSTANCE.getRequest(
-        searchWebTarget, int[].class, "output", String.valueOf(id));
+    return searchWs.searchByOutput(id);
   }
 }

@@ -1,15 +1,26 @@
 package me.nithanim.gw2api.v2.api.characters;
 
+import lombok.AccessLevel;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.ToString;
+import lombok.experimental.FieldDefaults;
+import lombok.experimental.SuperBuilder;
+import lombok.extern.jackson.Jacksonized;
 import me.nithanim.gw2api.v2.common.Item;
 
-@lombok.NoArgsConstructor
-@lombok.Getter
-@lombok.EqualsAndHashCode(callSuper = true)
-@lombok.ToString
+@SuperBuilder
+@Jacksonized
+@Getter
+@RequiredArgsConstructor(access = AccessLevel.PROTECTED)
+@FieldDefaults(level = AccessLevel.PRIVATE)
+@EqualsAndHashCode(callSuper = true)
+@ToString(callSuper = true)
 public class WornItem extends Item {
-  private Slot slot;
+  Slot slot;
 
-  public static enum Slot {
+  public enum Slot {
     HELM_AQUATIC,
     BACKPACK,
     COAT,
@@ -31,6 +42,6 @@ public class WornItem extends Item {
     WEAPON_B2,
     SICKLE,
     AXE,
-    PICK;
+    PICK
   }
 }

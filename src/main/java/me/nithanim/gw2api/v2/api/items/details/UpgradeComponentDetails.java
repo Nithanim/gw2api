@@ -1,29 +1,32 @@
 package me.nithanim.gw2api.v2.api.items.details;
 
+import java.util.List;
+
+import lombok.Builder;
+import lombok.Value;
+import lombok.extern.jackson.Jacksonized;
 import me.nithanim.gw2api.v2.api.items.Details;
 import me.nithanim.gw2api.v2.common.InfusionType;
 
-@lombok.NoArgsConstructor
-@lombok.AllArgsConstructor
-@lombok.Getter
-@lombok.EqualsAndHashCode
-@lombok.ToString
+@Value
+@Builder
+@Jacksonized
 public class UpgradeComponentDetails implements Details {
-  private UpgradeComponentType type;
-  private UpgradeableItemTypes[] flags;
-  private InfusionType[] infusionUpgradeFlags;
-  private String suffix;
-  private InfixUpgrade infixUpgrade;
-  private String[] bonuses;
+  UpgradeComponentType type;
+  List<UpgradeableItemTypes> flags;
+  List<InfusionType> infusionUpgradeFlags;
+  String suffix;
+  InfixUpgrade infixUpgrade;
+  List<String> bonuses;
 
-  public static enum UpgradeComponentType {
+  public enum UpgradeComponentType {
     DEFAULT,
     GEM,
     RUNE,
-    SIGIL;
+    SIGIL
   }
 
-  public static enum UpgradeableItemTypes {
+  public enum UpgradeableItemTypes {
     AXE,
     DAGGER,
     FOCUS,

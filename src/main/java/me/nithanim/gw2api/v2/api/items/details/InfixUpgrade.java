@@ -1,25 +1,27 @@
 package me.nithanim.gw2api.v2.api.items.details;
 
-@lombok.NoArgsConstructor
-@lombok.AllArgsConstructor
-@lombok.Getter
-@lombok.EqualsAndHashCode
-@lombok.ToString
+import java.util.List;
+
+import lombok.Builder;
+import lombok.Value;
+import lombok.extern.jackson.Jacksonized;
+
+@Value
+@Builder
+@Jacksonized
 public class InfixUpgrade {
-  private int id = -1;
-  private Attribute[] attributes;
-  private Buff buff;
+  @Builder.Default int id = -1;
+  List<Attribute> attributes;
+  Buff buff;
 
-  @lombok.NoArgsConstructor
-  @lombok.AllArgsConstructor
-  @lombok.Getter
-  @lombok.EqualsAndHashCode
-  @lombok.ToString
+  @Value
+  @Builder
+  @Jacksonized
   public static class Attribute {
-    private AttributeType attribute;
-    private int modifier = -1;
+    AttributeType attribute;
+    @Builder.Default int modifier = -1;
 
-    public static enum AttributeType {
+    public enum AttributeType {
       BOON_DURATION,
       CONDITION_DAMAGE,
       CONDITION_DURATION,
@@ -32,13 +34,11 @@ public class InfixUpgrade {
     }
   }
 
-  @lombok.NoArgsConstructor
-  @lombok.AllArgsConstructor
-  @lombok.Getter
-  @lombok.EqualsAndHashCode
-  @lombok.ToString
+  @Value
+  @Builder
+  @Jacksonized
   public static class Buff {
-    private int skillId = -1;
-    private String description;
+    @Builder.Default int skillId = -1;
+    String description;
   }
 }

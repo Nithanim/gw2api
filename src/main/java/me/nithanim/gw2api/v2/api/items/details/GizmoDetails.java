@@ -1,19 +1,20 @@
 package me.nithanim.gw2api.v2.api.items.details;
 
+import lombok.Builder;
+import lombok.Value;
+import lombok.extern.jackson.Jacksonized;
 import me.nithanim.gw2api.v2.api.items.Details;
 
-@lombok.NoArgsConstructor
-@lombok.AllArgsConstructor
-@lombok.Getter
-@lombok.EqualsAndHashCode
-@lombok.ToString
+@Value
+@Builder
+@Jacksonized
 public class GizmoDetails implements Details {
-  private GizmoType type;
+  GizmoType type;
 
-  public static enum GizmoType {
+  public enum GizmoType {
     DEFAULT,
     CONTAINER_KEY,
     RENTABLE_CONTRACT_NPC,
-    UNLIMITED_CONSUMEABLE;
+    UNLIMITED_CONSUMABLE;
   }
 }

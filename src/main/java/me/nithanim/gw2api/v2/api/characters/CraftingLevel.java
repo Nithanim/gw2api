@@ -1,12 +1,14 @@
 package me.nithanim.gw2api.v2.api.characters;
 
-@lombok.NoArgsConstructor
-@lombok.AllArgsConstructor
-@lombok.Getter
-@lombok.EqualsAndHashCode
-@lombok.ToString
+import lombok.Builder;
+import lombok.Value;
+import lombok.extern.jackson.Jacksonized;
+
+@Value
+@Builder
+@Jacksonized
 public class CraftingLevel {
-  private CraftingDiscipline discipline;
-  private int rating;
-  private boolean active;
+  CraftingDiscipline discipline;
+  int rating;
+  boolean active;
 }

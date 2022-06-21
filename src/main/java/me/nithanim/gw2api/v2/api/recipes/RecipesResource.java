@@ -1,5 +1,7 @@
 package me.nithanim.gw2api.v2.api.recipes;
 
+import java.util.List;
+
 import me.nithanim.gw2api.v2.ApiEndpoint;
 import me.nithanim.gw2api.v2.ApiMidpoint;
 
@@ -8,7 +10,7 @@ public interface RecipesResource extends ApiMidpoint, ApiEndpoint {
 
   Recipe get(int id);
 
-  Recipe[] get(int[] ids);
+  List<Recipe> get(int[] ids);
 
   /**
    * Searches for all recipes where a specific item is an ingredient.

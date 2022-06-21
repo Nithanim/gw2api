@@ -1,13 +1,14 @@
 package me.nithanim.gw2api.v2.api.items.details;
 
+import lombok.Builder;
+import lombok.Value;
+import lombok.extern.jackson.Jacksonized;
 import me.nithanim.gw2api.v2.api.items.Details;
 
-@lombok.NoArgsConstructor
-@lombok.AllArgsConstructor
-@lombok.Getter
-@lombok.EqualsAndHashCode
-@lombok.ToString
+@Value
+@Builder
+@Jacksonized
 public class BagDetails implements Details {
-  private int size = -1;
-  private boolean noSellOrSort;
+  @Builder.Default int size = -1;
+  boolean noSellOrSort;
 }

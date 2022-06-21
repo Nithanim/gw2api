@@ -1,28 +1,15 @@
 package me.nithanim.gw2api.v2.api.traits.facttypes;
 
+import lombok.EqualsAndHashCode;
+import lombok.Value;
+import lombok.experimental.SuperBuilder;
+import lombok.extern.jackson.Jacksonized;
 import me.nithanim.gw2api.v2.api.traits.FactBase;
 
-@lombok.NoArgsConstructor
-@lombok.Getter
-@lombok.ToString
+@Value
+@SuperBuilder
+@Jacksonized
+@EqualsAndHashCode(callSuper = true)
 public class DamageFact extends FactBase {
-  private int hitCount;
-
-  @Override
-  public int hashCode() {
-    int hash = 3;
-    hash = 97 * hash + this.hitCount;
-    return hash;
-  }
-
-  @Override
-  public boolean equals(Object obj) {
-    if (!(obj instanceof DamageFact)) {
-      return false;
-    } else if (this == obj) {
-      return true;
-    }
-    final DamageFact other = (DamageFact) obj;
-    return this.hitCount == other.hitCount;
-  }
+  int hitCount;
 }
